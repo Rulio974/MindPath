@@ -4,13 +4,151 @@
     let isSelectingReponseCol = false;
     let isSelectingCommentaireCol = false;
 
+    // Configuration par défaut
+    let config = {
+        serverUrl: 'https://164.132.58.187:8000', // HTTPS pour Excel Online
+        apiToken: ''
+    };
+
+    // Gestion des onglets
+    function initTabs() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+
+                // Désactiver tous les onglets
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Activer l'onglet sélectionné
+                button.classList.add('active');
+                document.getElementById(targetTab + '-tab').classList.add('active');
+            });
+        });
+    }
+
+    // Persistance des paramètres
+    function loadSettings() {
+        try {
+            const savedConfig = localStorage.getItem('mindpathConfig');
+            if (savedConfig) {
+                config = { ...config, ...JSON.parse(savedConfig) };
+                document.getElementById('serverUrl').value = config.serverUrl;
+                document.getElementById('apiToken').value = config.apiToken;
+                console.log('Paramètres chargés:', config);
+            }
+        } catch (error) {
+            console.error('Erreur lors du chargement des paramètres:', error);
+        }
+    }
+
+    async function saveSettings() {
+        const serverUrl = document.getElementById('serverUrl').value.trim();
+        const apiToken = document.getElementById('apiToken').value.trim();
+
+        if (!serverUrl || !apiToken) {
+            showSaveStatus('Veuillez remplir tous les champs.', 'error');
+            return;
+        }
+
+        // Sauvegarder dans localStorage
+        config.serverUrl = serverUrl;
+        config.apiToken = apiToken;
+        localStorage.setItem('mindpathConfig', JSON.stringify(config));
+
+        // Tester la connexion avec une route authentifiée
+        try {
+            showSaveStatus('Test de connexion en cours...', 'warning');
+
+            // Créer un AbortController pour le timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 secondes
+
+            const response = await fetch(`${serverUrl}/search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiToken}`
+                },
+                body: JSON.stringify({ question: "test", top_k: 1 }),
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (response.ok) {
+                showSaveStatus('Connexion réussie ! Paramètres sauvegardés.', 'success');
+                console.log('Paramètres sauvegardés et connexion testée: ', config);
+            } else if (response.status === 401 || response.status === 403) {
+                showSaveStatus('Token invalide. Vérifiez votre token API.', 'error');
+            } else {
+                showSaveStatus(`Erreur de connexion (${response.status}). Vérifiez l'URL du serveur.`, 'error');
+            }
+        } catch (error) {
+            console.error('Erreur de test de connexion:', error);
+            if (error.name === 'AbortError') {
+                showSaveStatus('Timeout : Le serveur ne répond pas. Vérifiez l\'URL.', 'error');
+            } else {
+                showSaveStatus('Impossible de contacter le serveur. Vérifiez l\'URL.', 'error');
+            }
+        }
+    }
+
+    function showSaveStatus(message, type) {
+        const statusElement = document.getElementById('saveStatus');
+        statusElement.textContent = message;
+        statusElement.className = `status-indicator ${type}`;
+        setTimeout(() => {
+            statusElement.textContent = '';
+            statusElement.className = 'status-indicator';
+        }, 3000);
+    }
+
+
+
+    function toggleTokenVisibility() {
+        const tokenInput = document.getElementById('apiToken');
+        const toggleBtn = document.getElementById('toggleTokenVisibility');
+
+        if (tokenInput.type === 'password') {
+            tokenInput.type = 'text';
+            toggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+        } else {
+            tokenInput.type = 'password';
+            toggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
+        }
+    }
+
     Office.onReady((info) => {
         if (info.host === Office.HostType.Excel) {
             console.log("Module initialisé dans Excel");
 
+            // Initialiser les onglets
+            initTabs();
+
+            // Charger les paramètres sauvegardés
+            loadSettings();
+
+            // Vérifier si la configuration est complète
+            if (!config.serverUrl || !config.apiToken) {
+                console.log('Configuration incomplète, affichage de l\'onglet Paramètres');
+                // Basculer vers l'onglet Paramètres si la configuration est incomplète
+                setTimeout(() => {
+                    document.querySelector('[data-tab="settings"]').click();
+                }, 500);
+            }
+
+            // Événements de recherche
             document.getElementById("searchButton").onclick = searchQuestion;
             document.getElementById("selectReponseCell").onclick = startSelectReponseCol;
             document.getElementById("selectCommentaireCell").onclick = startSelectCommentaireCol;
+
+            // Événements des paramètres
+            document.getElementById("saveSettings").onclick = saveSettings;
+            document.getElementById("toggleTokenVisibility").onclick = toggleTokenVisibility;
 
             const optionsToggle = document.getElementById("optionsToggle");
             const autoFillConfig = document.getElementById("autoFillConfig");
@@ -102,27 +240,50 @@
             return null;
         }
 
+        // Vérifier la configuration
+        if (!config.serverUrl || !config.apiToken) {
+            showResults("Veuillez configurer le serveur et le token API dans l'onglet Paramètres.");
+            return null;
+        }
+
         try {
-            console.log("Tentative d'appel à l'API via http://localhost:8000/search");
-            const response = await fetch("http://localhost:8000/search", {
+            console.log("Tentative d'appel à l'API via", config.serverUrl);
+
+            // Créer un AbortController pour le timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 secondes
+
+            const response = await fetch(`${config.serverUrl}/search`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${config.apiToken}`
                 },
-                body: JSON.stringify({ question: question, top_k: 5 })
+                body: JSON.stringify({ question: question, top_k: 5 }),
+                signal: controller.signal,
+                // Ignorer les erreurs de certificat SSL auto-signé
+                mode: 'cors'
             });
+
+            clearTimeout(timeoutId);
 
             console.log("Statut de la réponse:", response.status);
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                if (response.status === 401) {
+                    throw new Error("Token API invalide. Vérifiez votre token dans les paramètres.");
+                } else if (response.status === 403) {
+                    throw new Error("Accès refusé. Vérifiez vos permissions.");
+                } else {
+                    throw new Error(`Erreur HTTP ${response.status}: ${response.statusText}`);
+                }
             }
 
             const data = await response.json();
             console.log("Données reçues:", data);
 
             if (data.error) {
-                showResults("<p style='color: red;'>Erreur: " + data.error + "</p>");
+                showError("Erreur serveur", data.error);
                 return null;
             } else {
                 displayResults(data.results);
@@ -131,16 +292,16 @@
         } catch (err) {
             console.error("Erreur détaillée:", err);
             let errorMessage = err.message || err;
-            if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+            if (err.name === 'AbortError') {
+                errorMessage = "Timeout : Le serveur ne répond pas. Vérifiez l'URL du serveur.";
+            } else if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
                 errorMessage = "Impossible de contacter le serveur. Vérifiez que le serveur est en cours d'exécution et accessible.";
             }
-            showResults(`<p style='color: red;'>
-                Erreur de communication avec le serveur:<br>
-                ${errorMessage}<br><br>
-                URL appelée: http://localhost:8000/search<br>
-                Type d'erreur: ${err.name}<br>
-                Message: ${err.message}
-            </p>`);
+            showError("Erreur de communication", errorMessage, {
+                url: `${config.serverUrl}/search`,
+                type: err.name,
+                message: err.message
+            });
             return null;
         }
     }
@@ -205,6 +366,28 @@
         });
         html += "</table>";
         showResults(html);
+    }
+
+    function showError(title, message, details = null) {
+        let html = `
+            <div class="error-card">
+                <div class="error-header">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <span class="error-title">${title}</span>
+                </div>
+                <div class="error-message">${message}</div>
+                ${details ? `
+                    <div class="error-details">
+                        <div class="error-detail">
+                            <strong>URL :</strong> ${details.url || 'N/A'}
+                        </div>
+                        ${details.type ? `<div class="error-detail"><strong>Type :</strong> ${details.type}</div>` : ''}
+                        ${details.message ? `<div class="error-detail"><strong>Message :</strong> ${details.message}</div>` : ''}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+        document.getElementById("results").innerHTML = html;
     }
 
     function showResults(content) {

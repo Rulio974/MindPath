@@ -27,56 +27,20 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static(basePath));
 
-// Proxy pour l'API
+// Endpoint de santé pour tester la connexion
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok', message: 'Add-in Excel MindPath opérationnel' });
+});
+
+// Proxy pour l'API (maintenant géré côté client)
 app.post('/api/search', (req, res) => {
-    console.log('Requête reçue:', req.body);
+    console.log('Requête proxy reçue:', req.body);
 
-    const options = {
-        hostname: '127.0.0.1',
-        port: 8000,
-        path: '/search',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    };
-
-    console.log('Envoi de la requête à:', `http://${options.hostname}:${options.port}${options.path}`);
-
-    const apiReq = http.request(options, (apiRes) => {
-        console.log('Statut de la réponse API:', apiRes.statusCode);
-        let data = '';
-
-        apiRes.on('data', (chunk) => {
-            data += chunk;
-            console.log('Chunk reçu:', chunk.toString());
-        });
-
-        apiRes.on('end', () => {
-            console.log('Réponse API complète:', data);
-            try {
-                const jsonData = JSON.parse(data);
-                res.status(apiRes.statusCode).json(jsonData);
-            } catch (e) {
-                console.error('Erreur de parsing JSON:', e);
-                res.status(500).json({ error: 'Erreur de parsing de la réponse' });
-            }
-        });
+    // Cette route n'est plus utilisée car le client fait maintenant des appels directs
+    // Gardée pour compatibilité si nécessaire
+    res.status(400).json({
+        error: 'Cette méthode est dépréciée. Utilisez l\'appel direct à l\'API configurée.'
     });
-
-    apiReq.on('error', (error) => {
-        console.error('Erreur API détaillée:', error);
-        res.status(500).json({
-            error: 'Erreur de communication avec l\'API',
-            details: error.message,
-            code: error.code,
-            host: options.hostname,
-            port: options.port
-        });
-    });
-
-    apiReq.write(JSON.stringify(req.body));
-    apiReq.end();
 });
 
 // Chemins des certificats

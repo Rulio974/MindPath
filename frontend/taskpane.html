@@ -1,59 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title>Recherche Sécurité</title>
+    <title>MindPath Excel</title>
 
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="taskpane.css" />
 </head>
 
 <body>
-    <div class="container">
-
-
-        <h1>Recherche sémantique dans les questionnaires de sécurité</h1>
-
-        <div class="search-section">
-            <label for="questionInput">Entrez votre question :</label>
-            <input type="text" id="questionInput" />
-            <button id="searchButton">Rechercher</button>
-        </div>
-
-        <div class="options-toggle" id="optionsToggle">
-            <span class="chevron">&#9660;</span>
-            <span class="toggle-text">Options avancées</span>
-        </div>
-
-        <div class="auto-fill-config" id="autoFillConfig" style="display: none;">
-            <h3>Configuration du remplissage automatique</h3>
-            <div class="config-row">
-                <label>Colonne pour "Réponse" :</label>
-                <input type="text" id="reponseCell" placeholder="ex: E" />
-                <button id="selectReponseCell" class="select-cell-btn">📍 Sélectionner</button>
-                <span id="reponseCellStatus" class="status-indicator"></span>
-            </div>
-            <div class="config-row">
-                <label>Colonne pour "Commentaire" :</label>
-                <input type="text" id="commentaireCell" placeholder="ex: F" />
-                <button id="selectCommentaireCell" class="select-cell-btn">📍 Sélectionner</button>
-                <span id="commentaireCellStatus" class="status-indicator"></span>
-            </div>
-            <div class="config-row">
-                <label class="checkbox-container">
-                    <input type="checkbox" id="autoFillEnabled" />
-                    <span>Remplissage automatique</span>
-                </label>
-            </div>
-            <div class="help-text">
-                <small>* Sélectionnez les colonnes où vous souhaitez que les réponses et commentaires apparaissent. La
-                    ligne sera automatiquement déterminée par la question sélectionnée.</small>
+    <div class="container-fluid p-0">
+        <!-- Header avec logo -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="assets/logo.png" alt="MindPath" class="logo-img">
+                </div>
             </div>
         </div>
 
-        <div id="results"></div>
+        <!-- Contenu principal -->
+        <div class="main-content">
+            <!-- Onglets -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="search">
+                    <i class="bi bi-search"></i> Recherche
+                </button>
+                <button class="tab-button" data-tab="settings">
+                    <i class="bi bi-gear"></i> Paramètres
+                </button>
+            </div>
+
+            <!-- Onglet Recherche -->
+            <div class="tab-content active" id="search-tab">
+                <div class="search-section">
+                    <div class="form-group">
+                        <label for="questionInput" class="form-label">Entrez votre question :</label>
+                        <div class="input-group">
+                            <input type="text" id="questionInput" class="form-control"
+                                placeholder="Ex: Comment gérez-vous la sécurité des données ?" />
+                            <button id="searchButton" class="btn btn-primary">
+                                <i class="bi bi-search"></i> Rechercher
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-toggle" id="optionsToggle">
+                    <i class="bi bi-chevron-down chevron"></i>
+                    <span class="toggle-text">Options avancées</span>
+                </div>
+
+                <div class="auto-fill-config" id="autoFillConfig" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="bi bi-gear"></i> Configuration du remplissage automatique</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="config-row">
+                                <label class="form-label">Colonne pour "Réponse" :</label>
+                                <div class="input-group">
+                                    <input type="text" id="reponseCell" class="form-control" placeholder="ex: E" />
+                                    <button id="selectReponseCell" class="btn btn-outline-secondary">
+                                        <i class="bi bi-cursor"></i> Sélectionner
+                                    </button>
+                                </div>
+                                <span id="reponseCellStatus" class="status-indicator"></span>
+                            </div>
+                            <div class="config-row">
+                                <label class="form-label">Colonne pour "Commentaire" :</label>
+                                <div class="input-group">
+                                    <input type="text" id="commentaireCell" class="form-control" placeholder="ex: F" />
+                                    <button id="selectCommentaireCell" class="btn btn-outline-secondary">
+                                        <i class="bi bi-cursor"></i> Sélectionner
+                                    </button>
+                                </div>
+                                <span id="commentaireCellStatus" class="status-indicator"></span>
+                            </div>
+                            <div class="config-row">
+                                <div class="form-check">
+                                    <input type="checkbox" id="autoFillEnabled" class="form-check-input" />
+                                    <label class="form-check-label" for="autoFillEnabled">
+                                        Remplissage automatique
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="help-text">
+                                <small class="text-muted">
+                                    <i class="bi bi-info-circle"></i>
+                                    Sélectionnez les colonnes où vous souhaitez que les réponses et commentaires
+                                    apparaissent.
+                                    La ligne sera automatiquement déterminée par la question sélectionnée.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="results" class="results-container"></div>
+            </div>
+
+            <!-- Onglet Paramètres -->
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="bi bi-wifi"></i> Configuration de la connexion</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="config-row">
+                                <label for="serverUrl" class="form-label">Adresse du serveur :</label>
+                                <input type="text" id="serverUrl" class="form-control"
+                                    placeholder="https://api.lesphinx.mindpath.fr" />
+                                <div class="help-text">
+                                    <small class="text-muted">
+                                        <i class="bi bi-info-circle"></i>
+                                        URL du serveur MindPath (ex: https://api.lesphinx.mindpath.fr)
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="config-row">
+                                <label for="apiToken" class="form-label">Token API :</label>
+                                <div class="token-input-container">
+                                    <input type="password" id="apiToken" class="form-control"
+                                        placeholder="Votre token API" />
+                                    <button id="toggleTokenVisibility" class="btn btn-outline-secondary toggle-btn">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="help-text">
+                                    <small class="text-muted">
+                                        <i class="bi bi-key"></i>
+                                        Token d'authentification pour accéder à l'API de recherche
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="config-row">
+                                <button id="saveSettings" class="btn btn-primary">
+                                    <i class="bi bi-check-lg"></i> Sauvegarder et tester la connexion
+                                </button>
+                                <span id="saveStatus" class="status-indicator"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="taskpane.js"></script>
