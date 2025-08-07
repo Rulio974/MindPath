@@ -1,0 +1,11 @@
+# Calcul des embeddings
+sentence-transformers
+faiss-cpu
+numpy
+torch
+
+# Détection de langue
+langdetect
+
+# Utilitaires
+tqdm 

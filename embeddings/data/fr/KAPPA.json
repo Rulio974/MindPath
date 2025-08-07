@@ -1,0 +1,26 @@
+{
+    "date": "2024-04-12",
+    "Entreprise": "KAPPA",
+    "data": [
+        {
+            "Question": "Disposez-vous d'une gouvernance de la sécurité informatique ?",
+            "Reponse": "OUI",
+            "Commentaire": "Comité de sécurité mensuel"
+        },
+        {
+            "Question": "Avez-vous une politique de gestion des accès ?",
+            "Reponse": "OUI",
+            "Commentaire": "Gestion des habilitations et révision trimestrielle"
+        },
+        {
+            "Question": "Comment protégez-vous les données personnelles ?",
+            "Reponse": "OUI",
+            "Commentaire": "Chiffrement et pseudonymisation des données sensibles"
+        },
+        {
+            "Question": "Effectuez-vous des audits de sécurité ?",
+            "Reponse": "OUI",
+            "Commentaire": "Audits internes et externes annuels"
+        }
+    ]
+}

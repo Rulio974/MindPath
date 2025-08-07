@@ -1,0 +1,131 @@
+{
+    "date": "2023-11-08",
+    "Entreprise": "MU",
+    "data": [
+        {
+            "Question": "L'ensemble de votre personnel connaît-il et met-il en pratique votre Politique de Sécurité des Systèmes d'Information ?",
+            "Reponse": "OUI",
+            "Commentaire": "Signature obligatoire de la charte sécurité lors de l'intégration"
+        },
+        {
+            "Question": "Procédez-vous à une révision annuelle minimum de vos politiques, standards et procédures ?",
+            "Reponse": "OUI",
+            "Commentaire": "Révision planifiée dans le calendrier de contrôle interne"
+        },
+        {
+            "Question": "Disposez-vous d'un Plan d'Assurance Sécurité (PAS) ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Le PAS a-t-il été communiqué ? Sous quels délais ?",
+            "Reponse": "OUI",
+            "Commentaire": "Version mise à jour jointe au présent questionnaire"
+        },
+        {
+            "Question": "L'organisation sécuritaire fait-elle l'objet d'une formalisation documentée précisant les rôles et responsabilités ?",
+            "Reponse": "OUI",
+            "Commentaire": "Documenté dans notre politique de sécurité"
+        },
+        {
+            "Question": "La direction effectue-t-elle un examen du programme sécurité en s'appuyant sur les évaluations, analyses de risques et audits ?",
+            "Reponse": "OUI",
+            "Commentaire": "Revue bimestrielle avec un représentant de la direction"
+        },
+        {
+            "Question": "Un Responsable de la Sécurité des Systèmes d'Information a-t-il été nommé, indépendant de l'IT et responsable de la gestion des risques ?",
+            "Reponse": "OUI",
+            "Commentaire": "RSSI désigné en mai 2023"
+        },
+        {
+            "Question": "Le RSSI bénéficie-t-il de l'autorité et de l'indépendance requises pour ses missions, notamment la mise en conformité ?",
+            "Reponse": "OUI",
+            "Commentaire": "Reporting direct au directeur général"
+        },
+        {
+            "Question": "Un processus de gestion des risques a-t-il été établi dans votre organisation ?",
+            "Reponse": "OUI",
+            "Commentaire": "Déploiement prévu d'ici fin 2023 avec objectif ISO27001"
+        },
+        {
+            "Question": "Votre organisation comprend-elle des entités cybersécurité spécialisées (cellule de crise, SOC, CERT, etc.) ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Taille insuffisante pour des entités dédiées, fonctions assurées par le RSSI et équipes techniques."
+        },
+        {
+            "Question": "L'ensemble des employés et prestataires font-ils l'objet de vérifications préalables à l'embauche ?",
+            "Reponse": "OUI",
+            "Commentaire": "Vérification des antécédents professionnels"
+        },
+        {
+            "Question": "Vos collaborateurs reçoivent-ils une formation de sensibilisation aux politiques et procédures de sécurité ?",
+            "Reponse": "OUI",
+            "Commentaire": "Formation obligatoire dans les 3 mois d'arrivée"
+        },
+        {
+            "Question": "Un processus de suivi de conformité au programme de sensibilisation est-il en place ?",
+            "Reponse": "OUI",
+            "Commentaire": "Registre de suivi des formations dispensées"
+        },
+        {
+            "Question": "Un processus assure-t-il que vos collaborateurs reçoivent une formation adaptée à leur fonction ?",
+            "Reponse": "OUI",
+            "Commentaire": "Formations ciblées pour développeurs et administrateurs système"
+        },
+        {
+            "Question": "Les contrats de travail comportent-ils des clauses de confidentialité ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Les collaborateurs traitant des données sensibles doivent-ils signer un accord de non-divulgation spécifique ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Les clauses de confidentialité générales couvrent la non-divulgation."
+        },
+        {
+            "Question": "Tenez-vous un inventaire des actifs incluant propriétaire, classification et criticité ?",
+            "Reponse": "OUI",
+            "Commentaire": "Inventaire matériel mobile et infrastructure hébergée"
+        },
+        {
+            "Question": "L'accès aux données sensibles clients nécessite-t-il l'autorisation du responsable de ces données ?",
+            "Reponse": "OUI",
+            "Commentaire": "Fonctionnalité en développement pour fin 2023"
+        },
+        {
+            "Question": "Procédez-vous à la suppression des données clients en fin de contrat ou sur demande ?",
+            "Reponse": "OUI",
+            "Commentaire": "Effacement sécurisé par écrasement multiple"
+        },
+        {
+            "Question": "Une politique de classification des informations a-t-elle été établie ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Des procédures de traitement spécifiques selon la classification des données ont-elles été définies ?",
+            "Reponse": "NON",
+            "Commentaire": "Pas de traitement différencié identifié actuellement"
+        },
+        {
+            "Question": "Les données sont-elles répliquées dans différents pays ? Le client peut-il choisir la localisation ?",
+            "Reponse": "NON",
+            "Commentaire": "Stockage exclusivement en France. Réplication possible ailleurs moyennant surcoût."
+        },
+        {
+            "Question": "Qui peut accéder aux données client et selon quelle procédure ?",
+            "Reponse": "",
+            "Commentaire": "Accès limité aux personnels habilités : gestionnaires de compte et ingénieurs d'intégration par défaut. Deux techniciens ont accès base de données sous conditions strictes. Contrôle client possible."
+        },
+        {
+            "Question": "Quel est votre engagement sur la résidence des données dans le temps ?",
+            "Reponse": "",
+            "Commentaire": "Engagement à obtenir l'accord client avant tout déplacement de données hors des centres actuels."
+        },
+        {
+            "Question": "Quelle est la localisation des personnes ayant accès aux données par fonction ?",
+            "Reponse": "",
+            "Commentaire": "Tout le personnel avec accès aux données opère depuis la France sous droit français"
+        }
+    ]
+}

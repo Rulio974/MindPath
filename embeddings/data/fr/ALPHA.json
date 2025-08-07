@@ -1,0 +1,251 @@
+{
+    "date": "2025-03-15",
+    "Entreprise": "ALPHA",
+    "data": [
+        {
+            "Question": "Votre organisation s'assure-t-elle que l'ensemble du personnel connaît et applique votre Politique de Sécurité Informatique ?",
+            "Reponse": "OUI",
+            "Commentaire": "Engagement contractuel et lecture obligatoire de la charte informatique dès le premier jour"
+        },
+        {
+            "Question": "Votre organisation effectue-t-elle des révisions de ses politiques, normes et procédures au minimum une fois par an ?",
+            "Reponse": "OUI",
+            "Commentaire": "Tâches intégrées dans le plan de contrôle"
+        },
+        {
+            "Question": "Le fournisseur dispose-t-il d'un Plan d'Assurance Sécurité (PAS) ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Si oui, le PAS a-t-il été transmis ? Dans quels délais ?",
+            "Reponse": "OUI",
+            "Commentaire": "La version actualisée du PAS sera fournie avec ce document"
+        },
+        {
+            "Question": "L'organisation sécuritaire est-elle formalisée dans un document détaillant les rôles et responsabilités de chaque partie prenante ?",
+            "Reponse": "OUI",
+            "Commentaire": "Défini dans la PSSI"
+        },
+        {
+            "Question": "Votre direction examine-t-elle le programme de sécurité en tenant compte des résultats d'évaluations, d'analyses de risques et d'audits internes/externes ?",
+            "Reponse": "OUI",
+            "Commentaire": "Comité bimestriel avec participation d'un membre de la direction"
+        },
+        {
+            "Question": "Avez-vous désigné un Responsable de la Sécurité des Systèmes d'Information, indépendant du département informatique et chargé de la gestion des risques ?",
+            "Reponse": "OUI",
+            "Commentaire": "RSSI nommé en juin 2024"
+        },
+        {
+            "Question": "Le Responsable de la Sécurité des Systèmes d'Information dispose-t-il de l'autorité et de l'indépendance nécessaires pour accomplir ses missions, notamment pour la mise en conformité de la Politique de Sécurité ?",
+            "Reponse": "OUI",
+            "Commentaire": "Rattachement direct à la direction générale"
+        },
+        {
+            "Question": "Votre organisation a-t-elle mis en place un processus de gestion des risques ?",
+            "Reponse": "OUI",
+            "Commentaire": "Planifié pour fin 2024 avec certification ISO27001"
+        },
+        {
+            "Question": "Votre organisation dispose-t-elle d'entités spécialisées en cybersécurité (gestion de crise, SOC, CERT, CSIRT, équipe conseil, etc.) ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Notre structure n'a pas la taille critique pour des entités spécialisées dédiées, ces fonctions sont assurées par le RSSI et les équipes produit concernées."
+        },
+        {
+            "Question": "Tous les employés et prestataires font-ils l'objet de vérifications avant embauche, selon les politiques internes ?",
+            "Reponse": "OUI",
+            "Commentaire": "Contrôle des références"
+        },
+        {
+            "Question": "Vos collaborateurs bénéficient-ils d'une formation les sensibilisant aux rôles et responsabilités liés aux politiques et procédures de sécurité informatique ?",
+            "Reponse": "OUI",
+            "Commentaire": "Formation dispensée dans les 3 mois suivant l'arrivée"
+        },
+        {
+            "Question": "Existe-t-il un processus de suivi de la conformité au programme de sensibilisation de vos collaborateurs ?",
+            "Reponse": "OUI",
+            "Commentaire": "Fichier de suivi des formations et sensibilisations"
+        },
+        {
+            "Question": "Existe-t-il un processus garantissant que vos collaborateurs reçoivent une formation adaptée à leur service ?",
+            "Reponse": "OUI",
+            "Commentaire": "Formations spécifiques pour les développeurs et administrateurs"
+        },
+        {
+            "Question": "Vos contrats de travail incluent-ils des clauses de confidentialité ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Les collaborateurs manipulant des données sensibles doivent-ils signer un accord de non-divulgation ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": "La clause de confidentialité couvre la non-divulgation, sans spécificité pour le personnel traitant des données plus sensibles."
+        },
+        {
+            "Question": "Maintenez-vous un inventaire des actifs (matériels et logiciels) incluant le responsable, la classification et la criticité de chaque actif ?",
+            "Reponse": "OUI",
+            "Commentaire": "Inventaire des équipements mobiles de l'entreprise et infrastructure chez notre hébergeur"
+        },
+        {
+            "Question": "L'accès aux données sensibles des clients doit-il être autorisé par le responsable de ces données ?",
+            "Reponse": "OUI",
+            "Commentaire": "Fonctionnalité prévue pour développement fin 2024"
+        },
+        {
+            "Question": "Supprimez-vous les données clients à la fin du contrat ou sur demande ? Si oui, précisez les moyens et délais utilisés",
+            "Reponse": "OUI",
+            "Commentaire": "Réécriture avec zéros en plusieurs passes"
+        },
+        {
+            "Question": "Avez-vous établi une politique de classification des informations ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Avez-vous défini des procédures de traitement spécifiques selon la classification des données ?",
+            "Reponse": "NON",
+            "Commentaire": "Aucun traitement spécifique identifié à ce jour"
+        },
+        {
+            "Question": "Les données sont-elles répliquées dans différents pays ou continents ? Le client peut-il choisir la réplication entre différents centres ?",
+            "Reponse": "NON",
+            "Commentaire": "Les données sont exclusivement stockées en France. Une réplication ailleurs peut être envisagée avec surcoût, à négocier contractuellement."
+        },
+        {
+            "Question": "Précisez qui peut accéder aux données client tout au long du cycle de vie, et clarifiez la procédure d'accès.",
+            "Reponse": "",
+            "Commentaire": "Seuls les personnels de notre société nommément identifiés peuvent accéder aux données client sous condition d'habilitation, les gestionnaires de compte et ingénieurs d'intégration sont autorisés par défaut. Ces profils et autorisations restent sous contrôle du client et peuvent être supprimés sur demande, impactant l'agilité du support. Deux personnels techniques disposent d'accès base de données supplémentaires mais doivent respecter les procédures d'autorisation et de sécurité."
+        },
+        {
+            "Question": "Précisez l'engagement sur la résidence des données dans le temps (modification des centres d'hébergement ou de traitement).",
+            "Reponse": "",
+            "Commentaire": "Notre société s'engage à demander et obtenir l'autorisation du client avant de déplacer ses données et sa plateforme hors des centres actuellement utilisés."
+        },
+        {
+            "Question": "Précisez la localisation des personnes ayant accès aux données, détaillé par fonction (opérationnels, support, développeurs, administrateurs...).",
+            "Reponse": "",
+            "Commentaire": "Tous les personnels ayant accès aux données client sont soumis au droit français et opèrent depuis la France"
+        },
+        {
+            "Question": "Disposez-vous d'une politique, de normes et de procédures de gestion des accès couvrant au minimum l'authentification, la gestion des mots de passe, les droits et la séparation des tâches ?",
+            "Reponse": "OUI",
+            "Commentaire": "PSSI et Politique de gestion des accès"
+        },
+        {
+            "Question": "Avez-vous un processus pour contrôler et gérer l'accès et les droits des utilisateurs privilégiés aux systèmes traitant les données du projet ?",
+            "Reponse": "OUI",
+            "Commentaire": "Processus de gestion des accès pour les personnels techniques et gestionnaires d'intégration, avec révision semestrielle et gestion des arrivées/départs."
+        },
+        {
+            "Question": "Disposez-vous d'un processus établi pour la révocation des accès utilisateurs ?",
+            "Reponse": "OUI",
+            "Commentaire": "Processus de gestion des arrivées et départs"
+        },
+        {
+            "Question": "Limitez-vous au maximum l'accès aux données clients ? Avez-vous identifié les rôles organisationnels ayant accès aux données du projet ?",
+            "Reponse": "OUI",
+            "Commentaire": "Comme mentionné précédemment, seules les personnes habilitées (gestionnaires de compte et intégrateurs) peuvent accéder aux données via le produit, plus 2 personnels techniques en base de données."
+        },
+        {
+            "Question": "Disposez-vous d'un processus établi pour octroyer l'accès aux utilisateurs ?",
+            "Reponse": "OUI",
+            "Commentaire": "Politique de gestion des accès"
+        },
+        {
+            "Question": "Avez-vous établi et mis en œuvre les meilleures pratiques pour traiter, échanger et stocker les mots de passe des applications/systèmes/réseaux de manière sécurisée ?",
+            "Reponse": "OUI",
+            "Commentaire": "Déploiement d'un coffre-fort de mots de passe technique partagé et de coffres-forts individuels"
+        },
+        {
+            "Question": "L'une des restrictions suivantes est-elle imposée aux mots de passe ?\n\n_Mot de passe complexe de 12 caractères minimum avec au moins trois des éléments : Majuscules, Minuscules, Chiffres, Caractères spéciaux\n_Éviter les mots de passe triviaux (ex: 1234, répétitions EEEEEE)\n_Renouvellement au moins tous les 90 jours\n_Renouvellement à la première connexion\n_Absence de mot de passe par défaut",
+            "Reponse": "OUI",
+            "Commentaire": "Mot de passe complexe 12 caractères, sans mot de passe trivial, renouvellement à la première connexion, sans mot de passe par défaut"
+        },
+        {
+            "Question": "Les mots de passe et clés de chiffrement sont-ils stockés dans une base chiffrée ?",
+            "Reponse": "OUI",
+            "Commentaire": "Chiffrement des clés et chiffrement avec hachage des mots de passe stockés"
+        },
+        {
+            "Question": "Chiffrez-vous les données sensibles clients pour garantir confidentialité et intégrité ?",
+            "Reponse": "OUI",
+            "Commentaire": "Le disque de base de données est chiffré avec une clé dédiée pour les données non sensibles et les documents déposés sont surchiffrés par des clés propres à chaque client."
+        },
+        {
+            "Question": "Protégez-vous les stockages contenant les données sensibles clients ?\nSi oui, précisez le niveau de chiffrement (disque, fichiers, base, application) et les protocoles/technologies utilisés",
+            "Reponse": "OUI",
+            "Commentaire": "Chiffrement RSA 4096 pour les données et AES 256 pour les clés de chiffrement"
+        },
+        {
+            "Question": "Si les données sont chiffrées au repos, permettez-vous au client de générer/importer ses propres clés de chiffrement ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": "La génération est possible, l'importation reste sous notre contrôle"
+        },
+        {
+            "Question": "Les données en transit sont-elles chiffrées et via quels protocoles ?",
+            "Reponse": "OUI",
+            "Commentaire": "TLS1.3 pour les flux métiers, SSH pour l'administration"
+        },
+        {
+            "Question": "Les dispositifs mobiles et amovibles sont-ils chiffrés (ordinateurs portables, smartphones, USB) ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Quelle est la longueur des clés utilisées dans vos solutions d'échange et de stockage d'informations ?",
+            "Reponse": "",
+            "Commentaire": "4096 bits pour RSA\n256 bits pour AES"
+        },
+        {
+            "Question": "Disposez-vous d'une politique, de normes et de procédures sur la sécurité physique, notamment concernant l'accès physique au bâtiment, le contrôle d'accès et les procédures d'urgence ?",
+            "Reponse": "OUI",
+            "Commentaire": "Planifié pour fin 2024 avec certification ISO27001"
+        },
+        {
+            "Question": "Précisez l'emplacement de vos centres de données. Possédez-vous et hébergez-vous les serveurs ?",
+            "Reponse": "NON",
+            "Commentaire": "Les serveurs sont hébergés chez un prestataire français pour la production et chez un autre prestataire français pour la reprise et sauvegarde"
+        },
+        {
+            "Question": "Existe-t-il des procédures d'autorisation d'accès limitant une personne aux zones nécessaires à ses missions ?",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Des rapports d'accès sont-ils établis incluant date, heure et accès aux zones sensibles ? Ces rapports sont-ils contrôlés régulièrement ?",
+            "Reponse": "NON",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Tous vos collaborateurs doivent-ils entrer dans vos locaux par un point d'entrée central et contrôlé ?",
+            "Reponse": "OUI",
+            "Commentaire": "Accès par badge au niveau de l'ascenseur avec étage dédié"
+        },
+        {
+            "Question": "Le nombre d'entrées dans les zones de traitement et zones sensibles est-il limité et toutes les entrées sont-elles verrouillées et sécurisées par un système de contrôle d'accès électronique ?",
+            "Reponse": "OUI",
+            "Commentaire": "Accès par badge dans les enclaves de nos hébergeurs"
+        },
+        {
+            "Question": "L'émission, le suivi et la restitution des clés/badges d'accès constituent-ils un processus de sécurité interne contrôlé périodiquement ?",
+            "Reponse": "OUI",
+            "Commentaire": "Les accès physiques ont un profil d'habilitation unique dans nos locaux, révisés à chaque arrivée ou départ."
+        },
+        {
+            "Question": "Les bâtiments et zones sensibles sont-ils sous surveillance 24h/24 et 7j/7 par un agent de sécurité, système de vidéosurveillance ou mécanisme équivalent ?",
+            "Reponse": "OUI",
+            "Commentaire": "Confirmé par nos hébergeurs"
+        },
+        {
+            "Question": "Vos collaborateurs doivent-ils porter un badge d'identification dans vos locaux ?",
+            "Reponse": "NON",
+            "Commentaire": "Nous sommes encore une organisation de taille moyenne (50 personnes) où les badges d'identification ne sont pas nécessaires pour différencier personnel interne, externe ou visiteurs"
+        },
+        {
+            "Question": "Les visiteurs doivent-ils signer un registre indiquant leur nom, société représentée, raison de la visite et personne interne demandée ?",
+            "Reponse": "OUI",
+            "Commentaire": "À l'accueil de notre bâtiment"
+        }
+    ]
+}

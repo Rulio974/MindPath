@@ -1,0 +1,91 @@
+{
+    "date": "2024-11-12",
+    "Entreprise": "DELTA",
+    "data": [
+        {
+            "Question": "Capacité d'hébergement des données localement (ex: pays spécifiques avec contraintes réglementaires)",
+            "Reponse": "OUI",
+            "Commentaire": "Pas d'hébergement sur site, mais un hébergement cloud local peut être étudié, en prenant en compte le contexte réglementaire international"
+        },
+        {
+            "Question": "Chiffrement des données en transit",
+            "Reponse": "OUI",
+            "Commentaire": "TLS 1.3; TLS activé sur SMTP"
+        },
+        {
+            "Question": "Chiffrement des données au repos",
+            "Reponse": "OUI",
+            "Commentaire": "Géré par notre société, pas de gestion de clés par le client"
+        },
+        {
+            "Question": "Capacité à anonymiser les données dans les environnements hors production",
+            "Reponse": "OUI",
+            "Commentaire": "Les données de production ne sont pas utilisées hors de l'environnement de production. Les serveurs de test mis à disposition des clients fonctionnent de la même manière"
+        },
+        {
+            "Question": "Sécurisation des interfaces",
+            "Reponse": "OUI",
+            "Commentaire": "HTTPS + SAML\nAuthentification forte TOTP possible au choix des clients\nAPI: filtrage possible uniquement sur serveur dédié (optionnel) et quota quotidien\nPas de connecteur standard\nAPI REST personnalisée\nClé d'API gérée par les clients\n\nDonnées concernées: l'ensemble des données applicatives"
+        },
+        {
+            "Question": "Si SaaS : Architecture Single ou Multi-Tenant",
+            "Reponse": "OUI",
+            "Commentaire": "Multi-tenant par défaut (cloisonnement: contrôle d'accès applicatif)\nSingle Tenant en option (serveur dédié)"
+        },
+        {
+            "Question": "Conformité aux normes de sécurité, certifications, affiliations...",
+            "Reponse": "OUI",
+            "Commentaire": "En cours de certification ISO27001:2022. Audit phase 2 prévu pour 2025"
+        },
+        {
+            "Question": "Capacité de répondre à certains enjeux RGPD",
+            "Reponse": "OUI",
+            "Commentaire": "Un DPO a été nommé, joignable à l'adresse dédiée\nDurée de conservation et suppression non configurable. Les données et informations des personnes sont conservées 60 jours après fin du contrat dans la plateforme.\nLors de la première connexion d'un utilisateur, les CGU doivent être acceptées (point relatif au traitement des données personnelles).\nPas de cookie de tracking utilisés"
+        },
+        {
+            "Question": "Capacité à fournir à la demande du client des preuves/éléments matériels sur le niveau de sécurité du périmètre concerné par le projet",
+            "Reponse": "OUI",
+            "Commentaire": "PAS, PSSI et/ou résumé pentest annuel"
+        },
+        {
+            "Question": "Documentation d'aide à la sécurisation",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Authentification et autorisation",
+            "Reponse": "OUI",
+            "Commentaire": "SSO via SAML 2.0"
+        },
+        {
+            "Question": "MFA (deuxième facteur d'authentification) pour les comptes locaux à la plateforme (ex: comptes d'administration)",
+            "Reponse": "OUI",
+            "Commentaire": "Possibilité de MFA TOTP si SAML non utilisé"
+        },
+        {
+            "Question": "Capacité de journalisation des actions (accès, modification, suppression) aux données et aux infrastructures (environnements, bases de données, etc.)",
+            "Reponse": "OUI",
+            "Commentaire": "La solution génère des logs sur les activités réalisées par les utilisateurs (création, modification, suppression). Logs conservés 3 ans ou jusqu'à la fin du contrat"
+        },
+        {
+            "Question": "Plan de continuité d'activité (PCA/BCP) existant et fonctionnel (testé) sur le périmètre concerné par le projet",
+            "Reponse": "OUI",
+            "Commentaire": "Notre PAS (partie préparation des TIC pour la continuité d'activité) décrit nos engagements sur ce sujet. Toutes nos infrastructures d'hébergement sont certifiées ISO27001, de manière à garantir les meilleures pratiques, notamment sur les sujets de continuité et de reprise d'activité. De plus, nous maintenons un PCA et un PRA pour assurer la continuité de notre service. Ces plans sont testés régulièrement"
+        },
+        {
+            "Question": "Plan de reprise d'activité (PRA/DRP) existant et fonctionnel (testé) sur le périmètre concerné par le projet",
+            "Reponse": "OUI",
+            "Commentaire": "Notre PAS (partie préparation des TIC pour la continuité d'activité) décrit nos engagements sur ce sujet. Toutes nos infrastructures d'hébergement sont certifiées ISO27001, de manière à garantir les meilleures pratiques, notamment sur les sujets de continuité et de reprise d'activité. De plus, nous maintenons un PCA et un PRA pour assurer la continuité de notre service. Ces plans sont testés régulièrement"
+        },
+        {
+            "Question": "Disponibilité garantie du service",
+            "Reponse": "OUI",
+            "Commentaire": "99% sur 12 mois glissants (voir Annexe SLA de nos CGS)"
+        },
+        {
+            "Question": "Sauvegarde des données",
+            "Reponse": "OUI",
+            "Commentaire": "Nous réalisons des sauvegardes complètes journalières conservées 30 jours hors site (voir section \"Sauvegarde des informations\" de notre PAS). La procédure est la suivante: demande de restauration à l'équipe support, évaluation de l'équipe technique et support, le cas échéant, restauration des données"
+        }
+    ]
+}

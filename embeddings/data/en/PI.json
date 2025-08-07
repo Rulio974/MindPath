@@ -1,0 +1,96 @@
+{
+    "date": "2023-01-21",
+    "Entreprise": "PI",
+    "data": [
+        {
+            "Question": "How do you raise awareness among your employees about personal data protection? What percentage of employees have been made aware of data protection this year?",
+            "Reponse": "",
+            "Commentaire": "Awareness session for all employees to come (end of year)"
+        },
+        {
+            "Question": "If you have a person responsible for IS security, please specify the contact?",
+            "Reponse": "",
+            "Commentaire": "Contact available on request"
+        },
+        {
+            "Question": "How do you raise awareness among your employees about IS security? What percentage of employees have been made aware of IS security this year?",
+            "Reponse": "",
+            "Commentaire": "2 levels of awareness:\n - Developers are made aware of secure development - Recently completed\n - All employees will follow a training session by end of year\n-> To date, approximately 20% of employees trained"
+        },
+        {
+            "Question": "List the security policies in force in your organization?",
+            "Reponse": "",
+            "Commentaire": "PGSSI\nPSSI\nVulnerability management\nIncident management\nBusiness continuity management\nSecurity acceptance checklist\nIS control plan\nPassword policy\nData classification\nChange management"
+        },
+        {
+            "Question": "Does the solution include a backup solution and exportable to the client?",
+            "Reponse": "Yes",
+            "Commentaire": "The client can export all their data via export functions. The provider can, on request, provide all data in JSON format"
+        },
+        {
+            "Question": "Is the solution compatible with identity management solutions in API mode?",
+            "Reponse": "No",
+            "Commentaire": "No"
+        },
+        {
+            "Question": "Does the solution natively support ADFS or SAML authentication?",
+            "Reponse": "Yes",
+            "Commentaire": "Yes"
+        },
+        {
+            "Question": "Does the solution offer integrated MFA authentication (not to be confused with enterprise MFA)?",
+            "Reponse": "Yes",
+            "Commentaire": "Yes"
+        },
+        {
+            "Question": "If the solution or application has a native mechanism for verifying malicious files/attachments, please specify the solution used?",
+            "Reponse": "No",
+            "Commentaire": "No"
+        },
+        {
+            "Question": "If the application has been tested and reviewed in terms of security by a provider, please specify the date of the last evaluation(s)? Specify if the provider(s) have a qualification (e.g. PASSI, ...)?",
+            "Reponse": "Yes",
+            "Commentaire": "The last penetration test was performed recently.\nThe provider does not have PASSI qualification"
+        },
+        {
+            "Question": "Is the solution monitored by a SOC, if yes internal or external?",
+            "Reponse": "NO",
+            "Commentaire": "The SOC project is in progress and should be completed soon"
+        },
+        {
+            "Question": "Is the solution hosted in EU? If yes, who is the host and in which country?",
+            "Reponse": "YES",
+            "Commentaire": "The solution is hosted in France (French hosts). We have a SecNumCloud offering also in France"
+        },
+        {
+            "Question": "What types of data are transferred or processed outside the EU?",
+            "Reponse": "",
+            "Commentaire": "No data processed outside EU"
+        },
+        {
+            "Question": "If the solution uses third-party services or suppliers, please specify which ones and why?",
+            "Reponse": "",
+            "Commentaire": "Third-party services are limited to hosting service (see previous answers)"
+        },
+        {
+            "Question": "Is the solution capable of pushing logs or events to a SIEM or SOC?",
+            "Reponse": "NO",
+            "Commentaire": "Not to date"
+        },
+        {
+            "Question": "What is the retention period for data planned online (default setting)? If yes, is it configurable?",
+            "Reponse": "",
+            "Commentaire": "The online data retention period is not configurable and corresponds to 3 years or contract duration + 60 days"
+        },
+        {
+            "Question": "After how long is data deleted (online, backups, and archives)?",
+            "Reponse": "",
+            "Commentaire": "In case of termination, or at client request, all data related to the client is deleted. This includes:\n - Production data;\n - All backups associated with the client.\n\nData will however remain in encrypted backups until their expiration date (60 days)."
+        },
+        {
+            "Question": "If the solution requires sending emails (e.g. notifications), can we limit IP addresses or use a client email account?",
+            "Reponse": "",
+            "Commentaire": "To date, we cannot provide fixed IPs on this service. However all our emails come from an address of our company."
+        }
+    ]
+}

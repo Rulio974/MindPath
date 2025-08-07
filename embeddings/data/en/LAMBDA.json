@@ -1,0 +1,51 @@
+{
+    "date": "2024-08-10",
+    "Entreprise": "LAMBDA",
+    "data": [
+        {
+            "Question": "Are appropriate relationships with interest groups, cybersecurity specialized forums and professional associations maintained?",
+            "Reponse": "YES ",
+            "Commentaire": "Member of cybersecurity professional associations"
+        },
+        {
+            "Question": "Is a cybersecurity awareness program implemented within the organization? Has an awareness action been carried out in the last 6 months?",
+            "Reponse": "YES ",
+            "Commentaire": "Quarterly awareness for all newcomers and every 2 years for people who have already followed the awareness"
+        },
+        {
+            "Question": "Has the organization implemented cybersecurity governance through risk management within its organization?",
+            "Reponse": "YES ",
+            "Commentaire": "Risk analysis performed, reviewed annually at minimum and which gives rise to a monitored risk treatment plan whose results are presented regularly"
+        },
+        {
+            "Question": "Are cybersecurity risks shared at the executive level of the organization?",
+            "Reponse": "YES ",
+            "Commentaire": "Management commitment in the security policy"
+        },
+        {
+            "Question": "Has the organization implemented a Data Protection Officer (DPO)?",
+            "Reponse": "YES ",
+            "Commentaire": "DPO accessible by email"
+        },
+        {
+            "Question": "Is the organization ISO27001 certified? Or another IS Security certification? If yes, please provide the most recent certificate(s).",
+            "Reponse": "NO",
+            "Commentaire": "Certification to come, objective to obtain in Q1 2024"
+        },
+        {
+            "Question": "Is there a Business Continuity Plan? Does the Business Continuity Plan include scenarios related to a cyberattack? Is the Business Continuity Plan regularly tested?",
+            "Reponse": "YES ",
+            "Commentaire": "Existing BCP with DRP, annual BCP test"
+        },
+        {
+            "Question": "Does the organization inventory its vulnerabilities based on trusted sources (CERT)? Is a vulnerability management program/process implemented?",
+            "Reponse": "YES ",
+            "Commentaire": "Vulnerability management with subscriptions to national cybersecurity organizations"
+        },
+        {
+            "Question": "Does the organization have protection technologies against email attacks? Does the organization have tools to ensure internet browsing security?",
+            "Reponse": "YES ",
+            "Commentaire": "Anti-spam filters and DMARC for email\nNo tool for internet browsing at present"
+        }
+    ]
+}

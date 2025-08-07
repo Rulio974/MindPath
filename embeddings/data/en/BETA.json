@@ -1,0 +1,251 @@
+{
+    "date": "2023-02-28",
+    "Entreprise": "BETA",
+    "data": [
+        {
+            "Question": "I want to log in using my organization's professional email address",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to train on the tool via an e-learning module of less than 4h for quick mastery",
+            "Reponse": "YES",
+            "Commentaire": "The complete training path currently includes 5 workshops of 5 hours each"
+        },
+        {
+            "Question": "I want to be able to contact end-user support (L1) in English or French",
+            "Reponse": "YES",
+            "Commentaire": "Support via the solution (chat) or by email"
+        },
+        {
+            "Question": "I want to be able to configure the application language in English or French",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to view the dashboards available to me",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to filter dashboards according to criteria (priority, company, status, date, category...)",
+            "Reponse": "NO",
+            "Commentaire": "It is possible to build as many dashboards as desired.\nEach dashboard having its indicators by priority/status/date/category.\n\nFor each dashboard there are 2 filters: the scope (the company or companies concerned) and the date."
+        },
+        {
+            "Question": "I want to be able to define the status of actions",
+            "Reponse": "YES",
+            "Commentaire": "An action has a status (to be planned, planned, in progress, cancelled, etc.) but also comments, a percentage of progress as well as proof documents. Evidence may be mandatory to close an action (to be defined by the administrator)"
+        },
+        {
+            "Question": "I want to be able to be alerted of the deadline of my actions",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to add documents as evidence elements of the self-assessment",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to self-assess against a framework defined by the group and specific to my organization (Security Standard V8 + complementary measures)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to self-assess against a framework required by another party (e.g. client, ISO certification)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able, when evaluating on one framework, to see the score in another framework even if elements are missing",
+            "Reponse": "NO",
+            "Commentaire": "The platform currently has 26 security frameworks including (ISO27x, NIST, TISAX). Other standards can be added during integration"
+        },
+        {
+            "Question": "I want to be able to add members of my organization to my scope",
+            "Reponse": "YES",
+            "Commentaire": "Requires a pilot account (administrator) subject to license"
+        },
+        {
+            "Question": "I want to be able to modify the rights (write/read) and access (menus, dashboards, functionalities) of members of my organization",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to define a self-assessment framework required by another party (e.g. client, ISO certification)",
+            "Reponse": "YES",
+            "Commentaire": "Provided that the framework is implemented in the platform"
+        },
+        {
+            "Question": "I want to be able to assign part of the self-assessment to a member of the organization",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to track the completeness and progress of the self-assessment",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to have an action plan in relation to the self-assessment as automated as possible",
+            "Reponse": "YES",
+            "Commentaire": "Possibility to create actions from the self-assessment"
+        },
+        {
+            "Question": "I want to be able to assign actions to a member of the organization",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to define priorities and commitment dates on action plan actions",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to track the progress of the action plan according to criteria (priority, company, status, date, category...)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to know the impact of action completion on the compliance rate",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to add specific actions to my organization and group them in a particular category",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to import an existing action plan",
+            "Reponse": "YES",
+            "Commentaire": "Need to put it in the platform format"
+        },
+        {
+            "Question": "I want to be able to create specific dashboards (filter by priorities, by date...)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to validate actions performed by another user in my organization",
+            "Reponse": "YES",
+            "Commentaire": "Requires a pilot account (administrator) subject to license"
+        },
+        {
+            "Question": "I want to be able to export the action plan and self-assessments",
+            "Reponse": "NO",
+            "Commentaire": "Feature under implementation. Production release planned for first quarter 2023"
+        },
+        {
+            "Question": "I want to be able to add identified risks and relate them to the action plan",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to view risks and track their evolution",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to follow up with people regarding their actions (action plan or self-assessment)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to view the different elements of companies in my scope (action plan, self-assessment, risks...)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to consolidate the elements of companies in my scope in a single dashboard",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to create specific dashboards applicable to my scope",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to add members to a company in my scope",
+            "Reponse": "YES",
+            "Commentaire": "Requires a pilot account (administrator) subject to license"
+        },
+        {
+            "Question": "I want to be able to modify the rights (write/read) and access (menus, dashboards, functionalities) of members in my scope",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to define a self-assessment framework for a company, group of companies or all companies in my scope, based on Security Standard V8 (framework already implemented in the solution)",
+            "Reponse": "YES",
+            "Commentaire": "Security Standard V8 already implemented in the solution"
+        },
+        {
+            "Question": "I want to be able to define a self-assessment framework for a company, group of companies or all companies in my scope, based on other standards (ISO, TISAX)",
+            "Reponse": "NO",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to define the level of self-assessment for each company",
+            "Reponse": "NO",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to add actions to a company, group of companies or all companies in my scope",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to add a risk for a company, group of companies or all companies in my scope and relate them to an action plan",
+            "Reponse": "YES",
+            "Commentaire": "Risks are associated with a scope. A scope represents a company"
+        },
+        {
+            "Question": "I want to be able to track the progress of the action plan of a company, group of companies or all companies in my scope",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to track the progress of self-assessments of a company, group of companies or all companies in my scope",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to create a dashboard for a company, group of companies or all companies in my scope",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to record the list of security contacts in a scope",
+            "Reponse": "NO",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to define the organization of companies (grouping and depth level > 3)",
+            "Reponse": "YES",
+            "Commentaire": "Possibility to have a scope per company. Create groups of companies. Create a group of all companies (3 levels of depth)"
+        },
+        {
+            "Question": "I want to be able to define security managers",
+            "Reponse": "YES",
+            "Commentaire": "Possibility to define roles for each profile in the platform"
+        },
+        {
+            "Question": "I want to be able to add companies to an organization",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to assign companies to the scope of a security manager",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to define the frameworks available in the group",
+            "Reponse": "YES",
+            "Commentaire": "Need to implement them if not already present"
+        }
+    ]
+}

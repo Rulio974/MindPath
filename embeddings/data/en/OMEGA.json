@@ -1,0 +1,96 @@
+{
+    "date": "2023-01-20",
+    "Entreprise": "OMEGA",
+    "data": [
+        {
+            "Question": "",
+            "Reponse": "General Overview",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "This document aims to provide an overview of certain key information captured about the project or request.",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Project Form",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Questionnaire to describe project contacts and stakeholders as well as to assess the security and risk level of the project through defined parameters and indicators. Please contact the security team if you have questions",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Warning",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Please keep in mind that the following requests must be considered before completing the document:",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Determine what types of data (see confidentiality scale) are affected, modified or created by the project",
+            "Commentaire": "Identify personal data that will be collected, stored, transferred"
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Tab",
+            "Commentaire": "Objectives"
+        },
+        {
+            "Question": "",
+            "Reponse": "0 - Summary",
+            "Commentaire": "The orientation sheet aims to present the different tabs of this sheet."
+        },
+        {
+            "Question": "",
+            "Reponse": "1 - General Description",
+            "Commentaire": "The \"general description\" tab aims to present general descriptive information about the IT project, regardless of security aspects related to privacy protection. More specifically, the sheet is divided into two sections: 1. General Description The IT project manager must provide descriptive information, such as project title, business domain, objectives and scope of the project, etc. The project manager must provide information on the overall architecture, the role of third parties, the technological context (mobility, IoT, industrial systems...) and certain use cases (number and type of users) to better assess project exposure. 2. Main Components The project manager must list the different components (applications, systems and interfaces) that are part of the project. 3. Subcontractors: The project manager must list the different project subcontractors by giving their name, explaining their role and listing the different documents integrated into the evaluation and agreement. 4. General Questions The IT project manager must indicate all use cases corresponding to the service provided by writing \"Yes\" (instead of \"No\") on the appropriate lines."
+        },
+        {
+            "Question": "",
+            "Reponse": "2 - Qualification",
+            "Commentaire": "The Qualification tab aims to assess security and confidentiality requirements and provides a first overview of this project's exposure, including global data mapping, security requirements assessment and providing indicators on exposure. This sheet is divided into two different sections: 1. Data mapping: in this section, the project manager must list data categories, and specify whether the project processes personal and/or strategic data."
+        },
+        {
+            "Question": "",
+            "Reponse": "3 - Third Party Security Policy",
+            "Commentaire": "The applicability column (H) is automatically updated based on use cases declared in the \"1 - General Description\" tab. It indicates the requirements for which a response is necessary. For each requirement/line declared as applicable, you must fill in the compliance level (column I): Non-compliant / partial / complete. If a requirement is answered as non-compliant or partially compliant: you must provide details on the reasons for non-compliance, on potential measures already implemented, or on roadmap elements if projects are planned that can lead to compliance. These details can be provided in columns J and K. Warning: except for columns I, J, K and L, no other column should be modified manually."
+        },
+        {
+            "Question": "",
+            "Reponse": "4 - Third Party Assessment",
+            "Commentaire": "The Third Party Assessment tab aims to assess the organizational security of the partner as well as the technical security of the proposed solution. In this assessment, the partner is expected to support their responses with documents/policies/processes/certifications/audit results that will prove the security level of the solution and its organization."
+        },
+        {
+            "Question": "",
+            "Reponse": "5 - Risk Assessment",
+            "Commentaire": "The Risk Assessment tab is the tool with which the IT project manager will perform risk analysis and DPIA, if decided in the Data Protection tab (option). Once risks are assessed, countermeasures must be chosen to reduce/avoid/transfer risks (reduce impact or probability). This is an iterative approach. Measures must be added until residual risk is acceptable. This sheet is divided into two main parts: 1. Main risks (cyber and privacy) The IP project manager gives a list of main risks and associated threat scenarios, a description and rating of potential impacts from the corporation's point of view and from the subjects' point of view (for DPIA), a probability assessment and a risk rating calculation."
+        }
+    ]
+}

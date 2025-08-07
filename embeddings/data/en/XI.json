@@ -1,0 +1,106 @@
+{
+    "date": "2022-10-12",
+    "Entreprise": "XI",
+    "data": [
+        {
+            "Question": "I want to be able to view my company's data in real time via a dashboard",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to export data in different formats (Excel, PDF, CSV)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to filter and sort information according to my criteria",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to create custom reports",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Functionality available with predefined templates"
+        },
+        {
+            "Question": "I want to be able to receive automatic alerts in case of anomaly",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to manage my users' access rights",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to access the application from different devices (mobile, tablet)",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to integrate the application with our existing systems",
+            "Reponse": "PARTIAL",
+            "Commentaire": "API available for main integrations"
+        },
+        {
+            "Question": "I want to be able to customize the interface according to our needs",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Customization limited to logo and colors"
+        },
+        {
+            "Question": "I want to be able to benefit from responsive technical support",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to train my teams on using the tool",
+            "Reponse": "YES",
+            "Commentaire": "Initial training included, additional training on quote"
+        },
+        {
+            "Question": "I want to be able to track my company's performance evolution",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to compare our data with sector benchmarks",
+            "Reponse": "NO",
+            "Commentaire": "Functionality not currently available"
+        },
+        {
+            "Question": "I want to be able to automatically archive old data",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to collaborate with my teams on analyses",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Report sharing possible, real-time collaboration limited"
+        },
+        {
+            "Question": "I want to be able to schedule recurring tasks",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to manage versions of my documents",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to perform advanced searches in the data",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "I want to be able to create automated workflows",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Simple workflows available"
+        },
+        {
+            "Question": "I want to be able to guarantee the security of our sensitive data",
+            "Reponse": "YES",
+            "Commentaire": "End-to-end encryption and GDPR compliance"
+        }
+    ]
+}

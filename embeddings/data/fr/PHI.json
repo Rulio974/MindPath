@@ -1,0 +1,96 @@
+{
+    "date": "2024-02-24",
+    "Entreprise": "PHI",
+    "data": [
+        {
+            "Question": "Disposez-vous d'un comité dédié à la sécurité de l'information impliquant la direction de votre entreprise (e.g., COSTRAT, CODIR, COPIL dédiés à ces sujets avec présence d'un ou plusieurs membres de votre comité exécutif) ?",
+            "Reponse": "OUI",
+            "Commentaire": "Tous les 2 mois"
+        },
+        {
+            "Question": "Disposez-vous d'un organe de gouvernance responsable de la protection des données personnelles au sein de votre entreprise (e.g., DPO) ?",
+            "Reponse": "OUI",
+            "Commentaire": "Un DPO à environ 20% ETP"
+        },
+        {
+            "Question": "Disposez-vous d'un comité dédié à la protection des données personnelles impliquant la direction de votre entreprise (e.g., COSTRAT, CODIR, COPIL dédiés à ces sujets avec présence d'un ou plusieurs membres de votre comité exécutif) ?",
+            "Reponse": "NON",
+            "Commentaire": "Les DCP traitées sont majoritairement celles de nos employés. Les registres de traitement nécessaires sont disponibles et régulièrement mis à jour."
+        },
+        {
+            "Question": "Disposez-vous d'une Politique de Sécurité des Systèmes d'Information approuvée par votre direction, révisée dans les 12 derniers mois, communiquée aux personnels appropriés et basée sur des normes/frameworks reconnus (e.g., ISO 27001, ISO 27002, NIST CSF, CIS Controls) ?",
+            "Reponse": "OUI",
+            "Commentaire": "Ce document est classifié comme restreint."
+        },
+        {
+            "Question": "Disposez-vous d'une Politique de Protection des Données Personnelles approuvée par votre direction, révisée dans les 12 derniers mois et communiquée aux personnels appropriés ?",
+            "Reponse": "NON",
+            "Commentaire": "Les DCP traitées sont majoritairement celles de nos employés. Les registres de traitement nécessaires sont disponibles et régulièrement mis à jour."
+        },
+        {
+            "Question": "Formez-vous l'ensemble de vos collaborateurs à la sécurité de l'information et à la protection des données personnelles (e.g., parcours de formation obligatoire pour les nouveaux entrants, parcours de formation spécifique pour les administrateurs et développeurs, etc.) ?",
+            "Reponse": "OUI",
+            "Commentaire": "Tous les employés doivent suivre le parcours de formation sécurité au moins tous les 2 ans. 3 heures de sensibilisation + vérification des acquis"
+        },
+        {
+            "Question": "Disposez-vous d'une ou plusieurs des certifications suivantes : ISO 27001, SOC 1 Type II Report, ISAE 3402 Type II Report, SOC 2 Type II Report couvrant le périmètre des prestations proposées ?",
+            "Reponse": "OUI",
+            "Commentaire": "ISO27001:2022 \"Activités de conception, développement et maintien en condition opérationnelle de la plateforme en mode SaaS\""
+        },
+        {
+            "Question": "Si le périmètre des prestations proposées est susceptible de traiter des données de santé ou des données de carte bancaire, êtes-vous respectivement conforme HDS et PCI-DSS ?",
+            "Reponse": "",
+            "Commentaire": "Pas de données HDS ou PCI-DSS."
+        },
+        {
+            "Question": "Allez-vous héberger/traiter les données confiées uniquement au sein de l'Union Européenne ?",
+            "Reponse": "OUI",
+            "Commentaire": "France uniquement"
+        },
+        {
+            "Question": "Disposez-vous d'une ou plusieurs des attestations suivantes : tests d'intrusion (sur les 12 derniers mois), audits de configuration, scans de vulnérabilités, assurance cybersécurité en cours ?",
+            "Reponse": "OUI",
+            "Commentaire": "ISO 27001"
+        },
+        {
+            "Question": "Disposez-vous d'un SOC* (interne ou externalisé) ? À quelle fréquence auditez-vous ce SOC et par quel moyen ?\n* Security Operations Center",
+            "Reponse": "NON",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Disposez-vous d'un Plan de Continuité d'Activité à jour et testé dans les 12 derniers mois ? Pouvez-vous décrire les dispositifs de sauvegarde des données en place (e.g., 3-2-1) ?",
+            "Reponse": "OUI",
+            "Commentaire": "Un test de restauration est réalisé trimestriellement"
+        },
+        {
+            "Question": "Disposez-vous d'un dispositif de gestion de crise ? Ce dispositif permet-il de répondre à une crise cyber (e.g., incident ransomware critique) ? Testez-vous régulièrement ce dispositif et si oui à quelle fréquence ?",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Notre politique de gestion des incidents n'inclut pas de tests."
+        },
+        {
+            "Question": "Seriez-vous disposés à compléter un questionnaire plus complet durant la phase de RFP ?",
+            "Reponse": "",
+            "Commentaire": "Le client travaille déjà avec notre société depuis plusieurs années."
+        },
+        {
+            "Question": "Seriez-vous disposés à intégrer au contrat des clauses de sécurité de l'information et de protection des données personnelles (possiblement sous la forme d'un Plan Assurance Sécurité annexé au contrat et d'une annexe RGPD) ?",
+            "Reponse": "OUI",
+            "Commentaire": "Nous disposons d'un PAS standard"
+        },
+        {
+            "Question": "Allez-vous avoir besoin d'accéder au SI du client (physiquement depuis nos locaux/centres de données ou à distance par VPN) pendant la phase de \"build\" et/ou de \"run\" ?",
+            "Reponse": "",
+            "Commentaire": "Pas d'accès au SI du client."
+        },
+        {
+            "Question": "Allez-vous avoir accès à des données personnelles des employés du client, aux environnements de production ou aux environnements de développement ?",
+            "Reponse": "",
+            "Commentaire": "Pas d'accès au SI du client."
+        },
+        {
+            "Question": "Avez-vous des prestataires/fournisseurs/sous-traitants intervenant pour délivrer le service ?",
+            "Reponse": "OUI",
+            "Commentaire": "Hébergeur français"
+        }
+    ]
+}

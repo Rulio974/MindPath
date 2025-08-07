@@ -1,0 +1,96 @@
+{
+    "date": "2024-02-24",
+    "Entreprise": "PHI",
+    "data": [
+        {
+            "Question": "Do you have a committee dedicated to information security involving your company's management (e.g., COSTRAT, CODIR, COPIL dedicated to these subjects with presence of one or more members of your executive committee)?",
+            "Reponse": "YES",
+            "Commentaire": "Every 2 months"
+        },
+        {
+            "Question": "Do you have a governance body responsible for personal data protection within your company (e.g., DPO)?",
+            "Reponse": "YES",
+            "Commentaire": "A DPO at approximately 20% FTE"
+        },
+        {
+            "Question": "Do you have a committee dedicated to personal data protection involving your company's management (e.g., COSTRAT, CODIR, COPIL dedicated to these subjects with presence of one or more members of your executive committee)?",
+            "Reponse": "NO",
+            "Commentaire": "The personal data processed is mainly that of our employees. The necessary processing registers are available and regularly updated."
+        },
+        {
+            "Question": "Do you have an Information Systems Security Policy approved by your management, revised in the last 12 months, communicated to appropriate personnel and based on recognized standards/frameworks (e.g., ISO 27001, ISO 27002, NIST CSF, CIS Controls)?",
+            "Reponse": "YES",
+            "Commentaire": "This document is classified as restricted."
+        },
+        {
+            "Question": "Do you have a Personal Data Protection Policy approved by your management, revised in the last 12 months and communicated to appropriate personnel?",
+            "Reponse": "NO",
+            "Commentaire": "The personal data processed is mainly that of our employees. The necessary processing registers are available and regularly updated."
+        },
+        {
+            "Question": "Do you train all your employees in information security and personal data protection (e.g., mandatory training course for new entrants, specific training course for administrators and developers, etc.)?",
+            "Reponse": "YES",
+            "Commentaire": "All employees must follow the security training course at least every 2 years. 3 hours of awareness + knowledge verification"
+        },
+        {
+            "Question": "Do you have one or more of the following certifications: ISO 27001, SOC 1 Type II Report, ISAE 3402 Type II Report, SOC 2 Type II Report covering the scope of services offered?",
+            "Reponse": "YES",
+            "Commentaire": "ISO27001:2022 \"Design, development and operational maintenance activities of the platform in SaaS mode\""
+        },
+        {
+            "Question": "If the scope of services offered is likely to process health data or bank card data, are you respectively HDS and PCI-DSS compliant?",
+            "Reponse": "",
+            "Commentaire": "No HDS or PCI-DSS data."
+        },
+        {
+            "Question": "Will you host/process the entrusted data only within the European Union?",
+            "Reponse": "YES",
+            "Commentaire": "France only"
+        },
+        {
+            "Question": "Do you have one or more of the following attestations: penetration tests (in the last 12 months), configuration audits, vulnerability scans, current cybersecurity insurance?",
+            "Reponse": "YES",
+            "Commentaire": "ISO 27001"
+        },
+        {
+            "Question": "Do you have a SOC* (internal or outsourced)? How often do you audit this SOC and by what means?\n* Security Operations Center",
+            "Reponse": "NO",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Do you have an up-to-date Business Continuity Plan tested in the last 12 months? Can you describe the data backup systems in place (e.g., 3-2-1)?",
+            "Reponse": "YES",
+            "Commentaire": "A restoration test is performed quarterly"
+        },
+        {
+            "Question": "Do you have a crisis management system? Does this system allow responding to a cyber crisis (e.g., critical ransomware incident)? Do you regularly test this system and if so at what frequency?",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Our incident management policy does not include tests."
+        },
+        {
+            "Question": "Would you be willing to complete a more comprehensive questionnaire during the RFP phase?",
+            "Reponse": "",
+            "Commentaire": "The client has been working with our company for several years."
+        },
+        {
+            "Question": "Would you be willing to integrate information security and personal data protection clauses into the contract (possibly in the form of a Security Assurance Plan annexed to the contract and a GDPR annex)?",
+            "Reponse": "YES",
+            "Commentaire": "We have a standard PAS"
+        },
+        {
+            "Question": "Will you need to access the client's IS (physically from our premises/data centers or remotely via VPN) during the \"build\" and/or \"run\" phase?",
+            "Reponse": "",
+            "Commentaire": "No access to client's IS."
+        },
+        {
+            "Question": "Will you have access to personal data of client employees, production environments or development environments?",
+            "Reponse": "",
+            "Commentaire": "No access to client's IS."
+        },
+        {
+            "Question": "Do you have service providers/suppliers/subcontractors involved in delivering the service?",
+            "Reponse": "YES",
+            "Commentaire": "French hosting provider"
+        }
+    ]
+}

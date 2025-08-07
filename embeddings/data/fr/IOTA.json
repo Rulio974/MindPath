@@ -1,0 +1,26 @@
+{
+    "date": "2024-03-20",
+    "Entreprise": "IOTA",
+    "data": [
+        {
+            "Question": "Disposez-vous d'une politique de sécurité des systèmes d'information ?",
+            "Reponse": "OUI",
+            "Commentaire": "PSSI approuvée par la direction"
+        },
+        {
+            "Question": "Vos données sont-elles chiffrées ?",
+            "Reponse": "OUI",
+            "Commentaire": "Chiffrement des données sensibles au repos et en transit"
+        },
+        {
+            "Question": "Effectuez-vous des sauvegardes régulières ?",
+            "Reponse": "OUI",
+            "Commentaire": "Sauvegardes quotidiennes avec tests de restauration"
+        },
+        {
+            "Question": "Avez-vous un plan de reprise d'activité ?",
+            "Reponse": "OUI",
+            "Commentaire": "PRA testé semestriellement"
+        }
+    ]
+}

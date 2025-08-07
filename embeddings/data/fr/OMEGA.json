@@ -1,0 +1,96 @@
+{
+    "date": "2023-01-20",
+    "Entreprise": "OMEGA",
+    "data": [
+        {
+            "Question": "",
+            "Reponse": "Aperçu général",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Le présent document vise à fournir un aperçu de certains renseignements clés saisis au sujet du projet ou de la demande.",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Formulaire de projet",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Questionnaire pour décrire les contacts et les parties prenantes du projet ainsi que pour évaluer le niveau de sécurité et de risque du projet au moyen de paramètres et d'indicateurs définis. Veuillez contacter l'équipe sécurité si vous avez des questions",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Avertissement",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Veuillez garder à l'esprit que les demandes suivantes doivent être prises en compte avant de remplir le document :",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Déterminer quels types de données (voir l'échelle de confidentialité) sont touchés, modifiés ou créés par le projet",
+            "Commentaire": "Identifier les données personnelles qui seront collectées, stockées, transférées"
+        },
+        {
+            "Question": "",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "",
+            "Reponse": "Onglet",
+            "Commentaire": "Objectifs"
+        },
+        {
+            "Question": "",
+            "Reponse": "0 - Sommaire",
+            "Commentaire": "La fiche d'orientation vise à présenter les différents onglets de cette fiche."
+        },
+        {
+            "Question": "",
+            "Reponse": "1 - Description générale",
+            "Commentaire": "L'onglet « description générale » vise à présenter les informations descriptives générales sur le projet informatique, indépendamment de la sécurité des aspects relatifs à la protection de la vie privée. Plus précisément, la fiche est divisée en deux sections : 1. Description générale Le gestionnaire de projet informatique doit fournir des informations descriptives, telles que le titre du projet, le domaine d'activité, les objectifs et la portée du projet, etc. Le gestionnaire de projet doit fournir des informations sur l'architecture globale, le rôle des tiers, le contexte technologique (mobilité, IdO, systèmes industriels...) et certains cas d'utilisation (nombre et type d'utilisateurs) afin de mieux évaluer l'exposition du projet. 2. Composantes principales Le gestionnaire de projet doit énumérer les différents composants (applications, systèmes et interfaces) qui font partie du projet. 3. Sous-traitants : Le gestionnaire de projet doit énumérer les différents sous-traitants du projet en donnant leur nom, en expliquant leur rôle et en énumérant les différents documents intégrés à l'évaluation et à l'accord. 4. Questions générales Le gestionnaire de projet informatique doit indiquer tous les cas d'utilisation correspondant au service fourni en écrivant « Oui » (au lieu de « Non ») sur les lignes appropriées."
+        },
+        {
+            "Question": "",
+            "Reponse": "2 - Qualification",
+            "Commentaire": "L'onglet Qualification vise à évaluer les exigences en matière de sécurité et de confidentialité et fournit un premier aperçu de l'exposition de ce projet, y compris la cartographie globale des données, l'évaluation des exigences en matière de sécurité et la fourniture d'indicateurs sur l'exposition. Cette fiche est divisée en deux sections différentes : 1. La cartographie des données : dans cette section, le gestionnaire de projet doit énumérer les catégories de données, et préciser si le projet traite des données personnelles et/ou stratégiques."
+        },
+        {
+            "Question": "",
+            "Reponse": "3 - Politique de sécurité des tiers",
+            "Commentaire": "La colonne d'applicabilité (H) est automatiquement mise à jour en fonction des cas d'utilisation déclarés dans l'onglet «1 - Description générale». Elle indique les exigences auxquelles une réponse est nécessaire. Pour chaque exigence/ligne déclarée comme applicable, vous devez remplir le niveau de conformité (colonne I) : Non conforme / partiel / complet. Si une exigence est répondue comme non conforme ou partiellement conforme : vous devez fournir des détails sur les raisons de la non-conformité, sur les mesures potentielles déjà mises en œuvre, ou sur les éléments de feuille de route si des projets sont prévus qui peuvent mener à une conformité. Ces détails peuvent être fournis dans les colonnes J et K. Avertissement : à l'exception des colonnes I, J, K et L, aucune autre colonne ne doit être modifiée manuellement."
+        },
+        {
+            "Question": "",
+            "Reponse": "4 - Évaluation de la troisième partie",
+            "Commentaire": "L'onglet Évaluation de la troisième partie vise à évaluer la sécurité organisationnelle du partenaire ainsi que la sécurité technique de la solution proposée. Dans cette évaluation, le partenaire est censé appuyer ses réponses avec des documents/politiques/processus/certifications/résultats d'audit qui prouveront le niveau de sécurité de la solution et de son organisation."
+        },
+        {
+            "Question": "",
+            "Reponse": "5 - Évaluation des risques",
+            "Commentaire": "L'onglet Évaluation des risques est l'outil avec lequel le gestionnaire de projet TI effectuera l'analyse des risques et l'AIPD, si elle est décidée dans l'onglet Protection des données (option). Une fois les risques évalués, les contre-mesures doivent être choisies pour réduire/éviter/transférer les risques (réduire l'impact ou la probabilité). Il s'agit d'une approche itérative. Les mesures doivent être ajoutées jusqu'à ce que le risque résiduel soit acceptable. Cette feuille est divisée en deux parties principales : 1. Les risques principaux (cyber et vie privée) Le gestionnaire de projet IP donne une liste des risques principaux et des scénarios de menace associés, une description et une notation des impacts potentiels du point de vue de la corporation et du point de vue des sujets (pour l'AIPD), une évaluation de la probabilité et un calcul de la cote de risque."
+        }
+    ]
+}

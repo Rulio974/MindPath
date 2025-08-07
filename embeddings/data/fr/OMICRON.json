@@ -1,0 +1,106 @@
+{
+    "date": "2022-05-20",
+    "Entreprise": "OMICRON",
+    "data": [
+        {
+            "Question": "Dans quel pays sont hébergées les données ?",
+            "Reponse": "",
+            "Commentaire": "France"
+        },
+        {
+            "Question": "Quel est le niveau de chiffrement utilisé pour protéger les données ?",
+            "Reponse": "",
+            "Commentaire": "AES-256 pour le stockage, TLS 1.3 pour les communications"
+        },
+        {
+            "Question": "Votre solution est-elle conforme au RGPD ?",
+            "Reponse": "OUI",
+            "Commentaire": "Certification RGPD en cours de renouvellement"
+        },
+        {
+            "Question": "Quelle est la disponibilité garantie de votre service ?",
+            "Reponse": "",
+            "Commentaire": "SLA de 99,5% hors maintenance programmée"
+        },
+        {
+            "Question": "Comment gérez-vous les sauvegardes de données ?",
+            "Reponse": "",
+            "Commentaire": "Sauvegardes quotidiennes avec rétention de 30 jours, réplication géographique"
+        },
+        {
+            "Question": "Disposez-vous d'un plan de reprise d'activité ?",
+            "Reponse": "OUI",
+            "Commentaire": "PRA testé annuellement, RTO de 4 heures"
+        },
+        {
+            "Question": "Qui a accès aux données clients ?",
+            "Reponse": "",
+            "Commentaire": "Accès limité aux équipes support et développement habilitées"
+        },
+        {
+            "Question": "Comment gérez-vous l'authentification des utilisateurs ?",
+            "Reponse": "",
+            "Commentaire": "Authentification multi-facteurs obligatoire, intégration SSO possible"
+        },
+        {
+            "Question": "Effectuez-vous des tests de sécurité réguliers ?",
+            "Reponse": "OUI",
+            "Commentaire": "Tests de pénétration semestriels par cabinet externe"
+        },
+        {
+            "Question": "Comment sont gérés les correctifs de sécurité ?",
+            "Reponse": "",
+            "Commentaire": "Déploiement automatique des correctifs critiques sous 48h"
+        },
+        {
+            "Question": "Votre infrastructure est-elle certifiée ?",
+            "Reponse": "OUI",
+            "Commentaire": "Certification ISO 27001 et SOC 2 Type II"
+        },
+        {
+            "Question": "Comment assurez-vous la traçabilité des actions ?",
+            "Reponse": "",
+            "Commentaire": "Logs d'audit complets avec rétention de 12 mois"
+        },
+        {
+            "Question": "Proposez-vous une API pour l'intégration ?",
+            "Reponse": "OUI",
+            "Commentaire": "API REST documentée avec authentification OAuth 2.0"
+        },
+        {
+            "Question": "Comment gérez-vous la montée en charge ?",
+            "Reponse": "",
+            "Commentaire": "Auto-scaling basé sur la charge, architecture microservices"
+        },
+        {
+            "Question": "Quel est votre processus de gestion des incidents ?",
+            "Reponse": "",
+            "Commentaire": "Astreinte 24/7, escalade automatique selon criticité"
+        },
+        {
+            "Question": "Comment assurez-vous la confidentialité des données ?",
+            "Reponse": "",
+            "Commentaire": "Chiffrement bout en bout, clés gérées par HSM"
+        },
+        {
+            "Question": "Disposez-vous d'une équipe de sécurité dédiée ?",
+            "Reponse": "OUI",
+            "Commentaire": "Équipe cybersécurité de 5 personnes, RSSI certifié"
+        },
+        {
+            "Question": "Comment gérez-vous la suppression des données ?",
+            "Reponse": "",
+            "Commentaire": "Suppression sécurisée selon NIST 800-88, certificat de destruction"
+        },
+        {
+            "Question": "Votre solution supporte-t-elle l'export des données ?",
+            "Reponse": "OUI",
+            "Commentaire": "Export complet en formats standardisés (JSON, XML, CSV)"
+        },
+        {
+            "Question": "Comment assurez-vous la formation de vos équipes ?",
+            "Reponse": "",
+            "Commentaire": "Formation sécurité obligatoire, mise à jour annuelle"
+        }
+    ]
+}

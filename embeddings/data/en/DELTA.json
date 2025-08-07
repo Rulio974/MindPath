@@ -1,0 +1,91 @@
+{
+    "date": "2024-11-12",
+    "Entreprise": "DELTA",
+    "data": [
+        {
+            "Question": "Capability to host data locally (e.g. specific countries with regulatory constraints)",
+            "Reponse": "YES",
+            "Commentaire": "No on-premise hosting, but local cloud hosting can be studied, taking into account the international regulatory context"
+        },
+        {
+            "Question": "Data encryption in transit",
+            "Reponse": "YES",
+            "Commentaire": "TLS 1.3; TLS enabled on SMTP"
+        },
+        {
+            "Question": "Data encryption at rest",
+            "Reponse": "YES",
+            "Commentaire": "Managed by our company, no customer key management"
+        },
+        {
+            "Question": "Capability to anonymize data in non-production environments",
+            "Reponse": "YES",
+            "Commentaire": "Production data is not used outside the production environment. Test servers provided to clients function in the same manner"
+        },
+        {
+            "Question": "Interface security",
+            "Reponse": "YES",
+            "Commentaire": "HTTPS + SAML\nStrong TOTP authentication possible at clients' choice\nAPI: filtering possible only on dedicated server (optional) and daily quota\nNo standard connector\nCustom REST API\nAPI key managed by clients\n\nData concerned: all application data"
+        },
+        {
+            "Question": "If SaaS: Single or Multi-Tenant Architecture",
+            "Reponse": "YES",
+            "Commentaire": "Multi-tenant by default (isolation: application access control)\nSingle Tenant as option (dedicated server)"
+        },
+        {
+            "Question": "Compliance with security standards, certifications, affiliations...",
+            "Reponse": "YES",
+            "Commentaire": "ISO27001:2022 certification in progress. Phase 2 audit planned for 2025"
+        },
+        {
+            "Question": "Capability to address certain GDPR requirements",
+            "Reponse": "YES",
+            "Commentaire": "A DPO has been appointed, reachable at dedicated address\nRetention and deletion duration not configurable. Personal data and information are kept 60 days after contract end in the platform.\nAt user's first connection, T&Cs must be accepted (point regarding personal data processing).\nNo tracking cookies used"
+        },
+        {
+            "Question": "Capability to provide on client demand proofs/material elements on security level of project scope",
+            "Reponse": "YES",
+            "Commentaire": "SAP, ISSP and/or annual pentest summary"
+        },
+        {
+            "Question": "Security hardening documentation",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Authentication and authorization",
+            "Reponse": "YES",
+            "Commentaire": "SSO via SAML 2.0"
+        },
+        {
+            "Question": "MFA (second authentication factor) for local platform accounts (e.g. administration accounts)",
+            "Reponse": "YES",
+            "Commentaire": "TOTP MFA possibility if SAML not used"
+        },
+        {
+            "Question": "Capability to log actions (access, modification, deletion) on data and infrastructures (environments, databases, etc.)",
+            "Reponse": "YES",
+            "Commentaire": "The solution generates logs on activities performed by users (creation, modification, deletion). Logs kept 3 years or until contract end"
+        },
+        {
+            "Question": "Business continuity plan (BCP) existing and functional (tested) on project scope",
+            "Reponse": "YES",
+            "Commentaire": "Our SAP (ICT preparation for business continuity part) describes our commitments on this subject. All our hosting infrastructures are ISO27001 certified, to guarantee best practices, particularly on continuity and recovery topics. Additionally, we maintain a BCP and DRP to ensure service continuity. These plans are tested regularly"
+        },
+        {
+            "Question": "Disaster recovery plan (DRP) existing and functional (tested) on project scope",
+            "Reponse": "YES",
+            "Commentaire": "Our SAP (ICT preparation for business continuity part) describes our commitments on this subject. All our hosting infrastructures are ISO27001 certified, to guarantee best practices, particularly on continuity and recovery topics. Additionally, we maintain a BCP and DRP to ensure service continuity. These plans are tested regularly"
+        },
+        {
+            "Question": "Guaranteed service availability",
+            "Reponse": "YES",
+            "Commentaire": "99% over 12 rolling months (see SLA Annex of our T&Cs)"
+        },
+        {
+            "Question": "Data backup",
+            "Reponse": "YES",
+            "Commentaire": "We perform daily full backups kept 30 days offsite (see \"Information backup\" section of our SAP). The procedure is as follows: restoration request to support team, technical and support team evaluation, if applicable, data restoration"
+        }
+    ]
+}

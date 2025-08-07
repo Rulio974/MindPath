@@ -1,0 +1,331 @@
+{
+    "date": "2024-05-22",
+    "Entreprise": "EPSILON",
+    "data": [
+        {
+            "Question": "Quelles données collectez-vous à propos des clients (données personnelles, données bancaires, etc.) ?",
+            "Reponse": "",
+            "Commentaire": "Aucune"
+        },
+        {
+            "Question": "Où sont stockées ces données ? Restent-elles sur les plateformes de production ?",
+            "Reponse": "",
+            "Commentaire": "Données stockées en France, les données sauvegardées, chiffrées et envoyées sur un environnement de backup toujours en France"
+        },
+        {
+            "Question": "Faites-vous un autre usage de ces données (en plus de la fourniture du service) ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Combien de temps ces données sont-elles conservées ?",
+            "Reponse": "",
+            "Commentaire": "Durée du contrat + 60 jours max, le temps de les supprimer (30 jours max) et que les backups soient automatiquement écrasés par de nouveaux"
+        },
+        {
+            "Question": "Transférez-vous nos données en interne sur d'autres composants de votre système d'information ? Si oui, pour quel usage et par quel moyen ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui sur les environnements de backup (voir ci-dessus)"
+        },
+        {
+            "Question": "Toutes nos données sont-elles effacées à la fin du contrat ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        },
+        {
+            "Question": "Les données sensibles sont-elles chiffrées au repos et en transit ? Avec quels algorithmes ? Pouvez-vous préciser quelles données sont concernées si seul un sous-ensemble est chiffré ?",
+            "Reponse": "",
+            "Commentaire": "Chiffrées en transit avec TLS 1.3\nChaque fichier uploadé sur la plateforme (considéré comme le type de donnée le plus sensible) est chiffré au repos en plus avec une clé dédiée à chaque client utilisant l'algorithme RSA 4096.\nLes partitions comportant les BDD sont chiffrées avec LUKS"
+        },
+        {
+            "Question": "Comment gérez-vous les clés de chiffrement ?",
+            "Reponse": "",
+            "Commentaire": "Stockées dans un coffre-fort interne accessible seulement de l'ingénieur devops et en secours, du responsable technique. Les clés dédiées ne subissent pas de rotation et les clés de chiffrement des partitions sont uniques pour chaque instance (1 pour chaque offre mutualisée et 1 pour chaque offre dédiée)"
+        },
+        {
+            "Question": "Quelles mesures avez-vous mises en place pour assurer l'intégrité des données des clients ?",
+            "Reponse": "",
+            "Commentaire": "Tests de restauration des sauvegardes périodiques (tous les trimestres)"
+        },
+        {
+            "Question": "Quel est votre SLA en termes de disponibilité du service (mensuel) ?",
+            "Reponse": "",
+            "Commentaire": "Nous garantissons une disponibilité de 99% sur 12 mois glissants"
+        },
+        {
+            "Question": "Quel est votre temps de réponse garanti en cas d'incident ?",
+            "Reponse": "",
+            "Commentaire": "8h, prise en charge de l'incident et première notification sous 8h"
+        },
+        {
+            "Question": "Quel est votre temps de réparation de pannes garanti en cas d'incident ?",
+            "Reponse": "",
+            "Commentaire": "Nous avons un RTO de 8h"
+        },
+        {
+            "Question": "Pouvez-vous fournir des données historiques sur la disponibilité de votre service ?",
+            "Reponse": "",
+            "Commentaire": "Si on rapporte l'engagement de 99% à un mois, une interruption de 39 minutes par mois rentre dans nos SLA.\nLe service a été au maximum indisponible 20 min, ceci 2 fois, au cours des 6 derniers mois."
+        },
+        {
+            "Question": "Communiquez-vous aux clients en avance les changements majeurs (date, nature, plage d'indisponibilité, etc.) ?",
+            "Reponse": "",
+            "Commentaire": "Toute indisponibilité du service prévue est communiquée 15 jours en avance au client"
+        },
+        {
+            "Question": "Comment assurez-vous le cycle de vie de vos comptes administrateurs (création et suppression des comptes) ?",
+            "Reponse": "",
+            "Commentaire": "Création sur demande et selon profil de l'employé, si le besoin se justifie\nSuppression dès le changement de poste, de responsabilité ou le départ de l'employé"
+        },
+        {
+            "Question": "Quelle est votre politique de mots de passe interne concernant les administrateurs (longueur, complexité, renouvellement, MFA) ?",
+            "Reponse": "",
+            "Commentaire": "16 caractères minimum et conseil de passphrase, 3 types de caractères différents, non renouvellement et MFA obligatoire"
+        },
+        {
+            "Question": "Quelle est votre politique de mots de passe interne concernant les comptes techniques (longueur, complexité, renouvellement) ?",
+            "Reponse": "",
+            "Commentaire": "Identique aux administrateurs"
+        },
+        {
+            "Question": "Réalisez-vous des revues de comptes et de droits périodiques sur les composants sensibles ? À quelle fréquence ?",
+            "Reponse": "",
+            "Commentaire": "Tous les 6 mois au minimum"
+        },
+        {
+            "Question": "Votre service est-il compatible avec les protocoles standards ouverts : SAML, OpenID Connect, OAuth2, afin d'utiliser le SSO de vos clients ?",
+            "Reponse": "",
+            "Commentaire": "Compatible SAMLv2"
+        },
+        {
+            "Question": "Votre application/service possède-t-elle des comptes locaux ? (non gérés par un SSO du client, avec une base de comptes gérée par votre service)",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, un compte administrateur de secours qui n'est jamais utilisé sauf cas de force majeure et des comptes SSO issus de notre annuaire pour garantir le support et l'intégration (temporaire à cette période) de l'application chez nos clients.\nLe client peut utiliser des comptes locaux, non reliés à son SSO, s'il le souhaite"
+        },
+        {
+            "Question": "Dans le cas de comptes locaux, quelle est la politique de mots de passe par défaut ?",
+            "Reponse": "",
+            "Commentaire": "3 caractères différents sur les 4 ensembles connus (minuscule, majuscule, chiffre et symbole), interdiction de réutiliser les 10 derniers mots de passe, renouvellement tous les 90 jours, 10 caractères minimum. Tous ces paramètres sont paramétrables par le client lui-même dans la limite des valeurs autorisées."
+        },
+        {
+            "Question": "Dans le cas de comptes locaux, les mots de passe sont-ils stockés sous une forme irréversible ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, hachés et salés avant d'être stockés"
+        },
+        {
+            "Question": "Dans le cas de comptes locaux, y a-t-il une double authentification en place pour l'accès aux comptes administrateur ou comptes à privilèges (pour les comptes applicatifs) ?",
+            "Reponse": "",
+            "Commentaire": "Double authentification obligatoire pour les comptes liés à notre SSO, pour les comptes locaux à la main du client, double authentification possible, possibilité de forcer la double authentification sur l'ensemble des comptes sans SSO."
+        },
+        {
+            "Question": "Dans le cas de comptes locaux, comment se gèrent les comptes (création et suppression) ? Le client est-il responsable de la gestion de ses comptes ?",
+            "Reponse": "",
+            "Commentaire": "Le client est responsable de la gestion des comptes locaux"
+        },
+        {
+            "Question": "Est-ce qu'un tiers (prestataire de services ou fournisseur) peut accéder à nos données ? Si oui, dans quelles conditions ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Sous quelles conditions les gouvernements ont-ils accès à nos données ?",
+            "Reponse": "",
+            "Commentaire": "Aucune sauf requête judiciaire dûment adressée à notre société de laquelle le client serait tenu informé"
+        },
+        {
+            "Question": "Quelle est votre procédure pour gérer un vol de données ?",
+            "Reponse": "",
+            "Commentaire": "Procédure qui suit notre processus de gestion d'incident, investigation et caractérisation de l'incident, de son périmètre et des clients concernés dès que nous sommes alertés de l'incident. Communication aux clients impactés dans les 8h qui suivent la première notification avec les éléments les plus précis possibles. Communication quotidienne, si nécessaire, jusqu'à la fin de l'investigation et résolution de la faille utilisée."
+        },
+        {
+            "Question": "Quel est le délai de notification en cas de vol de données avéré ?",
+            "Reponse": "",
+            "Commentaire": "1 journée une fois le vol caractérisé et confirmé par notre société et 3 jours pour faire l'inventaire complet des données subtilisées ou consultées."
+        },
+        {
+            "Question": "Quelles sont les modalités de cette notification ?",
+            "Reponse": "",
+            "Commentaire": "Email au contact client possédé par l'équipe support sauf mention et consigne contraire"
+        },
+        {
+            "Question": "Votre procédure de gestion d'incident de sécurité correspond-elle à un standard ? (ISO 27035, ITIL...)",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Testez-vous régulièrement vos procédures de réponse à incident de sécurité ?",
+            "Reponse": "",
+            "Commentaire": "1 fois par an"
+        },
+        {
+            "Question": "Quel est votre processus de remédiation des vulnérabilités ?",
+            "Reponse": "",
+            "Commentaire": "Toute vulnérabilité critique et qui expose les données de nos clients est traitée en 48h, les autres vulnérabilités sont traitées sous 1 mois maximum lors des mises à jour de version de l'application"
+        },
+        {
+            "Question": "Quels sont vos engagements en termes de corrections de vulnérabilités élevées et critiques ?",
+            "Reponse": "",
+            "Commentaire": ""
+        },
+        {
+            "Question": "À quelle fréquence et par quel moyen, recherchez-vous des vulnérabilités sur votre réseau et vos applications ?",
+            "Reponse": "",
+            "Commentaire": "Tous les mois, scanner statique de vulnérabilités en plus d'un scan hebdomadaire statique du code source.\nAbonnement à la veille vulnérabilités du CERT national pour les vulnérabilités les plus critiques et pentest annuel."
+        },
+        {
+            "Question": "Pouvons-nous effectuer une évaluation des vulnérabilités externes sur le service ?",
+            "Reponse": "",
+            "Commentaire": "A priori non, ces tests doivent être encadrés et leur impact doit être mesuré par notre société avant d'être autorisé. Ces tests ne peuvent pas avoir lieu si l'offre souscrite par le client est mutualisée"
+        },
+        {
+            "Question": "Utilisez-vous une solution de détection de logiciels malveillants (antivirus, EDR), sur votre système d'information de non production ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Quelles mesures de sécurité appliquez-vous sur vos environnements de production (ex pare-feu applicatif, audit de base de données, filtrage réseau, EDR, etc.) ?",
+            "Reponse": "",
+            "Commentaire": "Antivirus sur les serveurs, filtrage réseau en liste blanche (port 443 et SSH différent de 22) via un pare-feu physique et reverse proxy, sondes IPS fail2ban"
+        },
+        {
+            "Question": "Utilisez-vous des flux non-chiffrés (ftp, http, telnet etc.), en interne ou pour les échanges de données avec vos clients ?",
+            "Reponse": "",
+            "Commentaire": "En interne, certains flux, protégés par le pare-feu, le reverse proxy et le WAF sont non chiffrés, ces flux ne sont pas exposés sur internet"
+        },
+        {
+            "Question": "Votre service est-il protégé par un WAF ? Si oui, lequel ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        },
+        {
+            "Question": "Êtes-vous protégés contre les DDoS ? Si oui comment ?",
+            "Reponse": "",
+            "Commentaire": "Protection DDoS de l'hébergeur"
+        },
+        {
+            "Question": "Comment séparez-vous nos données de celles des autres clients ? Comment est réalisée la séparation ? (différents serveurs ? 1 client = 1 base ? Ou les données sont chiffrées avec une clé différente par client ?, ...)\nSi un attaquant trouve une vulnérabilité dans l'applicatif (en utilisant l'instance d'un client), quels mécanismes empêchent qu'il ait alors accès à toutes les données des clients ?",
+            "Reponse": "",
+            "Commentaire": "Pour une offre mutualisée, les ressources (BDD, RAM etc.) sont mutualisées donc les données sont stockées au même endroit, un mécanisme de clé dédié par client permet la segmentation des données et de garantir qu'un client A ne voit pas les données du client B sur la même instance mutualisée, mécanisme éprouvé chaque année par pentest et sans faille révélée jusqu'à présent.\nPour une offre dédiée, les ressources logiques sont dédiées, utilisent des clés de chiffrement différentes qui garantissent une totale étanchéité entre les tenants clients."
+        },
+        {
+            "Question": "Vos plateformes de production sont-elles cloisonnées du reste de votre système d'information ? Par quels moyens ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, machines différentes"
+        },
+        {
+            "Question": "Utilisez-vous des données de production pour alimenter des plateformes de non-production (pré-prod, ...) ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Quels moyens mettez-vous en place pour protéger vos codes sources ?",
+            "Reponse": "",
+            "Commentaire": "Le code source n'est pas accessible librement sur internet et son accès en modification est contrôlé, les modifications du code source sont soumises à des validations qui impliquent au minimum 2 personnes différentes."
+        },
+        {
+            "Question": "Suivez-vous les directives de l'OWASP (ou similaires) pour le développement d'applications ? Vos développeurs ont-ils suivi une formation ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui et Oui"
+        },
+        {
+            "Question": "Avez-vous un programme de tests d'acceptation pour le code applicatif que vous développez et déployez ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, tant en termes de qualité de code source que de la sécurité du code source"
+        },
+        {
+            "Question": "Quelles applications et services tiers utilisez-vous dans le cadre de votre service ?",
+            "Reponse": "",
+            "Commentaire": "Solution d'analyse statistique (on-prem) pour l'analyse de la plateforme, solution de support client, solution de surveillance de la santé des services"
+        },
+        {
+            "Question": "Comment sécurisez-vous vos environnements de développement ?",
+            "Reponse": "",
+            "Commentaire": "Comme un environnement de production sur la configuration et derrière un VPN pour la connexion en dehors des locaux puis un bastion pour son accès en administration."
+        },
+        {
+            "Question": "Sous-traitez-vous une partie de vos développements ?",
+            "Reponse": "",
+            "Commentaire": "Les connecteurs (projet différent et sans adhérence avec d'autres modules de l'application) peuvent être sous-traités mais sont contrôlés rigoureusement par une ou plusieurs personnes en interne avant leur mise en production."
+        },
+        {
+            "Question": "Y a-t-il un accès restreint et surveillé aux actifs critiques 24x7 ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, sous la responsabilité de l'hébergeur"
+        },
+        {
+            "Question": "Si une infrastructure dédiée est nécessaire, est-elle isolée ?",
+            "Reponse": "Non",
+            "Commentaire": "Non, pas physiquement"
+        },
+        {
+            "Question": "Effectuez-vous des vérifications sur tout le personnel ayant des accès physiques aux plateformes ? Quelles sont leurs étendues ?",
+            "Reponse": "",
+            "Commentaire": "Population restreinte à 3 personnes chez notre société, ces accès ne sont presque jamais utilisés."
+        },
+        {
+            "Question": "Quelles sont vos protections contre les menaces extérieures environnementales ?",
+            "Reponse": "",
+            "Commentaire": "Certification ISO27001 de l'hébergeur pour faire foi de la prise en charge de ce risque"
+        },
+        {
+            "Question": "Tracez-vous l'accès des employés aux données des clients ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, chaque connexion à la plateforme et consultation d'un environnement client est tracée, accessible du client que ce soit pour les connexions de son personnel ou du personnel de notre société"
+        },
+        {
+            "Question": "Votre service permet-il de tracer les connexions et les actions des utilisateurs ? Le client a-t-il accès à ces journaux ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui, connexions et actions de modification/suppression sont tracées obligatoirement, traces consultables par les pilotes du client (= profils privilégiés)"
+        },
+        {
+            "Question": "Combien de temps conservez-vous les logs ?",
+            "Reponse": "",
+            "Commentaire": "Les logs techniques (non visibles du client) sont conservés 90 jours ; les logs fonctionnels (visibles du client) sont conservés 36 mois ou la durée du contrat (durée la plus faible des 2)"
+        },
+        {
+            "Question": "Comment effectuez-vous les sauvegardes de nos données et quel engagement prenez-vous (RTO, RPO) ?",
+            "Reponse": "",
+            "Commentaire": "Sauvegarde journalière complète, chiffrée puis externalisée.\nRTO 8h\nRPO 24h"
+        },
+        {
+            "Question": "Avez-vous mis en place un système de sauvegardes immuables ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Avez-vous établi un PRA et un PCA ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        },
+        {
+            "Question": "Le PRA/PCA est-il testé périodiquement ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui tous les trimestres"
+        },
+        {
+            "Question": "Où sont stockées les données dans notre cas (localisation) ?",
+            "Reponse": "",
+            "Commentaire": "France"
+        },
+        {
+            "Question": "Vos centres de données sont-ils conformes au RGPD ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        },
+        {
+            "Question": "Êtes-vous conforme ISAE3402/SSAE16 ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Êtes-vous conforme à la norme ISO-27001 ? Sur quel périmètre ?",
+            "Reponse": "",
+            "Commentaire": "En cours, pour juillet 2024, sur le périmètre suivant : \"Développement et maintien en conditions opérationnelles et de sécurité d'une plateforme GRC\""
+        },
+        {
+            "Question": "Avez-vous une documentation pour les auditeurs potentiels ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        }
+    ]
+}

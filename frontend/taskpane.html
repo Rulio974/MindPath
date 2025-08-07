@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Recherche Sécurité</title>
+
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <link rel="stylesheet" type="text/css" href="taskpane.css" />
+</head>
+
+<body>
+    <div class="container">
+
+
+        <h1>Recherche sémantique dans les questionnaires de sécurité</h1>
+
+        <div class="search-section">
+            <label for="questionInput">Entrez votre question :</label>
+            <input type="text" id="questionInput" />
+            <button id="searchButton">Rechercher</button>
+        </div>
+
+        <div class="options-toggle" id="optionsToggle">
+            <span class="chevron">&#9660;</span>
+            <span class="toggle-text">Options avancées</span>
+        </div>
+
+        <div class="auto-fill-config" id="autoFillConfig" style="display: none;">
+            <h3>Configuration du remplissage automatique</h3>
+            <div class="config-row">
+                <label>Colonne pour "Réponse" :</label>
+                <input type="text" id="reponseCell" placeholder="ex: E" />
+                <button id="selectReponseCell" class="select-cell-btn">📍 Sélectionner</button>
+                <span id="reponseCellStatus" class="status-indicator"></span>
+            </div>
+            <div class="config-row">
+                <label>Colonne pour "Commentaire" :</label>
+                <input type="text" id="commentaireCell" placeholder="ex: F" />
+                <button id="selectCommentaireCell" class="select-cell-btn">📍 Sélectionner</button>
+                <span id="commentaireCellStatus" class="status-indicator"></span>
+            </div>
+            <div class="config-row">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="autoFillEnabled" />
+                    <span>Remplissage automatique</span>
+                </label>
+            </div>
+            <div class="help-text">
+                <small>* Sélectionnez les colonnes où vous souhaitez que les réponses et commentaires apparaissent. La
+                    ligne sera automatiquement déterminée par la question sélectionnée.</small>
+            </div>
+        </div>
+
+        <div id="results"></div>
+    </div>
+
+    <script type="text/javascript" src="taskpane.js"></script>
+</body>
+
+</html>

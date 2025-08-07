@@ -1,0 +1,66 @@
+{
+    "date": "2023-12-15",
+    "Entreprise": "ETA",
+    "data": [
+        {
+            "Question": "Privileged access should benefit from enhanced access. The application must support the standard multi-factor authentication mechanism",
+            "Reponse": "YES",
+            "Commentaire": "MFA support and implementation"
+        },
+        {
+            "Question": "The provider must ensure that access is necessary and appropriate. The provider follows an account and access review process based on a policy applied at least once a year",
+            "Reponse": "YES",
+            "Commentaire": "Reviewed every 6 months"
+        },
+        {
+            "Question": "Data must be hosted in a European Union country or in the country where resources are used",
+            "Reponse": "YES",
+            "Commentaire": "Hosted in France"
+        },
+        {
+            "Question": "Data centers hosting applications must be certified for physical security of their infrastructure. The provider must present a certification for physical security (ISAE 3402, SOC or similar certification)",
+            "Reponse": "YES",
+            "Commentaire": "Our data centers are all SOC 1, 2 & 3 certified"
+        },
+        {
+            "Question": "The service must be available according to operational requirements and protected by disaster recovery processes. The service cannot be unavailable for more than 48 hours and disaster recovery processes are available and tested regularly",
+            "Reponse": "YES",
+            "Commentaire": "We have a 24h RPO and 4h RTO"
+        },
+        {
+            "Question": "The service must be backed up according to business requirements and restorations must be tested regularly. The service must be backed up at least daily with retention of at least 6 months. Restoration must be tested at least once a year",
+            "Reponse": "PARTIAL",
+            "Commentaire": "We backup daily, but backups are only stored for one month. We can extend this period under certain conditions to be discussed."
+        },
+        {
+            "Question": "The provider commits to encrypt data and communications with non-obsolete cryptographic methods. The database must be encrypted. HTTPS access uses latest generation certification (TLS / SHA256 / ECC)",
+            "Reponse": "YES",
+            "Commentaire": "The database disk is encrypted"
+        },
+        {
+            "Question": "Proprietary data must not be accessible by an unauthorized third party. The provider introduces the means implemented to ensure data confidentiality with logical partitioning",
+            "Reponse": "YES",
+            "Commentaire": "Data is separated: logically in case of shared subscription, physically (another database) in case of dedicated subscription"
+        },
+        {
+            "Question": "The vendor must sign a non-disclosure agreement with the client. A contract or detailed confidentiality clause including all subcontractors is signed",
+            "Reponse": "YES",
+            "Commentaire": "We include confidentiality clauses in every third-party contract we use and we can sign one with the client if necessary"
+        },
+        {
+            "Question": "The vendor must guarantee total service reversibility in case of service provider change. Structured and exploitable extraction of client business data is possible at the provider level",
+            "Reponse": "YES",
+            "Commentaire": "JSON export can be requested by the client, at any time."
+        },
+        {
+            "Question": "The provider agrees to be audited. The client could conduct audits on technical and organizational security at least once a year",
+            "Reponse": "YES",
+            "Commentaire": "Audits are authorized but subject to one month notice."
+        },
+        {
+            "Question": "All user and administrator actions must be traced in accordance with applicable regulations. Without defined rule, retention should respect 180 days",
+            "Reponse": "YES",
+            "Commentaire": "Logs are available 36 months on platform for administrator users"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "date": "2024-03-20",
+    "Entreprise": "IOTA",
+    "data": [
+        {
+            "Question": "Do you have an information systems security policy?",
+            "Reponse": "YES",
+            "Commentaire": "ISSP approved by management"
+        },
+        {
+            "Question": "Is your data encrypted?",
+            "Reponse": "YES",
+            "Commentaire": "Encryption of sensitive data at rest and in transit"
+        },
+        {
+            "Question": "Do you perform regular backups?",
+            "Reponse": "YES",
+            "Commentaire": "Daily backups with restoration tests"
+        },
+        {
+            "Question": "Do you have a disaster recovery plan?",
+            "Reponse": "YES",
+            "Commentaire": "DRP tested semi-annually"
+        }
+    ]
+}

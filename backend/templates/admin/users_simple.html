@@ -1,0 +1,204 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Gestion des utilisateurs</h1>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createUserModal">
+        <i class="bi bi-person-plus"></i>
+        Nouvel utilisateur
+    </button>
+</div>
+
+<!-- Tableau des utilisateurs -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="bi bi-people"></i>
+            Liste des utilisateurs
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Utilisateur</th>
+                        <th>Email</th>
+                        <th>Rôles</th>
+                        <th>Statut</th>
+                        <th>Créé le</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="user-avatar me-2">
+                                    {{ user.username[0].upper() }}
+                                </div>
+                                <div>
+                                    <strong>{{ user.username }}</strong>
+                                    {% if user.is_superuser %}
+                                    <i class="bi bi-shield-check text-primary ms-1" title="Administrateur"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {% for role in user.roles %}
+                            <span class="badge bg-secondary me-1">{{ role }}</span>
+                            {% endfor %}
+                            {% if not user.roles %}
+                            <span class="text-muted">Aucun rôle</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.is_active %}
+                            <span class="badge bg-success">Actif</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Inactif</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ user.created_at.strftime('%d/%m/%Y') }}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="editUser({{ user.id }})"
+                                    title="Modifier">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                {% if user.id != current_user.id %}
+                                <button class="btn btn-outline-danger"
+                                    onclick="deleteUser({{ user.id }}, '{{ user.username }}')" title="Supprimer">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de création d'utilisateur -->
+<div class="modal fade" id="createUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="createUserForm" method="post" action="/admin/users/create">
+                <div class="modal-header">
+                    <h5 class="modal-title">Créer un nouvel utilisateur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nom d'utilisateur</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roles" class="form-label">Rôles</label>
+                        <select class="form-select" id="roles" name="role_ids" multiple>
+                            {% for role in roles %}
+                            <option value="{{ role.id }}">{{ role.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-text">Maintenez Ctrl pour sélectionner plusieurs rôles</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="is_active" name="is_active" checked>
+                            <label class="form-check-label" for="is_active">
+                                Utilisateur actif
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="is_superuser" name="is_superuser">
+                            <label class="form-check-label" for="is_superuser">
+                                Administrateur
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Créer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Gestion du formulaire de création
+    document.getElementById('createUserForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch('/admin/users/create', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                showAlert('Utilisateur créé avec succès', 'success');
+                location.reload();
+            } else {
+                showAlert(result.detail || 'Erreur lors de la création', 'danger');
+            }
+        } catch (error) {
+            showAlert('Erreur de connexion', 'danger');
+        }
+    });
+
+    // Fonction pour éditer un utilisateur (simplifié)
+    function editUser(id) {
+        showAlert('Fonctionnalité en cours de développement', 'info');
+    }
+
+    // Fonction pour supprimer un utilisateur
+    async function deleteUser(id, username) {
+        if (!confirmDelete('Êtes-vous sûr de vouloir supprimer l\'utilisateur "' + username + '" ?')) {
+            return;
+        }
+
+        try {
+            const response = await fetch('/admin/users/' + id + '/delete', {
+                method: 'POST'
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                showAlert('Utilisateur supprimé avec succès', 'success');
+                location.reload();
+            } else {
+                showAlert(result.detail || 'Erreur lors de la suppression', 'danger');
+            }
+        } catch (error) {
+            showAlert('Erreur de connexion', 'danger');
+        }
+    }
+</script>
+{% endblock %}

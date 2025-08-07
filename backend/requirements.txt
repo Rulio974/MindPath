@@ -1,0 +1,31 @@
+# FastAPI et serveur web
+fastapi
+uvicorn
+
+# Base de données
+sqlalchemy
+
+# Validation des données
+pydantic
+email-validator
+
+# Templates et interface web
+jinja2
+
+# Variables d'environnement
+python-dotenv
+
+# Chargement des embeddings
+numpy
+faiss-cpu
+sentence-transformers
+torch
+
+# Détection de langue
+langdetect
+
+# Sécurité
+python-multipart
+
+# Tests et requêtes HTTP
+httpx

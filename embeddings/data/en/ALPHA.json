@@ -1,0 +1,251 @@
+{
+    "date": "2024-03-15",
+    "Entreprise": "ALPHA",
+    "data": [
+        {
+            "Question": "Does your organization ensure that all personnel know and apply your IT Security Policy?",
+            "Reponse": "YES",
+            "Commentaire": "Contractual commitment and mandatory reading of IT charter from day one"
+        },
+        {
+            "Question": "Does your organization conduct reviews of its policies, standards and procedures at least once a year?",
+            "Reponse": "YES",
+            "Commentaire": "Tasks integrated into the control plan"
+        },
+        {
+            "Question": "Does the provider have a Security Assurance Plan (SAP)?",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "If yes, has the SAP been transmitted? Within what timeframe?",
+            "Reponse": "YES",
+            "Commentaire": "The updated version of the SAP will be provided with this document"
+        },
+        {
+            "Question": "Is the security organization formalized in a document detailing the roles and responsibilities of each stakeholder?",
+            "Reponse": "YES",
+            "Commentaire": "Defined in the ISSP"
+        },
+        {
+            "Question": "Does your management examine the security program taking into account the results of evaluations, risk analyses and internal/external audits?",
+            "Reponse": "YES",
+            "Commentaire": "Bi-monthly committee with participation of a management member"
+        },
+        {
+            "Question": "Have you appointed an Information Systems Security Officer, independent from the IT department and responsible for risk management?",
+            "Reponse": "YES",
+            "Commentaire": "ISSO appointed in June 2024"
+        },
+        {
+            "Question": "Does the Information Systems Security Officer have the necessary authority and independence to accomplish their missions, particularly for Security Policy compliance?",
+            "Reponse": "YES",
+            "Commentaire": "Direct reporting to general management"
+        },
+        {
+            "Question": "Has your organization implemented a risk management process?",
+            "Reponse": "YES",
+            "Commentaire": "Planned for end of 2024 with ISO27001 certification"
+        },
+        {
+            "Question": "Does your organization have specialized cybersecurity entities (crisis management, SOC, CERT, CSIRT, consulting team, etc.)?",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Our structure does not have the critical size for dedicated specialized entities, these functions are handled by the ISSO and concerned product teams."
+        },
+        {
+            "Question": "Do all employees and contractors undergo verification before hiring, according to internal policies?",
+            "Reponse": "YES",
+            "Commentaire": "Reference checks"
+        },
+        {
+            "Question": "Do your employees receive training that raises awareness of roles and responsibilities related to IT security policies and procedures?",
+            "Reponse": "YES",
+            "Commentaire": "Training provided within 3 months of arrival"
+        },
+        {
+            "Question": "Is there a process to monitor compliance with your employees' awareness program?",
+            "Reponse": "YES",
+            "Commentaire": "Training and awareness tracking file"
+        },
+        {
+            "Question": "Is there a process ensuring that your employees receive training adapted to their department?",
+            "Reponse": "YES",
+            "Commentaire": "Specific training for developers and administrators"
+        },
+        {
+            "Question": "Do your employment contracts include confidentiality clauses?",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Must employees handling sensitive data sign a non-disclosure agreement?",
+            "Reponse": "PARTIAL",
+            "Commentaire": "The confidentiality clause covers non-disclosure, without specificity for personnel handling more sensitive data."
+        },
+        {
+            "Question": "Do you maintain an inventory of assets (hardware and software) including the responsible party, classification and criticality of each asset?",
+            "Reponse": "YES",
+            "Commentaire": "Inventory of company mobile equipment and infrastructure at our hosting provider"
+        },
+        {
+            "Question": "Must access to sensitive customer data be authorized by the data controller?",
+            "Reponse": "YES",
+            "Commentaire": "Functionality planned for development end of 2024"
+        },
+        {
+            "Question": "Do you delete customer data at the end of contract or upon request? If yes, specify the means and timeframes used",
+            "Reponse": "YES",
+            "Commentaire": "Overwriting with zeros in multiple passes"
+        },
+        {
+            "Question": "Have you established an information classification policy?",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Have you defined specific processing procedures according to data classification?",
+            "Reponse": "NO",
+            "Commentaire": "No specific processing identified to date"
+        },
+        {
+            "Question": "Is data replicated across different countries or continents? Can the client choose replication between different centers?",
+            "Reponse": "NO",
+            "Commentaire": "Data is exclusively stored in France. Replication elsewhere can be considered with additional cost, to be negotiated contractually."
+        },
+        {
+            "Question": "Specify who can access customer data throughout the lifecycle, and clarify the access procedure.",
+            "Reponse": "",
+            "Commentaire": "Only specifically identified personnel from our company can access customer data subject to authorization, account managers and integration engineers are authorized by default. These profiles and authorizations remain under client control and can be removed upon request, impacting support agility. Two technical personnel have additional database access but must comply with authorization and security procedures."
+        },
+        {
+            "Question": "Specify the commitment on data residency over time (modification of hosting or processing centers).",
+            "Reponse": "",
+            "Commentaire": "Our company commits to requesting and obtaining client authorization before moving their data and platform outside currently used centers."
+        },
+        {
+            "Question": "Specify the location of people with data access, detailed by function (operational, support, developers, administrators...).",
+            "Reponse": "",
+            "Commentaire": "All personnel with access to customer data are subject to French law and operate from France"
+        },
+        {
+            "Question": "Do you have access management policies, standards and procedures covering at minimum authentication, password management, rights and separation of duties?",
+            "Reponse": "YES",
+            "Commentaire": "ISSP and Access Management Policy"
+        },
+        {
+            "Question": "Do you have a process to control and manage access and rights of privileged users to systems processing project data?",
+            "Reponse": "YES",
+            "Commentaire": "Access management process for technical personnel and integration managers, with semi-annual review and arrival/departure management."
+        },
+        {
+            "Question": "Do you have an established process for user access revocation?",
+            "Reponse": "YES",
+            "Commentaire": "Arrival and departure management process"
+        },
+        {
+            "Question": "Do you limit access to customer data to the maximum? Have you identified organizational roles with access to project data?",
+            "Reponse": "YES",
+            "Commentaire": "As mentioned previously, only authorized persons (account managers and integrators) can access data via the product, plus 2 technical personnel in database."
+        },
+        {
+            "Question": "Do you have an established process to grant user access?",
+            "Reponse": "YES",
+            "Commentaire": "Access Management Policy"
+        },
+        {
+            "Question": "Have you established and implemented best practices for processing, exchanging and storing application/system/network passwords securely?",
+            "Reponse": "YES",
+            "Commentaire": "Deployment of a shared technical password vault and individual vaults"
+        },
+        {
+            "Question": "Is one of the following restrictions imposed on passwords?\n\n_Complex password of minimum 12 characters with at least three elements: Uppercase, Lowercase, Numbers, Special characters\n_Avoid trivial passwords (e.g. 1234, repetitions EEEEEE)\n_Renewal at least every 90 days\n_Renewal at first login\n_No default password",
+            "Reponse": "YES",
+            "Commentaire": "12-character complex password, no trivial password, renewal at first login, no default password"
+        },
+        {
+            "Question": "Are passwords and encryption keys stored in an encrypted database?",
+            "Reponse": "YES",
+            "Commentaire": "Key encryption and encryption with hashing of stored passwords"
+        },
+        {
+            "Question": "Do you encrypt sensitive customer data to ensure confidentiality and integrity?",
+            "Reponse": "YES",
+            "Commentaire": "The database disk is encrypted with a dedicated key for non-sensitive data and deposited documents are over-encrypted by client-specific keys."
+        },
+        {
+            "Question": "Do you protect storage containing sensitive customer data?\nIf yes, specify the encryption level (disk, files, database, application) and protocols/technologies used",
+            "Reponse": "YES",
+            "Commentaire": "RSA 4096 encryption for data and AES 256 for encryption keys"
+        },
+        {
+            "Question": "If data is encrypted at rest, do you allow the client to generate/import their own encryption keys?",
+            "Reponse": "PARTIAL",
+            "Commentaire": "Generation is possible, import remains under our control"
+        },
+        {
+            "Question": "Is data in transit encrypted and via which protocols?",
+            "Reponse": "YES",
+            "Commentaire": "TLS1.3 for business flows, SSH for administration"
+        },
+        {
+            "Question": "Are mobile and removable devices encrypted (laptops, smartphones, USB)?",
+            "Reponse": "PARTIAL",
+            "Commentaire": ""
+        },
+        {
+            "Question": "What is the length of keys used in your information exchange and storage solutions?",
+            "Reponse": "",
+            "Commentaire": "4096 bits for RSA\n256 bits for AES"
+        },
+        {
+            "Question": "Do you have policies, standards and procedures on physical security, particularly concerning physical building access, access control and emergency procedures?",
+            "Reponse": "YES",
+            "Commentaire": "Planned for end of 2024 with ISO27001 certification"
+        },
+        {
+            "Question": "Specify the location of your data centers. Do you own and host the servers?",
+            "Reponse": "NO",
+            "Commentaire": "Servers are hosted by a French provider for production and by another French provider for recovery and backup"
+        },
+        {
+            "Question": "Are there access authorization procedures limiting a person to zones necessary for their missions?",
+            "Reponse": "YES",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Are access reports established including date, time and access to sensitive zones? Are these reports regularly controlled?",
+            "Reponse": "NO",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Must all your employees enter your premises through a central and controlled entry point?",
+            "Reponse": "YES",
+            "Commentaire": "Badge access at elevator level with dedicated floor"
+        },
+        {
+            "Question": "Is the number of entries to processing zones and sensitive areas limited and are all entries locked and secured by an electronic access control system?",
+            "Reponse": "YES",
+            "Commentaire": "Badge access in our hosting providers' enclaves"
+        },
+        {
+            "Question": "Do the issuance, tracking and return of access keys/badges constitute an internal security process controlled periodically?",
+            "Reponse": "YES",
+            "Commentaire": "Physical access has a unique authorization profile in our premises, reviewed at each arrival or departure."
+        },
+        {
+            "Question": "Are buildings and sensitive zones under 24/7 surveillance by a security guard, video surveillance system or equivalent mechanism?",
+            "Reponse": "YES",
+            "Commentaire": "Confirmed by our hosting providers"
+        },
+        {
+            "Question": "Must your employees wear an identification badge in your premises?",
+            "Reponse": "NO",
+            "Commentaire": "We are still a medium-sized organization (50 people) where identification badges are not necessary to differentiate internal, external personnel or visitors"
+        },
+        {
+            "Question": "Must visitors sign a register indicating their name, represented company, reason for visit and requested internal person?",
+            "Reponse": "YES",
+            "Commentaire": "At our building reception"
+        }
+    ]
+}

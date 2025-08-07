@@ -1,0 +1,128 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Logs de recherche{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Logs de recherche</h1>
+    <div class="text-muted">
+        <i class="bi bi-clock"></i>
+        100 dernières recherches
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="bi bi-journal-text"></i>
+            Historique des recherches
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date/Heure</th>
+                        <th>Utilisateur</th>
+                        <th>Requête</th>
+                        <th>Langue</th>
+                        <th>Résultats</th>
+                        <th>Temps (ms)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>
+                            <small class="text-muted">{{ log.created_at.strftime('%d/%m/%Y %H:%M:%S') }}</small>
+                        </td>
+                        <td>
+                            {% if log.user %}
+                            <div class="d-flex align-items-center">
+                                <div class="user-avatar me-2" style="width: 24px; height: 24px; font-size: 0.7rem;">
+                                    {{ log.user.username[0].upper() }}
+                                </div>
+                                <span>{{ log.user.username }}</span>
+                            </div>
+                            {% else %}
+                            <span class="text-muted">Anonyme</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="text-truncate" style="max-width: 200px; display: inline-block;"
+                                title="{{ log.query }}">
+                                {{ log.query }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-info">{{ log.language|upper }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-success">{{ log.results_count }}</span>
+                        </td>
+                        <td>
+                            {% if log.response_time < 500 %} <span class="badge bg-success">{{ log.response_time
+                                }}</span>
+                                {% elif log.response_time < 1000 %} <span class="badge bg-warning">{{ log.response_time
+                                    }}</span>
+                                    {% else %}
+                                    <span class="badge bg-danger">{{ log.response_time }}</span>
+                                    {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if not logs %}
+        <div class="text-center py-4">
+            <i class="bi bi-search display-4 text-muted"></i>
+            <p class="text-muted mt-2">Aucun log de recherche disponible</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Statistiques rapides -->
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-search display-4 text-primary"></i>
+                <h4 class="mt-2">{{ logs|length }}</h4>
+                <small class="text-muted">Recherches récentes</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-people display-4 text-success"></i>
+                <h4 class="mt-2">{{ logs|selectattr("user")|list|length }}</h4>
+                <small class="text-muted">Recherches authentifiées</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-globe display-4 text-info"></i>
+                <h4 class="mt-2">{{ logs|map(attribute="language")|unique|list|length }}</h4>
+                <small class="text-muted">Langues utilisées</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-speedometer display-4 text-warning"></i>
+                <h4 class="mt-2">{{ "%.0f"|format(logs|map(attribute="response_time")|sum / logs|length) if logs else 0
+                    }}</h4>
+                <small class="text-muted">Temps moyen (ms)</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

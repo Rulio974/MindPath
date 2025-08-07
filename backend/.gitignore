@@ -1,0 +1,142 @@
+# Dossiers spécifiques à exclure
+local/
+module/
+module.zip
+
+# Fichiers de données (garder seulement un exemple)
+data/
+!data/
+!data/en/
+!data/en/ALPHA.json
+!data/fr/
+!data/fr/ALPHA.json
+
+# Bases de données
+*.db
+*.sqlite
+*.sqlite3
+semantic_search.db
+app.db
+
+# Fichiers volumineux d'embeddings et index
+*.npy
+*.faiss
+*.pkl
+embeddings.npy
+index.faiss
+metadata.pkl
+
+# Fichiers de configuration et environnement
+.env
+env.local
+.env.local
+.env.production
+.env.development
+
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environnements virtuels
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE et éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Fichiers de test et benchmark
+test_*.py
+*_test.py
+tests/test_*.py
+
+# Fichiers CSV volumineux (sauf les exemples)
+*.csv
+!demo_questionnaire_securite.csv
+
+# Fichiers exécutables
+*.exe
+*.app
+*.deb
+*.rpm
+
+# Fichiers de package Node.js (si présents)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Fichiers Docker (optionnel, décommentez si nécessaire)
+# Dockerfile
+# docker-compose.yml
+
+# Fichiers de sauvegarde
+*.backup
+*.bak
+*.orig
+
+# Fichiers volumineux génériques
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Fichiers système Windows
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Fichiers système macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fichiers système Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*

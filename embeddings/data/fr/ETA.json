@@ -1,0 +1,66 @@
+{
+    "date": "2023-12-15",
+    "Entreprise": "ETA",
+    "data": [
+        {
+            "Question": "L'accès privilégié devrait bénéficier d'un accès renforcé. L'application doit supporter le mécanisme standard d'authentification multi-facteurs",
+            "Reponse": "OUI",
+            "Commentaire": "Support de l'AMF et mise en place"
+        },
+        {
+            "Question": "Le fournisseur doit s'assurer que les accès sont nécessaires et adaptés. Le fournisseur suit un processus d'examen de compte et d'accès fondé sur une politique appliquée au moins une fois par année",
+            "Reponse": "OUI",
+            "Commentaire": "Révisé tous les 6 mois"
+        },
+        {
+            "Question": "Les données doivent être hébergées dans un pays de l'Union européenne ou dans le pays où les ressources sont utilisées",
+            "Reponse": "OUI",
+            "Commentaire": "Hébergé en France"
+        },
+        {
+            "Question": "Les centres de données hébergeant des applications doivent être certifiés pour la sécurité physique de leur infrastructure. Le fournisseur doit présenter une certification pour la sécurité physique (certification ISAE 3402, SOC ou similaire)",
+            "Reponse": "OUI",
+            "Commentaire": "Nos centres de données sont tous certifiés SOC 1, 2 & 3"
+        },
+        {
+            "Question": "Le service doit être disponible selon les exigences opérationnelles et protégé par des processus de reprise après sinistre. Le service ne peut pas être indisponible plus de 48 heures et les processus de reprise après sinistre sont disponibles et testés régulièrement",
+            "Reponse": "OUI",
+            "Commentaire": "Nous avons un RPO de 24h et un RTO de 4h"
+        },
+        {
+            "Question": "Le service doit être sauvegardé conformément aux exigences de l'entreprise et les restaurations doivent être testées régulièrement. Le service doit être sauvegardé au moins tous les jours avec une conservation d'au moins 6 mois. La restauration doit être testée au moins une fois par an",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Nous sauvegardons tous les jours, mais les sauvegardes ne sont stockées qu'un mois. Nous pouvons prolonger cette période à certaines conditions à discuter."
+        },
+        {
+            "Question": "Le fournisseur s'engage à chiffrer les données et les communications avec des méthodes cryptographiques non obsolètes. La base de données doit être chiffrée. L'accès HTTPS utilise la certification de dernière génération (TLS / SHA256 / ECC)",
+            "Reponse": "OUI",
+            "Commentaire": "Le disque de base de données est chiffré"
+        },
+        {
+            "Question": "Les données propriétaires ne doivent pas être accessibles par un tiers non autorisé. Le fournisseur introduit les moyens mis en place pour assurer la confidentialité des données avec un partitionnement logique",
+            "Reponse": "OUI",
+            "Commentaire": "Les données sont séparées : logiquement en cas d'abonnement mutualisé, physiquement (une autre base de données) en cas d'abonnement dédié"
+        },
+        {
+            "Question": "Le vendeur doit signer un accord de non-divulgation avec le client. Un contrat ou une clause de confidentialité détaillée incluant tous les sous-traitants est signé",
+            "Reponse": "OUI",
+            "Commentaire": "Nous incluons des clauses de confidentialité dans chaque contrat de tiers que nous utilisons et nous pouvons en signer un avec le client si nécessaire"
+        },
+        {
+            "Question": "Le vendeur doit garantir la réversibilité totale du service en cas de changement du prestataire de services. Extraction structurée et exploitable des données commerciales du client est possible au niveau du fournisseur",
+            "Reponse": "OUI",
+            "Commentaire": "L'exportation JSON peut être demandée par le client, à tout moment."
+        },
+        {
+            "Question": "Le fournisseur accepte d'être vérifié. Le client pourrait procéder à des audits sur la sécurité technique et organisationnelle au moins une fois par an",
+            "Reponse": "OUI",
+            "Commentaire": "Les audits sont autorisés mais sous réserve d'un préavis d'un mois."
+        },
+        {
+            "Question": "Toutes les actions des utilisateurs et des administrateurs doivent être tracées conformément aux règlements applicables. Sans règle définie, la conservation devrait respecter 180 jours",
+            "Reponse": "OUI",
+            "Commentaire": "Les journaux sont disponibles 36 mois en plateforme pour les utilisateurs administrateurs"
+        }
+    ]
+}

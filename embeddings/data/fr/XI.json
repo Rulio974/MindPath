@@ -1,0 +1,106 @@
+{
+    "date": "2022-10-12",
+    "Entreprise": "XI",
+    "data": [
+        {
+            "Question": "Je souhaite pouvoir consulter les données de mon entreprise en temps réel via un tableau de bord",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir exporter les données sous différents formats (Excel, PDF, CSV)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir filtrer et trier les informations selon mes critères",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir créer des rapports personnalisés",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Fonctionnalité disponible avec des modèles prédéfinis"
+        },
+        {
+            "Question": "Je souhaite pouvoir recevoir des alertes automatiques en cas d'anomalie",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir gérer les droits d'accès de mes utilisateurs",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir accéder à l'application depuis différents appareils (mobile, tablette)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir intégrer l'application avec nos systèmes existants",
+            "Reponse": "PARTIEL",
+            "Commentaire": "API disponible pour les intégrations principales"
+        },
+        {
+            "Question": "Je souhaite pouvoir personnaliser l'interface selon nos besoins",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Personnalisation limitée au logo et couleurs"
+        },
+        {
+            "Question": "Je souhaite pouvoir bénéficier d'un support technique réactif",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir former mes équipes à l'utilisation de l'outil",
+            "Reponse": "OUI",
+            "Commentaire": "Formation initiale incluse, formations complémentaires sur devis"
+        },
+        {
+            "Question": "Je souhaite pouvoir suivre l'évolution des performances de mon entreprise",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir comparer nos données avec des benchmarks sectoriels",
+            "Reponse": "NON",
+            "Commentaire": "Fonctionnalité non disponible actuellement"
+        },
+        {
+            "Question": "Je souhaite pouvoir archiver automatiquement les anciennes données",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir collaborer avec mes équipes sur les analyses",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Partage de rapports possible, collaboration temps réel limitée"
+        },
+        {
+            "Question": "Je souhaite pouvoir planifier des tâches récurrentes",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir gérer les versions de mes documents",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir effectuer des recherches avancées dans les données",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir créer des workflows automatisés",
+            "Reponse": "PARTIEL",
+            "Commentaire": "Workflows simples disponibles"
+        },
+        {
+            "Question": "Je souhaite pouvoir garantir la sécurité de nos données sensibles",
+            "Reponse": "OUI",
+            "Commentaire": "Chiffrement bout en bout et conformité RGPD"
+        }
+    ]
+}

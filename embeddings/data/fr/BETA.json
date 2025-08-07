@@ -1,0 +1,251 @@
+{
+    "date": "2023-02-28",
+    "Entreprise": "BETA",
+    "data": [
+        {
+            "Question": "Je souhaite me connecter en utilisant l'adresse email professionnelle de mon organisation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir me former à l'outil via un module e-learning de moins de 4h pour une prise en main rapide",
+            "Reponse": "OUI",
+            "Commentaire": "Le parcours de formation complet comprend actuellement 5 ateliers de 5 heures chacun"
+        },
+        {
+            "Question": "Je souhaite pouvoir contacter un support utilisateur final (N1) en anglais ou en français",
+            "Reponse": "OUI",
+            "Commentaire": "Support via la solution (chat) ou par email"
+        },
+        {
+            "Question": "Je souhaite pouvoir configurer la langue de l'application en anglais ou en français",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir consulter les tableaux de bord mis à ma disposition",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir filtrer les tableaux de bord selon des critères (priorité, société, statut, date, catégorie...)",
+            "Reponse": "NON",
+            "Commentaire": "Il est possible de construire autant de tableaux de bord que souhaité.\nChaque tableau de bord ayant ses indicateurs par priorité/statut/date/catégorie.\n\nPour chaque tableau de bord il existe 2 filtres : le périmètre (la ou les sociétés concernées) et la date."
+        },
+        {
+            "Question": "Je souhaite pouvoir définir le statut des actions",
+            "Reponse": "OUI",
+            "Commentaire": "Une action comporte un statut (à planifier, planifié, en cours, annulé, etc.) mais aussi des commentaires, un pourcentage d'avancement ainsi que des documents de preuve. Les preuves peuvent être obligatoires pour clôturer une action (à définir par l'administrateur)"
+        },
+        {
+            "Question": "Je souhaite pouvoir être alerté de l'échéance de mes actions",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des documents comme éléments de preuve de l'auto-évaluation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir m'auto-évaluer par rapport à un référentiel défini par le groupe et spécifique pour mon organisation (Standard de sécurité V8 + mesures complémentaires)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir m'auto-évaluer par rapport à un référentiel exigé par une autre partie (ex : client, certification ISO)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir, lors d'une évaluation sur un référentiel, voir le score dans un autre référentiel même s'il manque des éléments",
+            "Reponse": "NON",
+            "Commentaire": "La plateforme comporte aujourd'hui 26 référentiels de sécurité parmi lesquels (ISO27x, NIST, TISAX). D'autres standards peuvent être ajoutés lors d'une intégration"
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des membres de mon organisation sur mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": "Nécessite un compte pilote (administrateur) soumis à licence"
+        },
+        {
+            "Question": "Je souhaite pouvoir modifier les droits (écriture/lecture) et les accès (menus, tableaux de bord, fonctionnalités) des membres de mon organisation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir définir un référentiel d'auto-évaluation exigé par une autre partie (ex : client, certification ISO)",
+            "Reponse": "OUI",
+            "Commentaire": "À condition que le référentiel soit implémenté dans la plateforme"
+        },
+        {
+            "Question": "Je souhaite pouvoir affecter une partie de l'auto-évaluation à un membre de l'organisation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir suivre la complétude et l'avancement de l'auto-évaluation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir avoir un plan d'action en relation avec l'auto-évaluation le plus automatisé possible",
+            "Reponse": "OUI",
+            "Commentaire": "Possibilité de créer des actions à partir de l'auto-évaluation"
+        },
+        {
+            "Question": "Je souhaite pouvoir affecter des actions à un membre de l'organisation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir définir des priorités et des dates d'engagement sur les actions du plan d'action",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir suivre l'avancement du plan d'action en fonction de critères (priorité, société, statut, date, catégorie...)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir connaître l'impact de la réalisation des actions sur le taux de conformité",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des actions spécifiques à mon organisation et les regrouper dans une catégorie particulière",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir importer un plan d'action existant",
+            "Reponse": "OUI",
+            "Commentaire": "Besoin de le mettre au format de la plateforme"
+        },
+        {
+            "Question": "Je souhaite pouvoir créer des tableaux de bord spécifiques (filtre par priorités, par date...)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir valider les actions réalisées par un autre utilisateur de mon organisation",
+            "Reponse": "OUI",
+            "Commentaire": "Nécessite un compte pilote (administrateur) soumis à licence"
+        },
+        {
+            "Question": "Je souhaite pouvoir exporter le plan d'action et les auto-évaluations",
+            "Reponse": "NON",
+            "Commentaire": "Fonctionnalité en cours d'implémentation. Mise en production prévue pour premier trimestre 2023"
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des risques identifiés et les mettre en relation avec le plan d'action",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir consulter les risques et suivre leur évolution",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir relancer des personnes concernant leurs actions (plan d'action ou auto-évaluation)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir consulter les différents éléments des sociétés de mon périmètre (plan d'action, auto-évaluation, risques...)",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir consolider les éléments des sociétés de mon périmètre dans un seul tableau de bord",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir créer des tableaux de bord spécifiques applicables pour mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des membres sur une société de mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": "Nécessite un compte pilote (administrateur) soumis à licence"
+        },
+        {
+            "Question": "Je souhaite pouvoir modifier les droits (écriture/lecture) et les accès (menus, tableaux de bord, fonctionnalités) des membres de mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir définir un référentiel d'auto-évaluation pour une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre, basé sur un standard de sécurité V8 (référentiel déjà implémenté dans la solution)",
+            "Reponse": "OUI",
+            "Commentaire": "Standard de sécurité V8 déjà implémenté dans la solution"
+        },
+        {
+            "Question": "Je souhaite pouvoir définir un référentiel d'auto-évaluation pour une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre, basé sur d'autres standards (ISO, TISAX)",
+            "Reponse": "NON",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir définir le niveau d'auto-évaluation pour chaque société",
+            "Reponse": "NON",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des actions à une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter un risque pour une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre et les mettre en relation avec un plan d'action",
+            "Reponse": "OUI",
+            "Commentaire": "Les risques sont associés à un périmètre. Un périmètre représente une société"
+        },
+        {
+            "Question": "Je souhaite pouvoir suivre l'avancement du plan d'action d'une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir suivre l'avancement des auto-évaluations d'une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir créer un tableau de bord pour une société, un groupe de sociétés ou l'ensemble des sociétés de mon périmètre",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir enregistrer la liste des contacts sécurité dans un périmètre",
+            "Reponse": "NON",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir définir l'organisation des sociétés (regroupement et niveau de profondeur > 3)",
+            "Reponse": "OUI",
+            "Commentaire": "Possibilité d'avoir un périmètre par société. Faire des groupes de sociétés. Faire un groupe de l'ensemble des sociétés (3 niveaux de profondeur)"
+        },
+        {
+            "Question": "Je souhaite pouvoir définir les responsables sécurité",
+            "Reponse": "OUI",
+            "Commentaire": "Possibilité de définir des rôles pour chaque profil dans la plateforme"
+        },
+        {
+            "Question": "Je souhaite pouvoir ajouter des sociétés dans une organisation",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir affecter des sociétés dans le périmètre d'un responsable sécurité",
+            "Reponse": "OUI",
+            "Commentaire": ""
+        },
+        {
+            "Question": "Je souhaite pouvoir définir les référentiels disponibles dans le groupe",
+            "Reponse": "OUI",
+            "Commentaire": "Besoin de les implémenter s'ils ne sont pas déjà présents"
+        }
+    ]
+}

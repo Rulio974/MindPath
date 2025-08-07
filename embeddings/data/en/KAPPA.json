@@ -1,0 +1,26 @@
+{
+    "date": "2024-04-12",
+    "Entreprise": "KAPPA",
+    "data": [
+        {
+            "Question": "Do you have IT security governance?",
+            "Reponse": "YES",
+            "Commentaire": "Monthly security committee"
+        },
+        {
+            "Question": "Do you have an access management policy?",
+            "Reponse": "YES",
+            "Commentaire": "Authorization management and quarterly review"
+        },
+        {
+            "Question": "How do you protect personal data?",
+            "Reponse": "YES",
+            "Commentaire": "Encryption and pseudonymization of sensitive data"
+        },
+        {
+            "Question": "Do you perform security audits?",
+            "Reponse": "YES",
+            "Commentaire": "Annual internal and external audits"
+        }
+    ]
+}

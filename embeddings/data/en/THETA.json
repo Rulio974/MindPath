@@ -1,0 +1,31 @@
+{
+    "date": "2023-09-15",
+    "Entreprise": "THETA",
+    "data": [
+        {
+            "Question": "What is your IT security policy?",
+            "Reponse": "YES",
+            "Commentaire": "Security policy based on ISO 27001"
+        },
+        {
+            "Question": "Do you have security certifications?",
+            "Reponse": "YES",
+            "Commentaire": "ISO 27001, SOC 2 Type II"
+        },
+        {
+            "Question": "How do you manage user access?",
+            "Reponse": "YES",
+            "Commentaire": "Access management with multi-factor authentication"
+        },
+        {
+            "Question": "Where is data hosted?",
+            "Reponse": "YES",
+            "Commentaire": "Data hosted exclusively in European Union"
+        },
+        {
+            "Question": "Do you have a business continuity plan?",
+            "Reponse": "YES",
+            "Commentaire": "BCP tested annually with RTO < 4h"
+        }
+    ]
+}

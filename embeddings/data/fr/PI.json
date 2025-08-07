@@ -1,0 +1,96 @@
+{
+    "date": "2023-01-21",
+    "Entreprise": "PI",
+    "data": [
+        {
+            "Question": "Comment sensibilisez-vous vos collaborateurs à la protection des données à caractère personnel ? Quel est le pourcentage de collaborateurs sensibilisés à la protection des données cette année ?",
+            "Reponse": "",
+            "Commentaire": "Session de sensibilisation pour l'ensemble des collaborateurs à venir (fin d'année)"
+        },
+        {
+            "Question": "Si vous avez une personne responsable de la sécurité SI, préciser le contact ?",
+            "Reponse": "",
+            "Commentaire": "Contact disponible sur demande"
+        },
+        {
+            "Question": "Comment sensibilisez-vous vos collaborateurs à la sécurité SI ? Quel est le pourcentage de collaborateurs sensibilisés à la sécurité SI cette année ?",
+            "Reponse": "",
+            "Commentaire": "2 niveaux de sensibilisation :\n - Les développeurs sont sensibilisés aux développements sécurisés - Réalisé récemment\n - L'ensemble des collaborateurs va suivre une session de formation d'ici fin d'année\n-> À date, 20% des collaborateurs formés environ"
+        },
+        {
+            "Question": "Lister les politiques de sécurité en vigueur dans votre organisation ?",
+            "Reponse": "",
+            "Commentaire": "PGSSI\nPSSI\nGestion des vulnérabilités\nGestion des incidents\nGestion de la continuité d'activité\nChecklist de recette sécurité\nPlan de contrôle SSI\nPolitique de mot de passe\nClassification des données\nGestion du changement"
+        },
+        {
+            "Question": "La solution inclut-elle une solution de sauvegarde et exportable vers le client ?",
+            "Reponse": "Oui",
+            "Commentaire": "Le client peut exporter l'ensemble de ses données via des fonctions d'export. Le prestataire peut, sur demande, fournir l'ensemble des données au format JSON"
+        },
+        {
+            "Question": "La solution est-elle compatible avec des solutions de gestion d'identités en mode API ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "La solution supporte-t-elle nativement de l'authentification ADFS ou SAML ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        },
+        {
+            "Question": "La solution propose-t-elle une authentification MFA intégrée (ne pas confondre avec le MFA entreprise) ?",
+            "Reponse": "Oui",
+            "Commentaire": "Oui"
+        },
+        {
+            "Question": "Si la solution ou l'application a un mécanisme natif de vérification de fichiers/pièces jointes malicieux, précisez la solution utilisée ?",
+            "Reponse": "Non",
+            "Commentaire": "Non"
+        },
+        {
+            "Question": "Si l'application a été testée et revue en termes de sécurité par un prestataire, précisez la date de la/les dernières évaluations ? Précisez si le/les prestataires ont une qualification (ex. PASSI, ...) ?",
+            "Reponse": "Oui",
+            "Commentaire": "Le dernier test d'intrusion a été réalisé récemment.\nLe prestataire ne dispose pas de qualification PASSI"
+        },
+        {
+            "Question": "La solution est-elle monitorée par un SOC, si oui interne ou externe ?",
+            "Reponse": "NON",
+            "Commentaire": "Le projet de SOC est en cours et doit aboutir prochainement"
+        },
+        {
+            "Question": "La solution est-elle hébergée en EU ? Si oui, qui est l'hébergeur et dans quel pays ?",
+            "Reponse": "OUI",
+            "Commentaire": "La solution est hébergée en France (hébergeurs français). Nous disposons d'une offre SecNumCloud également en France"
+        },
+        {
+            "Question": "Quels types de données sont transférées ou traitées à l'extérieur de l'UE ?",
+            "Reponse": "",
+            "Commentaire": "Pas de données traitées hors UE"
+        },
+        {
+            "Question": "Si la solution utilise des services ou fournisseurs tiers, précisez lesquels et pourquoi ?",
+            "Reponse": "",
+            "Commentaire": "Les services tiers se limitent au service d'hébergement (cf réponses précédentes)"
+        },
+        {
+            "Question": "La solution est-elle capable de pousser des logs ou évènements vers un SIEM ou un SOC ?",
+            "Reponse": "NON",
+            "Commentaire": "Pas à date"
+        },
+        {
+            "Question": "Quelle est la durée de conservation des données prévues en ligne (paramétrage par défaut) ? Si oui est-elle paramétrable ?",
+            "Reponse": "",
+            "Commentaire": "La durée de conservation des données en ligne n'est pas paramétrable et correspond à 3 ans ou la durée du contrat + 60 jours"
+        },
+        {
+            "Question": "Après combien de temps les données sont-elles supprimées (en ligne, sauvegardes, et archives) ?",
+            "Reponse": "",
+            "Commentaire": "En cas de résiliation, ou à la demande du client, l'ensemble des données relatives au client sont supprimées. Cela comprend :\n - Les données de production ;\n - L'ensemble des sauvegardes associées au client.\n\nLes données resteront toutefois dans les sauvegardes chiffrées jusqu'à leur date d'expiration (60 jours)."
+        },
+        {
+            "Question": "Si la solution nécessite l'envoi de mails (ex. notifications), peut-on limiter les adresses IP ou utiliser un compte mail client ?",
+            "Reponse": "",
+            "Commentaire": "À date, nous ne pouvons pas donner des IP fixes sur ce service. Par contre tous nos mails proviennent d'une adresse de notre société."
+        }
+    ]
+}

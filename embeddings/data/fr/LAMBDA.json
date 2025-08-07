@@ -1,0 +1,51 @@
+{
+    "date": "2024-08-10",
+    "Entreprise": "LAMBDA",
+    "data": [
+        {
+            "Question": "Des relations appropriées avec des groupes d'intérêt, des forums spécialisés dans la cybersécurité et des associations professionnelles sont-elles entretenues ?",
+            "Reponse": "OUI ",
+            "Commentaire": "Membre d'associations professionnelles cybersécurité"
+        },
+        {
+            "Question": "Un programme de sensibilisation à la cybersécurité est-il mis en place au sein de l'organisation ? Une action de sensibilisation a-t-elle été réalisée au cours des 6 derniers mois ?",
+            "Reponse": "OUI ",
+            "Commentaire": "Sensibilisation trimestrielle de tous les nouveaux arrivants et tous les 2 ans pour les personnes ayant déjà suivi la sensibilisation"
+        },
+        {
+            "Question": "L'organisation a-t-elle mis en place une gouvernance cybersécurité par la gestion des risques au sein de son organisation ?",
+            "Reponse": "OUI ",
+            "Commentaire": "Analyse de risques réalisée, revue annuellement au minimum et qui donne lieu à plan des traitements des risques monitoré dont les résultats sont présentés régulièrement"
+        },
+        {
+            "Question": "Les risques de cybersécurité sont-ils partagés au niveau exécutif de l'organisation ?",
+            "Reponse": "OUI ",
+            "Commentaire": "Engagement de la direction dans la PSSI"
+        },
+        {
+            "Question": "L'organisation a-t-elle mis en place un Délégué à la Protection des Données (DPO) ?",
+            "Reponse": "OUI ",
+            "Commentaire": "DPO accessible par email"
+        },
+        {
+            "Question": "L'organisation est-elle certifiée ISO27001 ? Ou d'une autre certification de Sécurité SI ? Si oui, merci de fournir le(s) certificat(s) les plus récents.",
+            "Reponse": "NON",
+            "Commentaire": "Certification à venir, objectif d'obtention sur T1 2024"
+        },
+        {
+            "Question": "Existe-t-il un Plan de Continuité d'Activité ? Le Plan de Continuité d'Activité comprend-il des scénarios relatifs à une cyberattaque ? Le Plan de Continuité d'Activité est-il régulièrement testé ?",
+            "Reponse": "OUI ",
+            "Commentaire": "PCA existant avec PRA, test annuel du PCA"
+        },
+        {
+            "Question": "L'organisation recense-t-elle ses vulnérabilités en s'appuyant sur des sources de confiance (CERT) ? Un programme/processus de gestion des vulnérabilités est-il mis en place ?",
+            "Reponse": "OUI ",
+            "Commentaire": "Gestion des vulnérabilités avec abonnements aux organismes nationaux de cybersécurité"
+        },
+        {
+            "Question": "L'organisation dispose-t-elle de technologies de protection contre les attaques par mail ? L'organisation dispose-t-elle d'un outillage permettant d'assurer la sécurité de la navigation internet ?",
+            "Reponse": "OUI ",
+            "Commentaire": "Filtres anti-spam et DMARC pour le mail\nPas d'outil sur la navigation internet à l'heure actuelle"
+        }
+    ]
+}

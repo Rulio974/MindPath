@@ -1,0 +1,395 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="page-title">Dashboard</h1>
+        <div class="text-muted">
+            <i class="bi bi-calendar"></i>
+            <span id="current-time">Chargement...</span>
+        </div>
+    </div>
+</div>
+
+<!-- Statistiques générales -->
+<div class="row mb-4" id="stats-cards">
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card">
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+                <h3 class="mb-0 mt-2">...</h3>
+                <small>Utilisateurs totaux</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card success">
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+                <h3 class="mb-0 mt-2">...</h3>
+                <small>Utilisateurs actifs</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card warning">
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+                <h3 class="mb-0 mt-2">...</h3>
+                <small>Recherches totales</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card info">
+            <div class="card-body text-center">
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Chargement...</span>
+                </div>
+                <h3 class="mb-0 mt-2">...</h3>
+                <small>Langues supportées</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Activité récente -->
+<div class="row" id="activity-section">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-clock-history"></i>
+                    Recherches récentes
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Chargement...</span>
+                    </div>
+                    <p class="mt-2 text-muted">Chargement des données...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-person-plus"></i>
+                    Utilisateurs récents
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Chargement...</span>
+                    </div>
+                    <p class="mt-2 text-muted">Chargement des données...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actions rapides -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-lightning"></i>
+                    Actions rapides
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <a href="/admin/users" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-people me-2"></i>
+                            Gérer les utilisateurs
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="/admin/logs" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-journal-text me-2"></i>
+                            Voir les logs
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="/docs" target="_blank" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-book me-2"></i>
+                            Documentation API
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="/admin/api/stats" target="_blank" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-bar-chart me-2"></i>
+                            Statistiques JSON
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Charger les données du dashboard
+    async function loadDashboardData() {
+        try {
+            const response = await authenticatedFetch('/admin/api/dashboard');
+            if (!response) {
+                console.log('Pas de réponse du serveur');
+                return;
+            }
+
+            const data = await response.json();
+
+            // Mettre à jour les statistiques
+            updateStatsCards(data.stats);
+
+            // Mettre à jour l'activité récente
+            updateRecentActivity(data.stats);
+
+            // Mettre à jour les informations utilisateur
+            updateUserInfo(data.current_user);
+
+        } catch (error) {
+            console.error('Erreur lors du chargement des données:', error);
+
+            // Afficher des données par défaut en cas d'erreur
+            showDefaultDashboard();
+        }
+    }
+
+    // Afficher le dashboard par défaut
+    function showDefaultDashboard() {
+        const cards = document.querySelectorAll('#stats-cards .card-body');
+
+        // Données par défaut
+        cards[0].innerHTML = `
+            <i class="bi bi-people display-4 mb-2"></i>
+            <h3 class="mb-0">-</h3>
+            <small>Utilisateurs totaux</small>
+        `;
+
+        cards[1].innerHTML = `
+            <i class="bi bi-person-check display-4 mb-2"></i>
+            <h3 class="mb-0">-</h3>
+            <small>Utilisateurs actifs</small>
+        `;
+
+        cards[2].innerHTML = `
+            <i class="bi bi-search display-4 mb-2"></i>
+            <h3 class="mb-0">-</h3>
+            <small>Recherches totales</small>
+        `;
+
+        cards[3].innerHTML = `
+            <i class="bi bi-globe display-4 mb-2"></i>
+            <h3 class="mb-0">2</h3>
+            <small>Langues supportées</small>
+        `;
+
+        // Activité par défaut
+        const activitySection = document.getElementById('activity-section');
+        activitySection.innerHTML = `
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-clock-history"></i>
+                            Recherches récentes
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-0">Connecté avec succès ! Les données se chargeront automatiquement.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-person-plus"></i>
+                            Utilisateurs récents
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-0">Interface d'administration fonctionnelle</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Mettre à jour les cartes de statistiques
+    function updateStatsCards(stats) {
+        const cards = document.querySelectorAll('#stats-cards .card-body');
+
+        // Utilisateurs totaux
+        cards[0].innerHTML = `
+        <i class="bi bi-people display-4 mb-2"></i>
+        <h3 class="mb-0">${stats.total_users}</h3>
+        <small>Utilisateurs totaux</small>
+    `;
+
+        // Utilisateurs actifs
+        cards[1].innerHTML = `
+        <i class="bi bi-person-check display-4 mb-2"></i>
+        <h3 class="mb-0">${stats.active_users}</h3>
+        <small>Utilisateurs actifs</small>
+    `;
+
+        // Recherches totales
+        cards[2].innerHTML = `
+        <i class="bi bi-search display-4 mb-2"></i>
+        <h3 class="mb-0">${stats.total_searches}</h3>
+        <small>Recherches totales</small>
+    `;
+
+        // Langues supportées
+        cards[3].innerHTML = `
+        <i class="bi bi-globe display-4 mb-2"></i>
+        <h3 class="mb-0">${stats.search_stats.length}</h3>
+        <small>Langues supportées</small>
+    `;
+    }
+
+    // Mettre à jour l'activité récente
+    function updateRecentActivity(stats) {
+        const activitySection = document.getElementById('activity-section');
+
+        // Recherches récentes
+        const recentSearchesHtml = stats.recent_searches.length > 0 ?
+            `<div class="list-group list-group-flush">
+            ${stats.recent_searches.map(search => `
+                <div class="list-group-item border-0 px-0">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="mb-1">${search.query.length > 50 ? search.query.substring(0, 50) + '...' : search.query}</h6>
+                            <small class="text-muted">
+                                <i class="bi bi-flag"></i> ${search.language.toUpperCase()}
+                                <i class="bi bi-clock ms-2"></i> ${search.response_time}ms
+                            </small>
+                        </div>
+                        <small class="text-muted">${new Date(search.created_at).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</small>
+                    </div>
+                </div>
+            `).join('')}
+        </div>` :
+            '<p class="text-muted mb-0">Aucune recherche récente</p>';
+
+        // Utilisateurs récents
+        const recentUsersHtml = stats.recent_users.length > 0 ?
+            `<div class="list-group list-group-flush">
+            ${stats.recent_users.map(user => `
+                <div class="list-group-item border-0 px-0">
+                    <div class="d-flex align-items-center">
+                        <div class="user-avatar me-3">
+                            ${user.username.charAt(0).toUpperCase()}
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="mb-0">${user.username}</h6>
+                            <small class="text-muted">${user.email}</small>
+                        </div>
+                        <div class="text-end">
+                            ${user.is_active ? '<span class="badge bg-success">Actif</span>' : '<span class="badge bg-secondary">Inactif</span>'}
+                            ${user.is_superuser ? '<span class="badge bg-primary">Admin</span>' : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>` :
+            '<p class="text-muted mb-0">Aucun utilisateur récent</p>';
+
+        activitySection.innerHTML = `
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-clock-history"></i>
+                        Recherches récentes
+                    </h5>
+                </div>
+                <div class="card-body">
+                    ${recentSearchesHtml}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-person-plus"></i>
+                        Utilisateurs récents
+                    </h5>
+                </div>
+                <div class="card-body">
+                    ${recentUsersHtml}
+                </div>
+            </div>
+        </div>
+    `;
+    }
+
+    // Mettre à jour les informations utilisateur
+    function updateUserInfo(user) {
+        // Mettre à jour l'avatar et le nom dans la sidebar
+        const userAvatar = document.querySelector('.user-avatar');
+        const userInfo = userAvatar.nextElementSibling;
+
+        if (userAvatar && userInfo) {
+            userAvatar.textContent = user.username.charAt(0).toUpperCase();
+            userInfo.querySelector('small').textContent = user.username;
+        }
+    }
+
+    // Mettre à jour l'heure actuelle
+    function updateCurrentTime() {
+        const now = new Date();
+        const timeString = now.toLocaleDateString('fr-FR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        document.getElementById('current-time').textContent = timeString;
+    }
+
+    // Charger les données au chargement de la page
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCurrentTime();
+
+        // Afficher le dashboard par défaut immédiatement
+        showDefaultDashboard();
+
+        // Attendre que l'authentification soit vérifiée avant de charger les données
+        setTimeout(() => {
+            loadDashboardData();
+        }, 1000);
+
+        // Mettre à jour l'heure toutes les minutes
+        setInterval(updateCurrentTime, 60000);
+
+        // Recharger les données toutes les 30 secondes
+        setInterval(loadDashboardData, 30000);
+    });
+</script>
+{% endblock %}

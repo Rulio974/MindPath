@@ -1,0 +1,222 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="page-title">Dashboard</h1>
+        <div class="text-muted">
+            <i class="bi bi-calendar"></i>
+            <span id="current-time">12/07/2025 11:57</span>
+        </div>
+    </div>
+</div>
+
+<!-- Statistiques générales -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card">
+            <div class="card-body text-center">
+                <i class="bi bi-people display-4 mb-2"></i>
+                <h3 class="mb-0">1</h3>
+                <small>Utilisateurs totaux</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card success">
+            <div class="card-body text-center">
+                <i class="bi bi-person-check display-4 mb-2"></i>
+                <h3 class="mb-0">1</h3>
+                <small>Utilisateurs actifs</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card warning">
+            <div class="card-body text-center">
+                <i class="bi bi-search display-4 mb-2"></i>
+                <h3 class="mb-0">0</h3>
+                <small>Recherches totales</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card stats-card info">
+            <div class="card-body text-center">
+                <i class="bi bi-globe display-4 mb-2"></i>
+                <h3 class="mb-0">2</h3>
+                <small>Langues supportées</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Activité récente -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-clock-history"></i>
+                    Recherches récentes
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-0">Aucune recherche récente pour le moment.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-person-plus"></i>
+                    Utilisateurs récents
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar me-3">A</div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0">admin</h6>
+                        <small class="text-muted">admin@example.com</small>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-success">Actif</span>
+                        <span class="badge bg-primary">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actions rapides -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-lightning"></i>
+                    Actions rapides
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <a href="/admin/users" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-people me-2"></i>
+                            Gérer les utilisateurs
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="/admin/logs" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-journal-text me-2"></i>
+                            Voir les logs
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="/docs" target="_blank" class="btn btn-outline-secondary w-100">
+                            <i class="bi bi-book me-2"></i>
+                            Documentation API
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button class="btn btn-primary w-100" onclick="testConnection()">
+                            <i class="bi bi-wifi me-2"></i>
+                            Test connexion
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Résultat du test -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div id="test-result"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    console.log('Dashboard chargé');
+
+    // Mettre à jour l'heure
+    function updateCurrentTime() {
+        const now = new Date();
+        const timeString = now.toLocaleDateString('fr-FR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        const timeElement = document.getElementById('current-time');
+        if (timeElement) {
+            timeElement.textContent = timeString;
+        }
+    }
+
+    // Test de connexion API
+    async function testConnection() {
+        const resultDiv = document.getElementById('test-result');
+        resultDiv.innerHTML = '<div class="alert alert-info"><i class="bi bi-arrow-clockwise"></i> Test en cours...</div>';
+
+        try {
+            const healthResponse = await fetch('/health');
+            const healthData = await healthResponse.json();
+
+            const token = localStorage.getItem('access_token');
+            let authResult = 'Non connecté';
+
+            if (token) {
+                try {
+                    const authResponse = await fetch('/auth/me', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (authResponse.ok) {
+                        const userData = await authResponse.json();
+                        authResult = `Connecté en tant que ${userData.username}`;
+                    }
+                } catch (e) {
+                    authResult = 'Token invalide';
+                }
+            }
+
+            resultDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <h5><i class="bi bi-check-circle"></i> Connexion réussie !</h5>
+                    <ul class="mb-0">
+                        <li>API Status: ${healthData.status}</li>
+                        <li>Authentification: ${authResult}</li>
+                        <li>Langues disponibles: ${healthData.available_languages.join(', ')}</li>
+                        <li>Moteurs chargés: ${healthData.engines_loaded}</li>
+                    </ul>
+                </div>
+            `;
+
+        } catch (error) {
+            resultDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    <h5><i class="bi bi-exclamation-triangle"></i> Erreur de connexion</h5>
+                    <p class="mb-0">${error.message}</p>
+                </div>
+            `;
+        }
+    }
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOM chargé');
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 60000);
+    });
+</script>
+{% endblock %}

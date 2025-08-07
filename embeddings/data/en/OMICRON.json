@@ -1,0 +1,106 @@
+{
+    "date": "2022-05-20",
+    "Entreprise": "OMICRON",
+    "data": [
+        {
+            "Question": "In which country is the data hosted?",
+            "Reponse": "",
+            "Commentaire": "France"
+        },
+        {
+            "Question": "What level of encryption is used to protect the data?",
+            "Reponse": "",
+            "Commentaire": "AES-256 for storage, TLS 1.3 for communications"
+        },
+        {
+            "Question": "Is your solution GDPR compliant?",
+            "Reponse": "YES",
+            "Commentaire": "GDPR certification under renewal"
+        },
+        {
+            "Question": "What is the guaranteed availability of your service?",
+            "Reponse": "",
+            "Commentaire": "99.5% SLA excluding scheduled maintenance"
+        },
+        {
+            "Question": "How do you manage data backups?",
+            "Reponse": "",
+            "Commentaire": "Daily backups with 30-day retention, geographic replication"
+        },
+        {
+            "Question": "Do you have a business continuity plan?",
+            "Reponse": "YES",
+            "Commentaire": "BCP tested annually, 4-hour RTO"
+        },
+        {
+            "Question": "Who has access to client data?",
+            "Reponse": "",
+            "Commentaire": "Access limited to authorized support and development teams"
+        },
+        {
+            "Question": "How do you manage user authentication?",
+            "Reponse": "",
+            "Commentaire": "Mandatory multi-factor authentication, SSO integration possible"
+        },
+        {
+            "Question": "Do you perform regular security testing?",
+            "Reponse": "YES",
+            "Commentaire": "Bi-annual penetration testing by external firm"
+        },
+        {
+            "Question": "How are security patches managed?",
+            "Reponse": "",
+            "Commentaire": "Automatic deployment of critical patches within 48h"
+        },
+        {
+            "Question": "Is your infrastructure certified?",
+            "Reponse": "YES",
+            "Commentaire": "ISO 27001 and SOC 2 Type II certification"
+        },
+        {
+            "Question": "How do you ensure action traceability?",
+            "Reponse": "",
+            "Commentaire": "Complete audit logs with 12-month retention"
+        },
+        {
+            "Question": "Do you provide an API for integration?",
+            "Reponse": "YES",
+            "Commentaire": "Documented REST API with OAuth 2.0 authentication"
+        },
+        {
+            "Question": "How do you handle scaling?",
+            "Reponse": "",
+            "Commentaire": "Load-based auto-scaling, microservices architecture"
+        },
+        {
+            "Question": "What is your incident management process?",
+            "Reponse": "",
+            "Commentaire": "24/7 on-call, automatic escalation based on criticality"
+        },
+        {
+            "Question": "How do you ensure data confidentiality?",
+            "Reponse": "",
+            "Commentaire": "End-to-end encryption, HSM-managed keys"
+        },
+        {
+            "Question": "Do you have a dedicated security team?",
+            "Reponse": "YES",
+            "Commentaire": "5-person cybersecurity team, certified CISO"
+        },
+        {
+            "Question": "How do you manage data deletion?",
+            "Reponse": "",
+            "Commentaire": "Secure deletion per NIST 800-88, destruction certificate"
+        },
+        {
+            "Question": "Does your solution support data export?",
+            "Reponse": "YES",
+            "Commentaire": "Complete export in standardized formats (JSON, XML, CSV)"
+        },
+        {
+            "Question": "How do you ensure team training?",
+            "Reponse": "",
+            "Commentaire": "Mandatory security training, annual updates"
+        }
+    ]
+}

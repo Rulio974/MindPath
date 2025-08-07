@@ -1,0 +1,46 @@
+{
+    "date": "2024-07-08",
+    "Entreprise": "ZETA",
+    "data": [
+        {
+            "Question": "Do you have a valid ISO27001 certification?",
+            "Reponse": "YES",
+            "Commentaire": "Valid ISO27001:2022 certification"
+        },
+        {
+            "Question": "Do you have an information systems security policy?",
+            "Reponse": "YES",
+            "Commentaire": "ISSP updated annually"
+        },
+        {
+            "Question": "Do you perform regular penetration tests?",
+            "Reponse": "YES",
+            "Commentaire": "Annual penetration tests by qualified provider"
+        },
+        {
+            "Question": "Do you have a business continuity plan?",
+            "Reponse": "YES",
+            "Commentaire": "BCP tested semi-annually"
+        },
+        {
+            "Question": "Is data hosted in France?",
+            "Reponse": "YES",
+            "Commentaire": "Hosting exclusively in France"
+        },
+        {
+            "Question": "Do you have a SOC?",
+            "Reponse": "YES",
+            "Commentaire": "Internal SOC 24/7"
+        },
+        {
+            "Question": "Do you encrypt data at rest and in transit?",
+            "Reponse": "YES",
+            "Commentaire": "AES-256 encryption at rest, TLS 1.3 in transit"
+        },
+        {
+            "Question": "Do you have a designated DPO?",
+            "Reponse": "YES",
+            "Commentaire": "Certified internal DPO"
+        }
+    ]
+}
