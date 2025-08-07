@@ -1,6 +1,6 @@
 # FastAPI et serveur web
 fastapi
-uvicorn
+uvicorn[standard]
 
 # Base de données
 sqlalchemy
@@ -15,7 +15,7 @@ jinja2
 # Variables d'environnement
 python-dotenv
 
-# Chargement des embeddings
+# Chargement des embeddings (pour l'API complète)
 numpy
 faiss-cpu
 sentence-transformers
@@ -23,6 +23,9 @@ torch
 
 # Détection de langue
 langdetect
+
+# Utilitaires
+tqdm
 
 # Sécurité
 python-multipart

@@ -28,7 +28,7 @@ def detect_language(text):
 
 def load_all_engines(embeddings_dir, embedding_model=None, crossencoder_model=None, batch_size=64):
     """
-    Charge tous les moteurs d'embeddings pré-calculés depuis le dossier backend/embeddings/.
+    Charge tous les moteurs d'embeddings pré-calculés depuis le dossier embeddings.
     """
     print(f"\n--- Chargement des embeddings depuis {embeddings_dir} ---")
     
@@ -45,5 +45,4 @@ def load_all_engines(embeddings_dir, embedding_model=None, crossencoder_model=No
     except Exception as e:
         print(f"❌ Erreur lors du chargement des embeddings: {e}")
         print("💡 Assurez-vous d'avoir calculé les embeddings avec le script embeddings/main.py")
-        print(f"   Les fichiers doivent être dans: {embeddings_dir}")
         return {}

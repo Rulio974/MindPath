@@ -8,4 +8,8 @@ torch
 langdetect
 
 # Utilitaires
-tqdm 
+tqdm
+
+# API de téléchargement
+fastapi
+uvicorn 
