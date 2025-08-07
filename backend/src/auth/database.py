@@ -37,26 +37,13 @@ def get_db():
 
 def init_db():
     """Initialise la base de données avec les données par défaut"""
-    from .models import Role, User, UserRole
-    from .security import get_password_hash
+    from .models import User
+    from .security import generate_api_token
     
     create_tables()
     
     db = SessionLocal()
     try:
-        # Créer les rôles par défaut
-        default_roles = [
-            {"name": "admin", "description": "Administrateur avec tous les droits"},
-            {"name": "user", "description": "Utilisateur standard avec accès à la recherche"},
-            {"name": "viewer", "description": "Utilisateur en lecture seule"},
-        ]
-        
-        for role_data in default_roles:
-            existing_role = db.query(Role).filter(Role.name == role_data["name"]).first()
-            if not existing_role:
-                role = Role(**role_data)
-                db.add(role)
-        
         # Créer un utilisateur admin par défaut
         admin_user = db.query(User).filter(User.username == "admin").first()
         if not admin_user:
@@ -64,18 +51,13 @@ def init_db():
                 email="admin@example.com",
                 username="admin",
                 full_name="Administrateur",
-                hashed_password=get_password_hash("admin123"),
+                api_token=generate_api_token(),
                 is_active=True,
-                is_superuser=True
+                is_admin=True
             )
             db.add(admin_user)
             db.commit()
-            
-            # Assigner le rôle admin
-            admin_role = db.query(Role).filter(Role.name == "admin").first()
-            if admin_role:
-                user_role = UserRole(user_id=admin_user.id, role_id=admin_role.id)
-                db.add(user_role)
+            print(f"Utilisateur admin créé avec le token: {admin_user.api_token}")
         
         db.commit()
         print("Base de données initialisée avec succès")

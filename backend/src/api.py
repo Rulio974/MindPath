@@ -19,8 +19,8 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 from src.utils import detect_language
 from src.auth.database import get_db, init_db
 from src.auth.models import User
-from src.auth.dependencies import get_current_active_user, get_optional_current_user
-from src.auth.routes import auth_router, users_router, roles_router
+from src.auth.dependencies import get_current_user, get_current_admin, get_optional_user
+from src.auth.routes import auth_router, users_router
 from src.auth.crud import SearchLogCRUD
 from src.auth.schemas import SearchLogCreate
 from src.admin import admin_router
@@ -41,7 +41,7 @@ def run_api_mode(engines, top_k, year_weighted):
     app = FastAPI(
         title="Moteur de recherche sémantique",
         description="API de recherche sémantique avec authentification pour questionnaires de sécurité",
-        version="2.0.0"
+        version="3.0.0"
     )
 
     app.add_middleware(
@@ -55,7 +55,6 @@ def run_api_mode(engines, top_k, year_weighted):
     # Inclure les routeurs d'authentification
     app.include_router(auth_router)
     app.include_router(users_router)
-    app.include_router(roles_router)
     app.include_router(admin_router)
 
     @app.get("/")
@@ -63,14 +62,12 @@ def run_api_mode(engines, top_k, year_weighted):
         """Point d'entrée de l'API"""
         return {
             "message": "Moteur de recherche sémantique avec authentification",
-            "version": "2.0.0",
+            "version": "3.0.0",
             "endpoints": {
-                "login": "/login",
                 "admin": "/admin",
                 "search": "/search",
                 "auth": "/auth",
                 "users": "/users",
-                "roles": "/roles",
                 "docs": "/docs"
             }
         }
@@ -83,7 +80,7 @@ def run_api_mode(engines, top_k, year_weighted):
     @app.post("/search")
     async def search_endpoint(
         request: Request,
-        current_user: User = Depends(get_current_active_user),
+        current_user: dict = Depends(get_current_user),
         db: Session = Depends(get_db)
     ):
         """
@@ -113,7 +110,7 @@ def run_api_mode(engines, top_k, year_weighted):
                 results_count=len(results),
                 response_time=response_time
             )
-            SearchLogCRUD.create_search_log(db, current_user.id, log_data)
+            SearchLogCRUD.create_search_log(db, current_user["user_id"], log_data)
         except Exception as e:
             print(f"Erreur lors du logging de la recherche : {e}")
         
@@ -124,14 +121,14 @@ def run_api_mode(engines, top_k, year_weighted):
                 "language": lang,
                 "results_count": len(results),
                 "response_time_ms": response_time,
-                "user_id": current_user.id
+                "user_id": current_user["user_id"]
             }
         })
 
     @app.post("/search/public")
     async def search_public_endpoint(
         request: Request,
-        current_user: Optional[User] = Depends(get_optional_current_user),
+        current_user: Optional[dict] = Depends(get_optional_user),
         db: Session = Depends(get_db)
     ):
         """
@@ -161,7 +158,7 @@ def run_api_mode(engines, top_k, year_weighted):
                 results_count=len(results),
                 response_time=response_time
             )
-            user_id = current_user.id if current_user else None
+            user_id = current_user["user_id"] if current_user else None
             SearchLogCRUD.create_search_log(db, user_id, log_data)
         except Exception as e:
             print(f"Erreur lors du logging de la recherche : {e}")
@@ -189,25 +186,19 @@ def run_api_mode(engines, top_k, year_weighted):
 
     @app.get("/stats")
     async def get_stats(
-        current_user: User = Depends(get_current_active_user),
+        current_user: dict = Depends(get_current_user),
         db: Session = Depends(get_db)
     ):
         """Statistiques de recherche pour l'utilisateur actuel"""
-        stats = SearchLogCRUD.get_search_statistics(db, current_user.id)
+        stats = SearchLogCRUD.get_search_statistics(db, current_user["user_id"])
         return stats
 
     @app.get("/admin/stats")
     async def get_admin_stats(
-        current_user: User = Depends(get_current_active_user),
+        current_user: dict = Depends(get_current_admin),
         db: Session = Depends(get_db)
     ):
         """Statistiques globales (admin seulement)"""
-        if not current_user.is_superuser:
-            raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
-                detail="Privilèges administrateur requis"
-            )
-        
         stats = SearchLogCRUD.get_search_statistics(db)
         return stats
 

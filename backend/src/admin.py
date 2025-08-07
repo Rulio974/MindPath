@@ -12,11 +12,10 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 
 from .auth.database import get_db
-from .auth.models import User, Role, UserRole, SearchLog
-from .auth.dependencies import get_current_superuser
+from .auth.models import User, SearchLog
+from .auth.dependencies import get_current_admin
 from .auth.schemas import UserCreate, UserUpdate, User as UserSchema
-from .auth.crud import UserCRUD, RoleCRUD, SearchLogCRUD
-from .auth.security import get_password_hash
+from .auth.crud import UserCRUD, SearchLogCRUD
 
 # Import des templates depuis api.py
 from fastapi.templating import Jinja2Templates
@@ -334,7 +333,7 @@ async def admin_dashboard(request: Request):
 
 @admin_router.get("/api/dashboard")
 async def admin_dashboard_data(
-    current_user: User = Depends(get_current_superuser),
+    current_user: User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     """Données du dashboard d'administration"""
@@ -361,7 +360,7 @@ async def admin_dashboard_data(
             "id": current_user.id,
             "username": current_user.username,
             "email": current_user.email,
-            "is_superuser": current_user.is_superuser
+            "is_admin": current_user.is_admin
         },
         "stats": {
             "total_users": total_users,
@@ -382,7 +381,7 @@ async def admin_dashboard_data(
                     "username": user.username,
                     "email": user.email,
                     "is_active": user.is_active,
-                    "is_superuser": user.is_superuser,
+                    "is_admin": user.is_admin,
                     "created_at": user.created_at.isoformat()
                 } for user in recent_users
             ],
@@ -415,7 +414,7 @@ async def admin_users(request: Request, db: Session = Depends(get_db)):
             "username": user.username,
             "email": user.email,
             "is_active": user.is_active,
-            "is_superuser": user.is_superuser,
+            "is_admin": user.is_admin,
             "created_at": user.created_at.strftime("%d/%m/%Y %H:%M") if user.created_at else "N/A",
             "roles": role_names
         })
@@ -714,8 +713,8 @@ async def admin_users(request: Request, db: Session = Depends(get_db)):
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="is_superuser" name="is_superuser">
-                                                <label class="form-check-label" for="is_superuser">
+                                                <input class="form-check-input" type="checkbox" id="is_admin" name="is_admin">
+                                                <label class="form-check-label" for="is_admin">
                                                     Administrateur
                                                 </label>
                                             </div>
@@ -762,7 +761,7 @@ async def admin_users(request: Request, db: Session = Depends(get_db)):
                                                     </div>
                                                     <div>
                                                         <strong>{user['username']}</strong>
-                                                        {'<i class="bi bi-shield-check text-primary ms-1" title="Administrateur"></i>' if user['is_superuser'] else ''}
+                                                        {'<i class="bi bi-shield-check text-primary ms-1" title="Administrateur"></i>' if user['is_admin'] else ''}
                                                     </div>
                                                 </div>
                                             </td>
@@ -880,7 +879,7 @@ async def admin_users(request: Request, db: Session = Depends(get_db)):
 
 @admin_router.get("/api/users")
 async def admin_users_data(
-    current_user: User = Depends(get_current_superuser),
+    current_user: User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     """Données des utilisateurs pour l'interface d'administration"""
@@ -902,7 +901,7 @@ async def admin_users_data(
             "username": user.username,
             "email": user.email,
             "is_active": user.is_active,
-            "is_superuser": user.is_superuser,
+            "is_admin": user.is_admin,
             "created_at": user.created_at.isoformat(),
             "roles": user_role_names
         })
@@ -927,9 +926,9 @@ async def create_user_admin(
     password: str = Form(...),
     full_name: Optional[str] = Form(None),
     is_active: bool = Form(True),
-    is_superuser: bool = Form(False),
+    is_admin: bool = Form(False),
     role_ids: List[int] = Form([]),
-    current_user: User = Depends(get_current_superuser),
+    current_user: User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     """Créer un nouvel utilisateur (admin)"""
@@ -955,7 +954,7 @@ async def create_user_admin(
             password=password,
             full_name=full_name,
             is_active=is_active,
-            is_superuser=is_superuser
+            is_admin=is_admin
         )
     except ValueError as e:
         raise HTTPException(
@@ -977,10 +976,10 @@ async def update_user_admin(
     username: str = Form(...),
     email: str = Form(...),
     is_active: bool = Form(True),
-    is_superuser: bool = Form(False),
+    is_admin: bool = Form(False),
     password: Optional[str] = Form(None),
     role_ids: List[int] = Form([]),
-    current_user: User = Depends(get_current_superuser),
+    current_user: User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     """Mettre à jour un utilisateur (admin)"""
@@ -994,7 +993,7 @@ async def update_user_admin(
         "username": username,
         "email": email,
         "is_active": is_active,
-        "is_superuser": is_superuser
+        "is_admin": is_admin
     }
     
     if password:
@@ -1018,7 +1017,7 @@ async def update_user_admin(
 @admin_router.post("/users/{user_id}/delete")
 async def delete_user_admin(
     user_id: int,
-    current_user: User = Depends(get_current_superuser),
+    current_user: User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     """Supprimer un utilisateur (admin)"""
@@ -1434,7 +1433,7 @@ async def admin_logs(request: Request):
 
 @admin_router.get("/api/stats")
 async def admin_api_stats(
-    current_user: User = Depends(get_current_superuser),
+    current_user: User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     """API pour récupérer les statistiques (pour les graphiques)"""

@@ -2,13 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 from langdetect import detect_langs
-
-# Ajouter le dossier embeddings au path pour importer embedding_loader
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'embeddings'))
-
-from embedding_loader import EmbeddingLoader
 
 def detect_language(text):
     """
@@ -33,6 +27,12 @@ def load_all_engines(embeddings_dir, embedding_model=None, crossencoder_model=No
     print(f"\n--- Chargement des embeddings depuis {embeddings_dir} ---")
     
     try:
+        # Import local pour éviter les problèmes de path
+        import sys
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'embeddings'))
+        
+        from embedding_loader import EmbeddingLoader
+        
         loader = EmbeddingLoader(embeddings_dir)
         engines = loader.load_all_engines()
         
@@ -45,4 +45,5 @@ def load_all_engines(embeddings_dir, embedding_model=None, crossencoder_model=No
     except Exception as e:
         print(f"❌ Erreur lors du chargement des embeddings: {e}")
         print("💡 Assurez-vous d'avoir calculé les embeddings avec le script embeddings/main.py")
+        print(f"   Les fichiers doivent être dans: {embeddings_dir}")
         return {}
