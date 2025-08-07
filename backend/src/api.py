@@ -7,8 +7,7 @@ from typing import Optional
 from fastapi import FastAPI, Request, Depends, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
+# Note: Imports HTML retirés - interface d'administration séparée
 from sqlalchemy.orm import Session
 import uvicorn
 from dotenv import load_dotenv
@@ -19,17 +18,16 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 from src.utils import detect_language
 from src.auth.database import get_db, init_db
 from src.auth.models import User
-from src.auth.dependencies import get_current_user, get_current_admin, get_optional_user
+from src.auth.dependencies import get_current_user, get_current_admin, get_current_admin_session, get_optional_user
 from src.auth.routes import auth_router, users_router
 from src.auth.crud import SearchLogCRUD
 from src.auth.schemas import SearchLogCreate
-from src.admin import admin_router
+# Note: Import admin_router retiré - interface d'administration séparée
 
 # Charger les variables d'environnement
 load_dotenv()
 
-# Configuration des templates
-templates = Jinja2Templates(directory="templates")
+# Note: Configuration templates retirée - interface d'administration séparée
 
 def run_api_mode(engines, top_k, year_weighted):
     """
@@ -37,6 +35,10 @@ def run_api_mode(engines, top_k, year_weighted):
     """
     # Initialiser la base de données
     init_db()
+    
+    # Créer un loader pour les recherches
+    from .embedding_loader import EmbeddingLoader
+    loader = EmbeddingLoader()
     
     app = FastAPI(
         title="Moteur de recherche sémantique",
@@ -46,16 +48,24 @@ def run_api_mode(engines, top_k, year_weighted):
 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"], 
+        allow_origins=[
+            "https://lesphinx.mindpath.fr", 
+            "http://lesphinx.mindpath.fr",
+            "http://localhost:8000",
+            "http://127.0.0.1:8000",
+            "http://164.132.58.187",
+            "file://"
+        ], 
         allow_credentials=True,
-        allow_methods=["*"],
+        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["*"],
+        expose_headers=["*"]
     )
 
-    # Inclure les routeurs d'authentification
+    # Inclure les routeurs d'authentification et API
     app.include_router(auth_router)
     app.include_router(users_router)
-    app.include_router(admin_router)
+    # Note: admin_router retiré - interface d'administration séparée
 
     @app.get("/")
     async def root():
@@ -64,7 +74,6 @@ def run_api_mode(engines, top_k, year_weighted):
             "message": "Moteur de recherche sémantique avec authentification",
             "version": "3.0.0",
             "endpoints": {
-                "admin": "/admin",
                 "search": "/search",
                 "auth": "/auth",
                 "users": "/users",
@@ -72,10 +81,7 @@ def run_api_mode(engines, top_k, year_weighted):
             }
         }
 
-    @app.get("/login", response_class=HTMLResponse)
-    async def login_page(request: Request):
-        """Page de connexion"""
-        return templates.TemplateResponse("login.html", {"request": request})
+    # Note: Page de connexion retirée - interface d'administration séparée
 
     @app.post("/search")
     async def search_endpoint(
@@ -97,7 +103,11 @@ def run_api_mode(engines, top_k, year_weighted):
         top_k_req = data.get("top_k", top_k)
         lang = detect_language(query)
         engine = engines.get(lang, engines.get("en"))
-        results = engine.search(query, top_k=top_k_req, rerank=False, year_weighted=year_weighted)
+        
+        if not engine:
+            return {"error": f"Aucun moteur disponible pour la langue {lang}"}
+        
+        results = loader.search(engine, query, top_k=top_k_req, year_weighted=year_weighted)
         
         # Calculer le temps de réponse
         response_time = int((time.time() - start_time) * 1000)  # en millisecondes
@@ -145,7 +155,11 @@ def run_api_mode(engines, top_k, year_weighted):
         top_k_req = data.get("top_k", top_k)
         lang = detect_language(query)
         engine = engines.get(lang, engines.get("en"))
-        results = engine.search(query, top_k=top_k_req, rerank=False, year_weighted=year_weighted)
+        
+        if not engine:
+            return {"error": f"Aucun moteur disponible pour la langue {lang}"}
+        
+        results = loader.search(engine, query, top_k=top_k_req, year_weighted=year_weighted)
         
         # Calculer le temps de réponse
         response_time = int((time.time() - start_time) * 1000)  # en millisecondes
@@ -186,21 +200,14 @@ def run_api_mode(engines, top_k, year_weighted):
 
     @app.get("/stats")
     async def get_stats(
-        current_user: dict = Depends(get_current_user),
+        current_user: dict = Depends(get_current_admin_session),
         db: Session = Depends(get_db)
     ):
         """Statistiques de recherche pour l'utilisateur actuel"""
-        stats = SearchLogCRUD.get_search_statistics(db, current_user["user_id"])
+        stats = SearchLogCRUD.get_search_statistics(db, current_user["id"])
         return stats
 
-    @app.get("/admin/stats")
-    async def get_admin_stats(
-        current_user: dict = Depends(get_current_admin),
-        db: Session = Depends(get_db)
-    ):
-        """Statistiques globales (admin seulement)"""
-        stats = SearchLogCRUD.get_search_statistics(db)
-        return stats
+    # Note: Endpoint admin/stats retiré - interface d'administration séparée
 
     # Configuration du serveur
     host = os.getenv("HOST", "0.0.0.0")
@@ -211,3 +218,4 @@ def run_api_mode(engines, top_k, year_weighted):
     print(f"🔐 Compte admin par défaut : admin / admin123")
     
     uvicorn.run(app, host=host, port=port)
+

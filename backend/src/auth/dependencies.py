@@ -6,6 +6,7 @@ from fastapi import Depends, HTTPException, status, Header
 from sqlalchemy.orm import Session
 from .database import get_db
 from .security import verify_api_token
+from .sessions import get_session
 
 def get_current_user(
     authorization: Optional[str] = Header(None),
@@ -64,4 +65,34 @@ def get_optional_user(
         user_info = verify_api_token(token, db)
         return user_info
     except:
-        return None 
+        return None
+
+def get_current_admin_session(
+    authorization: Optional[str] = Header(None)
+) -> dict:
+    """Dépendance pour obtenir l'utilisateur admin via session (interface admin)"""
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token de session requis",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    session_token = authorization.replace("Bearer ", "")
+    session = get_session(session_token)
+    
+    if not session:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Session invalide ou expirée",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    user_info = session["user_info"]
+    if not user_info.get("is_admin", False):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Privilèges administrateur requis"
+        )
+    
+    return user_info 

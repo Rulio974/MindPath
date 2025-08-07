@@ -1,0 +1,32 @@
+{
+  "calculation_date": "2025-08-07T09:01:03.411530",
+  "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+  "crossencoder_model": null,
+  "languages_processed": [
+    "fr",
+    "en"
+  ],
+  "results": {
+    "fr": {
+      "language": "fr",
+      "num_questions": 323,
+      "embedding_shape": [
+        323,
+        384
+      ],
+      "index_path": "embeddings/fr/faiss_index_flat.idx",
+      "output_dir": "embeddings/fr"
+    },
+    "en": {
+      "language": "en",
+      "num_questions": 298,
+      "embedding_shape": [
+        298,
+        384
+      ],
+      "index_path": "embeddings/en/faiss_index_flat.idx",
+      "output_dir": "embeddings/en"
+    }
+  },
+  "total_questions": 621
+}

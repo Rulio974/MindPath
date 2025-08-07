@@ -7,7 +7,7 @@ from sqlalchemy import and_, func
 from datetime import datetime
 from .models import User, SearchLog
 from .schemas import UserCreate, UserUpdate, SearchLogCreate
-from .security import generate_api_token
+from .security import generate_api_token, hash_password
 
 class UserCRUD:
     """Opérations CRUD pour les utilisateurs"""
@@ -43,10 +43,13 @@ class UserCRUD:
     def create_user(db: Session, user: UserCreate) -> User:
         """Crée un nouvel utilisateur"""
         api_token = generate_api_token()
+        password_hash = hash_password(user.password) if user.password else None
+        
         db_user = User(
             email=user.email,
             username=user.username,
             full_name=user.full_name,
+            password_hash=password_hash,
             api_token=api_token,
             is_admin=user.is_admin
         )

@@ -17,13 +17,66 @@ from src.utils import load_all_engines
 from src.cli import run_cli_mode
 from src.api import run_api_mode
 
+def test_auth_mode():
+    """Mode de test pour l'authentification sans charger les embeddings"""
+    from fastapi import FastAPI
+    from fastapi.middleware.cors import CORSMiddleware
+    import uvicorn
+    from src.auth.database import init_db
+    from src.auth.routes import auth_router, users_router
+    from src.admin import admin_router
+    
+    # Initialiser la base de données
+    init_db()
+    
+    app = FastAPI(
+        title="Test Authentification",
+        description="API de test pour l'authentification",
+        version="3.0.0"
+    )
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"], 
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Inclure les routeurs d'authentification
+    app.include_router(auth_router)
+    app.include_router(users_router)
+    app.include_router(admin_router)
+
+    @app.get("/")
+    async def root():
+        return {
+            "message": "Mode test authentification - Embeddings non chargés",
+            "version": "3.0.0",
+            "endpoints": {
+                "admin": "/admin",
+                "auth": "/auth",
+                "users": "/users",
+                "docs": "/docs"
+            }
+        }
+
+    # Configuration du serveur
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", "8000"))
+    
+    print(f"🚀 Démarrage du serveur de test sur {host}:{port}")
+    print(f"📚 Documentation disponible sur http://{host}:{port}/docs")
+    
+    uvicorn.run(app, host=host, port=port)
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Recherche sémantique dense pour FAQ / Q&R (supporte data/fr et data/en)"
+        description="Recherche sémantique dense pour FAQ / Q&R"
     )
-    parser.add_argument("--data_dir", type=str, default="data", help="Répertoire contenant les sous-dossiers 'fr' et 'en'")
+    parser.add_argument("--embeddings_dir", type=str, default="embeddings", help="Répertoire contenant les embeddings calculés")
     parser.add_argument("--top_k", type=int, default=5, help="Nombre de résultats à retourner")
-    parser.add_argument("--mode", choices=["cli", "api"], default="cli", help="Mode d'exécution : 'cli' ou 'api'")
+    parser.add_argument("--mode", choices=["cli", "api", "test-auth"], default="cli", help="Mode d'exécution : 'cli', 'api' ou 'test-auth'")
     parser.add_argument("--rerank", action="store_true", help="Activer le re-ranking avec un cross-encoder")
     parser.add_argument("--year_weighted", action="store_true", help="Activer le scoring pondéré par l'année")
     parser.add_argument("--embedding_model", type=str, default="paraphrase-multilingual-MiniLM-L12-v2", help="Nom du modèle d'embedding")
@@ -31,8 +84,12 @@ def main():
     parser.add_argument("--batch_size", type=int, default=64, help="Taille des batchs pour la vectorisation")
     args = parser.parse_args()
 
+    if args.mode == "test-auth":
+        test_auth_mode()
+        return
+
     engines = load_all_engines(
-        args.data_dir,
+        args.embeddings_dir,
         args.embedding_model,
         crossencoder_model=args.crossencoder_model if args.rerank else None,
         batch_size=args.batch_size
@@ -45,3 +102,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

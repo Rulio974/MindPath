@@ -38,7 +38,7 @@ def get_db():
 def init_db():
     """Initialise la base de données avec les données par défaut"""
     from .models import User
-    from .security import generate_api_token
+    from .security import generate_api_token, hash_password
     
     create_tables()
     
@@ -51,6 +51,7 @@ def init_db():
                 email="admin@example.com",
                 username="admin",
                 full_name="Administrateur",
+                password_hash=hash_password("admin123"),  # Ajouter le password_hash
                 api_token=generate_api_token(),
                 is_active=True,
                 is_admin=True

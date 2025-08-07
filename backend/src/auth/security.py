@@ -2,12 +2,22 @@
 # -*- coding: utf-8 -*-
 
 import secrets
+import bcrypt
 from typing import Optional
 from fastapi import HTTPException, status
 
 def generate_api_token() -> str:
     """Génère un token API sécurisé"""
     return secrets.token_urlsafe(32)
+
+def hash_password(password: str) -> str:
+    """Hache un mot de passe avec bcrypt"""
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+
+def verify_password(password: str, hashed_password: str) -> bool:
+    """Vérifie un mot de passe contre son hash"""
+    return bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 def verify_api_token(token: str, db) -> Optional[dict]:
     """

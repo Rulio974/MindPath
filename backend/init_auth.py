@@ -17,15 +17,45 @@ load_dotenv()
 def init_database():
     """Initialise la base de données avec les données par défaut"""
     try:
-        from src.auth.database import init_db
+        from src.auth.database import init_db, SessionLocal
+        from src.auth.crud import UserCRUD
+        from src.auth.schemas import UserCreate
+        
         print("🔄 Initialisation de la base de données...")
         init_db()
         print("✅ Base de données initialisée avec succès !")
-        print("📋 Données par défaut créées :")
-        print("   - Rôles : admin, user, viewer")
-        print("   - Utilisateur admin : admin / admin123")
-        print("   - Email admin : admin@example.com")
-        return True
+        
+        # Créer un utilisateur admin par défaut
+        print("🔄 Création de l'utilisateur admin par défaut...")
+        db = SessionLocal()
+        try:
+            # Vérifier si l'admin existe déjà
+            existing_admin = UserCRUD.get_user_by_email(db, "admin@example.com")
+            if existing_admin:
+                print("✅ Utilisateur admin existe déjà")
+                print(f"   - Email : {existing_admin.email}")
+                print(f"   - Token API : {existing_admin.api_token}")
+                return True
+            
+            # Créer l'admin par défaut
+            admin_data = UserCreate(
+                email="admin@example.com",
+                username="admin",
+                full_name="Administrateur Principal",
+                password="admin123",
+                is_admin=True
+            )
+            
+            user = UserCRUD.create_user(db, admin_data)
+            print("✅ Utilisateur admin créé avec succès !")
+            print(f"   - Email : {user.email}")
+            print(f"   - Token API : {user.api_token}")
+            print(f"   - Mot de passe : admin123")
+            return True
+            
+        finally:
+            db.close()
+            
     except Exception as e:
         print(f"❌ Erreur lors de l'initialisation : {e}")
         return False
@@ -33,7 +63,7 @@ def init_database():
 def create_user_interactive():
     """Crée un utilisateur de manière interactive"""
     try:
-        from src.auth.database import SessionLocal
+        from src.auth.database import SessionLocal, init_db
         from src.auth.crud import UserCRUD
         from src.auth.schemas import UserCreate
         
@@ -52,7 +82,8 @@ def create_user_interactive():
             email=email,
             username=username,
             full_name=full_name,
-            password=password
+            password=password,
+            is_admin=True
         )
         
         db = SessionLocal()
@@ -72,6 +103,8 @@ def create_user_interactive():
             print(f"   - Email : {user.email}")
             print(f"   - Nom d'utilisateur : {user.username}")
             print(f"   - Nom complet : {user.full_name}")
+            print(f"   - Token API : {user.api_token}")
+            print(f"   - Admin : {'Oui' if user.is_admin else 'Non'}")
             return True
             
         finally:

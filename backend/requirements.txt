@@ -29,6 +29,7 @@ tqdm
 
 # Sécurité
 python-multipart
+bcrypt
 
 # Tests et requêtes HTTP
 httpx

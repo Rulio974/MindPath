@@ -1,0 +1,18 @@
+{
+  "model_info": {
+    "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+    "crossencoder_model": null,
+    "embedding_dimension": 384,
+    "num_questions": 323
+  },
+  "calculation_info": {
+    "timestamp": "2025-08-07T09:01:03.351456",
+    "output_directory": "embeddings/fr"
+  },
+  "statistics": {
+    "total_questions": 323,
+    "unique_entreprises": 15,
+    "years_range": "2022 - 2025",
+    "embedding_dimension": 384
+  }
+}

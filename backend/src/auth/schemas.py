@@ -10,6 +10,17 @@ class TokenAuth(BaseModel):
     """Schéma pour l'authentification par token API"""
     token: str
 
+class LoginRequest(BaseModel):
+    """Schéma pour la demande de connexion"""
+    email: EmailStr
+    password: str
+
+class LoginResponse(BaseModel):
+    """Schéma pour la réponse de connexion"""
+    access_token: str
+    token_type: str
+    user: "User"
+
 # Schémas pour les utilisateurs
 class UserBase(BaseModel):
     """Schéma de base pour les utilisateurs"""
@@ -19,6 +30,7 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     """Schéma pour créer un utilisateur"""
+    password: str
     is_active: bool = True
     is_admin: bool = False
 
@@ -33,6 +45,7 @@ class UserUpdate(BaseModel):
 class User(UserBase):
     """Schéma de réponse pour les utilisateurs"""
     id: int
+    api_token: str
     is_active: bool
     is_admin: bool
     created_at: datetime
