@@ -1,29 +1,235 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-           xsi:type="TaskPaneApp">
-  <Id>2ed5dfdf-9cae-4399-94ca-17c72a9ec498</Id>
-  <Version>1.0.0.0</Version>
-  <ProviderName>Questionnaire Sécurité</ProviderName>
-  <DefaultLocale>fr-FR</DefaultLocale>
-  <DisplayName DefaultValue="Recherche dans l'historique" />
-  <Description DefaultValue="Recherche sémantique dans les questionnaires de sécurité" />
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png" />
-  <SupportUrl DefaultValue="https://localhost:3000" />
-  <AppDomains>
-    <AppDomain>https://localhost:3000</AppDomain>
-  </AppDomains>
-  <Hosts>
-    <Host Name="Workbook" />
-  </Hosts>
-  <Requirements>
-    <Sets DefaultMinVersion="1.1">
-      <Set Name="ExcelApi" MinVersion="1.7" />
-    </Sets>
-  </Requirements>
-  <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
-  </DefaultSettings>
-  <Permissions>ReadWriteDocument</Permissions>
+<OfficeApp
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+    xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+    xsi:type="TaskPaneApp">
+
+    <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
+
+    <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
+    <Id>12345678-1234-1234-1234-123456789012</Id>
+
+    <!--Version. Updates from the store only get triggered if there is a version change. -->
+    <Version>1.0.0.0</Version>
+    <ProviderName>MindPath</ProviderName>
+    <DefaultLocale>fr-FR</DefaultLocale>
+    <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
+    <DisplayName DefaultValue="MindPath" />
+    <Description DefaultValue="Recherche sémantique dans vos données Excel avec MindPath." />
+
+    <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
+    <IconUrl DefaultValue="https://module.mindpath-dev.fr/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://module.mindpath-dev.fr/assets/icon-80.png" />
+
+    <!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
+    <SupportUrl DefaultValue="https://module.mindpath-dev.fr/support" />
+
+    <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
+    <AppDomains>
+                    <AppDomain>https://module.mindpath-dev.fr</AppDomain>
+        <AppDomain>https://api.lesphinx.mindpath-dev.fr</AppDomain>
+    </AppDomains>
+    <!--End Basic Settings. -->
+
+    <!--Begin TaskPane Mode integration. -->
+    <Hosts>
+        <Host Name="Workbook" />
+    </Hosts>
+    <DefaultSettings>
+        <SourceLocation DefaultValue="https://module.mindpath-dev.fr/taskpane.html" />
+    </DefaultSettings>
+    <!-- End TaskPane Mode integration.  -->
+
+    <Permissions>ReadWriteDocument</Permissions>
+
+    <!-- Begin Add-in Commands Mode integration. -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+        <!-- The Hosts node is required. -->
+        <Hosts>
+            <!-- Each host can have a different set of commands. -->
+            <!-- Excel host is Workbook, Word host is Document, and PowerPoint host is Presentation. -->
+            <!-- Make sure the hosts you override match the hosts declared in the top level <Hosts> element. -->
+            <Host xsi:type="Workbook">
+                <!-- Form factor. Currently only DesktopFormFactor is supported. -->
+                <DesktopFormFactor>
+                    <!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
+                    <GetStarted>
+                        <!-- Title of the Getting Started callout. resid must point to a ShortString resource -->
+                        <Title resid="GetStarted.Title"/>
+                        <!-- Description of the Getting Started callout. resid must point to a LongString resource -->
+                        <Description resid="GetStarted.Description"/>
+                        <!-- Point to a url resource which details how the add-in should be used. -->
+                        <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+                    </GetStarted>
+                    <!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called.
+                         Think of the FunctionFile as the code behind ExecuteFunction. -->
+                    <FunctionFile resid="Commands.Url" />
+
+                    <!-- PrimaryCommandSurface is the main Office Ribbon. -->
+                    <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                        <!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
+                        <OfficeTab id="TabHome">
+                            <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
+                            <Group id="CommandsGroup">
+                                <!-- Label for your group. resid must point to a ShortString resource. -->
+                                <Label resid="CommandsGroup.Label" />
+                                <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
+                                <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
+                                <Icon>
+                                    <bt:Image size="16" resid="Icon.16x16" />
+                                    <bt:Image size="32" resid="Icon.32x32" />
+                                    <bt:Image size="80" resid="Icon.80x80" />
+                                </Icon>
+
+                                <!-- Control. It can be of type "Button" or "Menu". -->
+                                <Control xsi:type="Button" id="TaskpaneButton">
+                                    <Label resid="TaskpaneButton.Label" />
+                                    <Supertip>
+                                        <!-- ToolTip title. resid must point to a ShortString resource. -->
+                                        <Title resid="TaskpaneButton.Label" />
+                                        <!-- ToolTip description. resid must point to a LongString resource. -->
+                                        <Description resid="TaskpaneButton.Tooltip" />
+                                    </Supertip>
+                                    <Icon>
+                                        <bt:Image size="16" resid="Icon.16x16" />
+                                        <bt:Image size="32" resid="Icon.32x32" />
+                                        <bt:Image size="80" resid="Icon.80x80" />
+                                    </Icon>
+                                    <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+                                    <Action xsi:type="ShowTaskpane">
+                                        <TaskpaneId>ButtonId1</TaskpaneId>
+                                        <!-- Provide a url resource id for the location that will be displayed on the task pane. -->
+                                        <SourceLocation resid="Taskpane.Url" />
+                                    </Action>
+                                </Control>
+                            </Group>
+                        </OfficeTab>
+                    </ExtensionPoint>
+                </DesktopFormFactor>
+            </Host>
+        </Hosts>
+        <!-- You can use resources across hosts and form factors. -->
+        <Resources>
+            <bt:Images>
+                <bt:Image id="Icon.16x16" DefaultValue="https://module.mindpath-dev.fr/assets/icon-16.png" />
+                <bt:Image id="Icon.32x32" DefaultValue="https://module.mindpath-dev.fr/assets/icon-32.png" />
+                <bt:Image id="Icon.80x80" DefaultValue="https://module.mindpath-dev.fr/assets/icon-80.png" />
+            </bt:Images>
+            <bt:Urls>
+                <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://module.mindpath-dev.fr/docs" />
+                <bt:Url id="Commands.Url" DefaultValue="https://module.mindpath-dev.fr/commands.html" />
+                <bt:Url id="Taskpane.Url" DefaultValue="https://module.mindpath-dev.fr/taskpane.html" />
+            </bt:Urls>
+            <!-- ShortStrings max characters==125. -->
+            <bt:ShortStrings>
+                <bt:String id="GetStarted.Title" DefaultValue="Bienvenue dans MindPath !" />
+                <bt:String id="CommandsGroup.Label" DefaultValue="MindPath" />
+                <bt:String id="TaskpaneButton.Label" DefaultValue="Ouvrir MindPath" />
+            </bt:ShortStrings>
+            <!-- LongStrings max characters==250. -->
+            <bt:LongStrings>
+                <bt:String id="GetStarted.Description" DefaultValue="MindPath est chargé avec succès. Commencez à utiliser la recherche sémantique dans vos données Excel." />
+                <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Ouvrir l'interface MindPath pour effectuer des recherches sémantiques dans vos données." />
+            </bt:LongStrings>
+        </Resources>
+    </VersionOverrides>
+    <!-- End Add-in Commands Mode integration.  -->
+
+    <!-- Begin Add-in Commands Mode integration. -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides1_1" xsi:type="VersionOverridesV1_1">
+
+        <!-- The Hosts node is required. -->
+        <Hosts>
+            <!-- Each host can have a different set of commands. -->
+            <!-- Excel host is Workbook, Word host is Document, and PowerPoint host is Presentation. -->
+            <!-- Make sure the hosts you override match the hosts declared in the top level <Hosts> element. -->
+            <Host xsi:type="Workbook">
+                <!-- Form factor. Currently only DesktopFormFactor is supported. -->
+                <DesktopFormFactor>
+                    <!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
+                    <GetStarted>
+                        <!-- Title of the Getting Started callout. resid must point to a ShortString resource -->
+                        <Title resid="GetStarted.Title"/>
+                        <!-- Description of the Getting Started callout. resid must point to a LongString resource -->
+                        <Description resid="GetStarted.Description"/>
+                        <!-- Point to a url resource which details how the add-in should be used. -->
+                        <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+                    </GetStarted>
+                    <!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called.
+                         Think of the FunctionFile as the code behind ExecuteFunction. -->
+                    <FunctionFile resid="Commands.Url" />
+
+                    <!-- PrimaryCommandSurface is the main Office Ribbon. -->
+                    <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                        <!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
+                        <OfficeTab id="TabHome">
+                            <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
+                            <Group id="CommandsGroup">
+                                <!-- Label for your group. resid must point to a ShortString resource. -->
+                                <Label resid="CommandsGroup.Label" />
+                                <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
+                                <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
+                                <Icon>
+                                    <bt:Image size="16" resid="Icon.16x16" />
+                                    <bt:Image size="32" resid="Icon.32x32" />
+                                    <bt:Image size="80" resid="Icon.80x80" />
+                                </Icon>
+
+                                <!-- Control. It can be of type "Button" or "Menu". -->
+                                <Control xsi:type="Button" id="TaskpaneButton">
+                                    <Label resid="TaskpaneButton.Label" />
+                                    <Supertip>
+                                        <!-- ToolTip title. resid must point to a ShortString resource. -->
+                                        <Title resid="TaskpaneButton.Label" />
+                                        <!-- ToolTip description. resid must point to a LongString resource. -->
+                                        <Description resid="TaskpaneButton.Tooltip" />
+                                    </Supertip>
+                                    <Icon>
+                                        <bt:Image size="16" resid="Icon.16x16" />
+                                        <bt:Image size="32" resid="Icon.32x32" />
+                                        <bt:Image size="80" resid="Icon.80x80" />
+                                    </Icon>
+                                    <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+                                    <Action xsi:type="ShowTaskpane">
+                                        <TaskpaneId>ButtonId1</TaskpaneId>
+                                        <!-- Provide a url resource id for the location that will be displayed on the task pane. -->
+                                        <SourceLocation resid="Taskpane.Url" />
+                                    </Action>
+                                </Control>
+                            </Group>
+                        </OfficeTab>
+                    </ExtensionPoint>
+                </DesktopFormFactor>
+            </Host>
+        </Hosts>
+        <!-- You can use resources across hosts and form factors. -->
+        <Resources>
+            <bt:Images>
+                <bt:Image id="Icon.16x16" DefaultValue="https://module.mindpath-dev.fr/assets/icon-16.png" />
+                <bt:Image id="Icon.32x32" DefaultValue="https://module.mindpath-dev.fr/assets/icon-32.png" />
+                <bt:Image id="Icon.80x80" DefaultValue="https://module.mindpath-dev.fr/assets/icon-80.png" />
+            </bt:Images>
+            <bt:Urls>
+                <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://module.mindpath-dev.fr/docs" />
+                <bt:Url id="Commands.Url" DefaultValue="https://module.mindpath-dev.fr/commands.html" />
+                <bt:Url id="Taskpane.Url" DefaultValue="https://module.mindpath-dev.fr/taskpane.html" />
+            </bt:Urls>
+            <!-- ShortStrings max characters==125. -->
+            <bt:ShortStrings>
+                <bt:String id="GetStarted.Title" DefaultValue="Bienvenue dans MindPath !" />
+                <bt:String id="CommandsGroup.Label" DefaultValue="MindPath" />
+                <bt:String id="TaskpaneButton.Label" DefaultValue="Ouvrir MindPath" />
+            </bt:ShortStrings>
+            <!-- LongStrings max characters==250. -->
+            <bt:LongStrings>
+                <bt:String id="GetStarted.Description" DefaultValue="MindPath est chargé avec succès. Commencez à utiliser la recherche sémantique dans vos données Excel." />
+                <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Ouvrir l'interface MindPath pour effectuer des recherches sémantiques dans vos données." />
+            </bt:LongStrings>
+        </Resources>
+    </VersionOverrides>
+    <!-- End Add-in Commands Mode integration.  -->
+
 </OfficeApp>

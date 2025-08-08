@@ -1,455 +1,282 @@
-# MindPath - Moteur de recherche sémantique pour questionnaires de sécurité
+# MindPath - Recherche Sémantique
 
 ## 📋 Vue d'ensemble
 
-MindPath est un système de recherche sémantique avancé conçu pour interroger des bases de données de questionnaires de sécurité. Le projet est architecturé en **3 modules indépendants** déployés sur **3 serveurs distincts** :
+MindPath est une solution de recherche sémantique multilingue (FR/EN) avec pondération temporelle, re-ranking et détection automatique de langue. Le projet est architecturé en 3 modules indépendants déployés sur 3 serveurs distincts.
 
-- **`embeddings/`** : Serveur de calcul et génération d'embeddings
-- **`backend/`** : Serveur API avec authentification et recherche
-- **`frontend/`** : Interface utilisateur web (à développer)
+## 🏗️ Architecture
 
-## 🏗️ Architecture multi-serveurs
+### **Module 1 : Embeddings** (`embeddings/`)
+- **Serveur** : Serveur de chargement des embeddings
+- **Fonctionnalité** : Chargement et indexation des données sémantiques
+- **Technologies** : Python, FAISS, Sentence Transformers
 
+### **Module 2 : Backend** (`backend/`)
+- **Serveur** : API REST avec interface d'administration
+- **URL** : `https://api.mindpath-dev.fr`
+- **Fonctionnalités** :
+  - Recherche sémantique via API
+  - Authentification par tokens API
+  - Interface d'administration (gestion utilisateurs)
+  - Logs de recherche
+- **Technologies** : FastAPI, SQLAlchemy, SQLite, Uvicorn
+
+### **Module 3 : Frontend** (`frontend/`)
+- **Serveur** : Interface Excel Add-in
+- **URL** : `https://mindpath-dev.fr`
+- **Fonctionnalités** :
+  - Add-in Excel pour recherche sémantique
+  - Interface utilisateur moderne
+  - Intégration avec Office.js
+- **Technologies** : HTML5, CSS3, JavaScript, Office.js
+
+## 🚀 Démarrage rapide
+
+### **1. Backend (API + Admin)**
+```bash
+cd backend
+pip install -r requirements.txt
+python3 init_auth.py  # Initialiser la base de données
+python3 main.py --mode api
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Serveur 1     │    │   Serveur 2     │    │   Serveur 3     │
-│  embeddings/    │    │    backend/     │    │   frontend/     │
-│                 │    │                 │    │                 │
-│ • Calcul        │    │ • API REST      │    │ • Interface     │
-│ • Génération    │    │ • Auth          │    │   utilisateur   │
-│ • Stockage      │    │ • Recherche     │    │ • Dashboard     │
-│ • Download API  │    │ • Gestion users │    │ • Formulaires   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+
+### **2. Frontend (Excel Add-in)**
+```bash
+cd frontend
+npm install
+npm start
 ```
 
-## 🎯 Fonctionnalités principales
+## 🔐 Authentification
 
-### Recherche sémantique
-- **Multilingue** : Support français et anglais
-- **Pondération temporelle** : Prise en compte de l'année des données
-- **Re-ranking** : Amélioration des résultats avec cross-encoder
-- **Détection automatique** de la langue des requêtes
+### **Types d'utilisateurs**
+- **Admin** : Accès complet à l'interface d'administration
+- **Standard** : Accès à la recherche sémantique uniquement
 
-### Authentification et gestion des utilisateurs
-- **Tokens API** : Authentification simplifiée par tokens uniques
-- **Rôles** : Administrateurs et utilisateurs standards
-- **Gestion complète** : CRUD utilisateurs, régénération de tokens
-- **Logs de recherche** : Traçabilité des requêtes
-
-### Interface d'administration
-- **Dashboard web** : Gestion des utilisateurs et statistiques
-- **API REST** : Endpoints complets pour l'intégration
-- **Documentation interactive** : Swagger/OpenAPI
+### **Mécanismes d'authentification**
+- **Interface Admin** : Email/Mot de passe + sessions
+- **API Recherche** : Tokens API uniquement
+- **Excel Add-in** : Tokens API pour les requêtes
 
 ## 📁 Structure du projet
 
 ```
 MindPath/
-├── embeddings/                    # Serveur 1 - Calcul d'embeddings
-│   ├── data/                     # Données sources (JSON)
-│   │   ├── fr/                   # Données françaises
-│   │   └── en/                   # Données anglaises
-│   ├── embeddings/               # Fichiers générés
-│   │   ├── fr/                   # Embeddings français
-│   │   │   ├── embeddings.npy    # Vecteurs d'embeddings
-│   │   │   ├── faiss_index_flat.idx  # Index FAISS
-│   │   │   ├── metadata.json     # Métadonnées JSON
-│   │   │   └── metadata.pkl      # Métadonnées pickle
-│   │   └── en/                   # Embeddings anglais
-│   ├── main.py                   # Point d'entrée principal
-│   ├── embedding_calculator.py   # Logique de calcul
-│   ├── embedding_loader.py       # Chargement des embeddings
-│   ├── download_api.py           # API de téléchargement
-│   └── requirements.txt          # Dépendances
-│
-├── backend/                      # Serveur 2 - API et authentification
-│   ├── src/                      # Code source
-│   │   ├── auth/                 # Module d'authentification
-│   │   │   ├── models.py         # Modèles SQLAlchemy
-│   │   │   ├── schemas.py        # Schémas Pydantic
-│   │   │   ├── crud.py           # Opérations base de données
-│   │   │   ├── dependencies.py   # Dépendances FastAPI
-│   │   │   ├── routes.py         # Routes d'authentification
-│   │   │   ├── security.py       # Logique de sécurité
-│   │   │   └── database.py       # Configuration DB
-│   │   ├── api.py                # Application FastAPI principale
-│   │   ├── admin.py              # Interface d'administration
-│   │   ├── cli.py                # Interface ligne de commande
-│   │   ├── utils.py              # Utilitaires (détection langue)
-│   │   └── embedding_loader.py   # Chargement des embeddings
-│   ├── embeddings/               # Embeddings copiés depuis serveur 1
-│   │   ├── fr/                   # Fichiers français
-│   │   └── en/                   # Fichiers anglais
-│   ├── templates/                # Templates HTML
-│   ├── main.py                   # Point d'entrée principal
-│   ├── manage_users.py           # Script de gestion utilisateurs
-│   ├── init_auth.py              # Initialisation base de données
-│   ├── requirements.txt          # Dépendances
-│   └── semantic_search.db        # Base de données SQLite
-│
-├── frontend/                     # Serveur 3 - Interface utilisateur
-│   └── (à développer)            # Interface web future
-│
-├── .gitignore                    # Fichiers ignorés par Git
-└── README.md                     # Cette documentation
+├── embeddings/          # Module embeddings
+├── backend/            # Module backend (API + Admin)
+│   ├── src/
+│   │   ├── api.py      # API principale
+│   │   ├── auth/       # Authentification
+│   │   └── admin.py    # Interface admin (déprécié)
+│   ├── main.py         # Point d'entrée
+│   └── requirements.txt
+├── frontend/           # Module Excel Add-in
+│   ├── taskpane.html   # Interface utilisateur
+│   ├── taskpane.js     # Logique JavaScript
+│   ├── taskpane.css    # Styles
+│   ├── manifest.xml    # Manifest Excel
+│   └── package.json
+└── admin/              # Interface admin standalone
+    ├── index.html      # Dashboard admin
+    └── login.html      # Page de connexion
 ```
 
-## 🚀 Déploiement multi-serveurs
+## 🌐 URLs de production
 
-### Serveur 1 - Embeddings (Calcul)
+### **Interface d'administration**
+- **URL** : `https://mindpath-dev.fr`
+- **Fonctionnalités** : Gestion des utilisateurs, statistiques, génération de tokens
 
-**Objectif** : Calculer et générer les embeddings sémantiques
+### **API Backend**
+- **URL** : `https://api.mindpath-dev.fr`
+- **Endpoints** :
+  - `POST /search` : Recherche sémantique
+  - `GET /stats` : Statistiques (admin)
+  - `POST /auth/login` : Connexion admin
+  - `GET /auth/verify-api-token` : Vérification token API
 
+### **Excel Add-in**
+- **URL** : `https://mindpath-dev.fr/taskpane.html`
+- **Manifest** : `https://mindpath-dev.fr/manifest.xml`
+
+## ⚠️ IMPORTANT - Certificats SSL en production
+
+**Pour la production, vous DEVEZ remplacer les certificats auto-signés par des certificats Let's Encrypt valides :**
+
+1. **Remplacer les certificats** :
+   - `backend/certs/backend.key` → Certificat Let's Encrypt
+   - `backend/certs/backend.crt` → Certificat Let's Encrypt
+
+2. **Configurer Nginx** pour gérer SSL et rediriger vers le backend en HTTP
+
+3. **Mettre à jour les URLs frontend** pour utiliser HTTPS
+
+## 🚀 Plan détaillé pour la migration en production (après propagation DNS)
+
+### **Étape 1 : Vérification DNS**
 ```bash
-# Installation
-cd embeddings/
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Calcul des embeddings
-python3 main.py
-
-# API de téléchargement (optionnel)
-python3 download_api.py
+nslookup mindpath-dev.fr
+nslookup api.mindpath-dev.fr
 ```
 
-**Fichiers générés** :
-- `embeddings/fr/` : Embeddings français
-- `embeddings/en/` : Embeddings anglais
-- `calculation_summary.json` : Résumé du calcul
-
-### Serveur 2 - Backend (API)
-
-**Objectif** : Exposer l'API avec authentification et recherche
-
+### **Étape 2 : Configuration Nginx**
 ```bash
-# Installation
-cd backend/
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Copier les embeddings depuis le serveur 1
-mkdir -p embeddings/
-# (copie manuelle des fichiers depuis serveur 1)
-
-# Initialiser la base de données
-python3 init_auth.py
-
-# Lancer l'API
-python3 main.py --mode api
+sudo nano /etc/nginx/sites-available/mindpath-dev.fr
+sudo nano /etc/nginx/sites-available/api.mindpath-dev.fr
 ```
 
-**Modes disponibles** :
-- `--mode api` : API complète avec recherche
-- `--mode test-auth` : Test authentification seulement
-- `--mode cli` : Interface ligne de commande
-
-### Serveur 3 - Frontend (Interface)
-
-**Objectif** : Interface utilisateur web (à développer)
-
+### **Étape 3 : Activation des sites**
 ```bash
-# (Développement futur)
-cd frontend/
-# Interface utilisateur
+sudo ln -s /etc/nginx/sites-available/mindpath-dev.fr /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/api.mindpath-dev.fr /etc/nginx/sites-enabled/
 ```
 
-## 🔧 Configuration technique
-
-### Modèles utilisés
-
-**Embeddings** :
-- `paraphrase-multilingual-MiniLM-L12-v2` : Modèle multilingue Sentence Transformers
-- **Dimensions** : 384
-- **Langues** : Français, Anglais
-- **Normalisation** : L2
-
-**Index FAISS** :
-- **Type** : Flat (recherche exacte)
-- **Métrique** : Distance cosinus
-- **Optimisation** : Pour la précision
-
-### Base de données
-
-**SQLite** : `semantic_search.db`
-
-**Tables** :
-```sql
--- Utilisateurs
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY,
-    email VARCHAR(255) UNIQUE,
-    username VARCHAR(100) UNIQUE,
-    full_name VARCHAR(255),
-    api_token VARCHAR(255) UNIQUE,
-    is_active BOOLEAN DEFAULT true,
-    is_admin BOOLEAN DEFAULT false,
-    created_at DATETIME,
-    updated_at DATETIME
-);
-
--- Logs de recherche
-CREATE TABLE search_logs (
-    id INTEGER PRIMARY KEY,
-    user_id INTEGER,
-    query TEXT,
-    language VARCHAR(10),
-    results_count INTEGER,
-    response_time INTEGER,
-    created_at DATETIME
-);
-```
-
-### Authentification
-
-**Système** : Tokens API uniques
-- **Génération** : `secrets.token_urlsafe(32)`
-- **Stockage** : Base de données SQLite
-- **Validation** : À chaque requête API
-- **Révocation** : Régénération de token
-
-**Types d'utilisateurs** :
-- **Administrateurs** (`is_admin: true`) : Accès complet
-- **Utilisateurs** (`is_admin: false`) : Recherche seulement
-
-## 📡 API REST
-
-### Endpoints principaux
-
-#### Authentification
-```
-POST /auth/verify-token     # Vérifier un token
-GET  /auth/me              # Infos utilisateur actuel
-PUT  /auth/me              # Modifier son profil
-POST /auth/regenerate-token # Régénérer son token
-```
-
-#### Gestion des utilisateurs (Admin)
-```
-GET    /users/                    # Lister tous les utilisateurs
-POST   /users/                    # Créer un utilisateur
-GET    /users/{id}                # Voir un utilisateur
-PUT    /users/{id}                # Modifier un utilisateur
-DELETE /users/{id}                # Supprimer un utilisateur
-POST   /users/{id}/regenerate-token # Régénérer un token
-```
-
-#### Recherche
-```
-POST /search              # Recherche authentifiée
-POST /search/public       # Recherche publique (optionnel)
-```
-
-#### Administration
-```
-GET /admin/               # Dashboard web
-GET /admin/stats          # Statistiques globales
-GET /stats                # Statistiques utilisateur
-```
-
-#### Utilitaires
-```
-GET /health               # État de l'API
-GET /docs                 # Documentation Swagger
-```
-
-### Exemples d'utilisation
-
-#### Recherche sémantique
+### **Étape 4 : Test Nginx**
 ```bash
-curl -X POST "http://server2:8000/search" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -d '{
-    "question": "sécurité informatique",
-    "top_k": 5
-  }'
+sudo nginx -t
+sudo systemctl reload nginx
 ```
 
-#### Créer un utilisateur
+### **Étape 5 : Certificats SSL**
 ```bash
-curl -X POST "http://server2:8000/users/" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer ADMIN_TOKEN" \
-  -d '{
-    "email": "user@example.com",
-    "username": "newuser",
-    "full_name": "Nouveau Utilisateur",
-    "is_admin": false
-  }'
+sudo certbot --nginx -d mindpath-dev.fr
+sudo certbot --nginx -d api.mindpath-dev.fr
 ```
 
-## 🛠️ Outils de gestion
+### **Étape 6 : Modification backend**
+- Modifier le backend pour écouter en HTTP (Nginx gère SSL)
+- Redémarrer le service backend
 
-### Script de gestion des utilisateurs
+### **Étape 7 : Mise à jour frontend**
+- Vérifier que les URLs pointent vers les bons domaines
+- Tester l'interface admin et l'add-in Excel
 
+### **Étape 8 : Redémarrage des services**
 ```bash
-cd backend/
-python3 manage_users.py
+sudo systemctl restart mindpath-backend
+sudo systemctl reload nginx
 ```
 
-**Fonctionnalités** :
-- Lister tous les utilisateurs
-- Afficher les tokens
-- Créer/modifier/supprimer des utilisateurs
-- Régénérer des tokens
+### **Étape 9 : Tests finaux**
+- Test de l'interface admin
+- Test de l'API
+- Test de l'add-in Excel
+- Test des certificats SSL
 
-### Interface web d'administration
+## 🔧 Configuration Nginx
 
+### **Site principal (mindpath-dev.fr)**
+```nginx
+server {
+    listen 80;
+    server_name mindpath-dev.fr;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name mindpath-dev.fr;
+    
+    ssl_certificate /etc/letsencrypt/live/mindpath-dev.fr/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/mindpath-dev.fr/privkey.pem;
+    
+    root /home/ubuntu/MindPath/admin;
+    index index.html;
+    
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    
+    location /assets/ {
+        alias /home/ubuntu/MindPath/frontend/assets/;
+    }
+}
 ```
-http://server2:8000/admin/
+
+### **API (api.mindpath-dev.fr)**
+```nginx
+server {
+    listen 80;
+    server_name api.mindpath-dev.fr;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name api.mindpath-dev.fr;
+    
+    ssl_certificate /etc/letsencrypt/live/api.mindpath-dev.fr/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.mindpath-dev.fr/privkey.pem;
+    
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
 ```
 
-**Fonctionnalités** :
-- Dashboard avec statistiques
-- Gestion des utilisateurs
-- Interface graphique complète
+## 📊 Fonctionnalités
+
+### **Recherche sémantique**
+- **Multilingue** : Français et Anglais
+- **Pondération temporelle** : Priorité aux documents récents
+- **Re-ranking** : Amélioration de la pertinence
+- **Détection de langue** : Automatique
+
+### **Interface d'administration**
+- **Gestion des utilisateurs** : Création, modification, suppression
+- **Génération de tokens** : Tokens API sécurisés
+- **Statistiques** : Nombre d'utilisateurs, entrées, documents
+- **Logs** : Historique des recherches
+
+### **Excel Add-in**
+- **Recherche intégrée** : Dans les cellules Excel
+- **Auto-remplissage** : Colonnes réponse et commentaire
+- **Paramètres persistants** : URL serveur et token API
+- **Interface moderne** : Design Bootstrap 5
 
 ## 🔒 Sécurité
 
-### Authentification
-- **Tokens uniques** par utilisateur
-- **Validation** à chaque requête
-- **Révocation** par régénération
-- **Pas de mots de passe** (simplification)
+- **Tokens API** : Génération sécurisée et rotation
+- **Hachage des mots de passe** : bcrypt
+- **Sessions admin** : Gestion en mémoire
+- **CORS** : Configuration stricte
+- **HTTPS** : Obligatoire en production
 
-### Autorisation
-- **Rôles** : Admin vs Utilisateur
-- **Endpoints protégés** par rôles
-- **Logs** de toutes les recherches
+## 📝 Logs
 
-### Données
-- **Base SQLite** locale
-- **Tokens sécurisés** (32 caractères aléatoires)
-- **Validation** des entrées (Pydantic)
+### **Backend**
+- Logs de recherche dans la base SQLite
+- Logs d'authentification
+- Logs d'erreurs
 
-## 📊 Monitoring et logs
+### **Frontend**
+- Logs de connexion dans la console
+- Logs d'erreurs utilisateur
 
-### Logs de recherche
-- **Requête** : Texte de la recherche
-- **Langue** : Détectée automatiquement
-- **Résultats** : Nombre de résultats
-- **Performance** : Temps de réponse
-- **Utilisateur** : Qui a fait la recherche
+## 🚀 Déploiement
 
-### Statistiques
-- **Par utilisateur** : Historique personnel
-- **Globales** : Statistiques système (admin)
-- **Performance** : Temps de réponse moyens
-
-## 🔄 Workflow de déploiement
-
-### 1. Serveur Embeddings
+### **Services systemd**
 ```bash
-# Calculer les embeddings
-python3 main.py
+# Backend
+sudo systemctl enable mindpath-backend
+sudo systemctl start mindpath-backend
 
-# Vérifier les fichiers générés
-ls -la embeddings/fr/
-ls -la embeddings/en/
+# Nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
 ```
 
-### 2. Serveur Backend
+### **Monitoring**
 ```bash
-# Copier les embeddings
-cp -r ../embeddings/fr embeddings/
-cp -r ../embeddings/en embeddings/
+# Vérifier les services
+sudo systemctl status mindpath-backend
+sudo systemctl status nginx
 
-# Initialiser la DB
-python3 init_auth.py
-
-# Lancer l'API
-python3 main.py --mode api
-```
-
-### 3. Tests
-```bash
-# Test authentification
-curl -X GET "http://server2:8000/health"
-
-# Test recherche
-curl -X POST "http://server2:8000/search" \
-  -H "Authorization: Bearer TOKEN" \
-  -d '{"question": "test"}'
-```
-
-## 🐛 Dépannage
-
-### Problèmes courants
-
-#### Embeddings non trouvés
-```
-❌ Erreur lors du chargement des embeddings
-```
-**Solution** : Vérifier que les fichiers sont copiés dans `backend/embeddings/`
-
-#### Module non trouvé
-```
-ModuleNotFoundError: No module named 'embedding_loader'
-```
-**Solution** : Vérifier que `embedding_loader.py` est dans `backend/src/`
-
-#### Token invalide
-```
-401 Unauthorized
-```
-**Solution** : Régénérer le token avec `/users/{id}/regenerate-token`
-
-#### Base de données
-```
-sqlite3.OperationalError: no such table
-```
-**Solution** : Exécuter `python3 init_auth.py`
-
-### Logs utiles
-
-```bash
-# Logs du serveur
-tail -f /var/log/mindpath/backend.log
-
-# Base de données
-sqlite3 semantic_search.db ".tables"
-
-# Vérifier les embeddings
-ls -la backend/embeddings/fr/
-```
-
-## 📈 Évolutions futures
-
-### Fonctionnalités prévues
-- **Interface web** complète (frontend/)
-- **Plus de langues** (espagnol, allemand)
-- **Index FAISS avancés** (IVF, HNSW)
-- **Cache Redis** pour les performances
-- **API GraphQL** alternative
-- **Webhooks** pour les notifications
-
-### Optimisations
-- **Compression** des embeddings
-- **Index quantifiés** pour réduire la taille
-- **Load balancing** pour l'API
-- **Monitoring** avancé (Prometheus/Grafana)
-
-## 📞 Support
-
-### Documentation
-- **API** : `http://server2:8000/docs`
-- **Admin** : `http://server2:8000/admin/`
-
-### Commandes utiles
-```bash
-# État du système
-curl http://server2:8000/health
-
-# Statistiques
-curl -H "Authorization: Bearer TOKEN" http://server2:8000/stats
-
-# Gestion utilisateurs
-cd backend && python3 manage_users.py
-```
-
----
-
-**MindPath** - Recherche sémantique intelligente pour la sécurité informatique 
+# Vérifier les logs
+sudo journalctl -u mindpath-backend -f
+sudo tail -f /var/log/nginx/error.log
+``` 

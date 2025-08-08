@@ -9,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6366f1;
-            --primary-hover: #4f46e5;
+            --primary-color: #018baf;
+            --primary-hover: #2c2a9b;
             --bg-light: #f8fafc;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
@@ -19,7 +19,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            background: linear-gradient(135deg, #018baf, #2c2a9b);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: #1e293b;
             line-height: 1.6;
@@ -44,11 +44,15 @@
             margin-bottom: 2rem;
         }
 
-        .login-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .login-logo-container {
+            margin-bottom: 1rem;
+        }
+
+        .login-logo-img {
+            height: 60px;
+            width: auto;
+            max-width: 300px;
+            object-fit: contain;
         }
 
         .login-subtitle {
@@ -155,7 +159,9 @@
 <body>
     <div class="login-container fade-in">
         <div class="login-header">
-            <div class="login-logo">MindPath</div>
+            <div class="login-logo-container">
+                <img src="assets/logo.png" alt="MindPath" class="login-logo-img">
+            </div>
             <div class="login-subtitle">Interface d'administration</div>
         </div>
 
@@ -196,7 +202,7 @@
     </div>
 
     <script>
-        const API_BASE_URL = '/api';
+        const API_BASE_URL = 'https://api.lesphinx.mindpath-dev.fr';
 
         document.addEventListener('DOMContentLoaded', function () {
             // Vérifier si déjà connecté

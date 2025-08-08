@@ -65,10 +65,19 @@ def test_auth_mode():
     host = os.getenv("HOST", "0.0.0.0")
     port = int(os.getenv("PORT", "8000"))
     
-    print(f"🚀 Démarrage du serveur de test sur {host}:{port}")
-    print(f"📚 Documentation disponible sur http://{host}:{port}/docs")
+    # Configuration HTTPS
+    ssl_keyfile = os.getenv("SSL_KEYFILE", "certs/backend.key")
+    ssl_certfile = os.getenv("SSL_CERTFILE", "certs/backend.crt")
     
-    uvicorn.run(app, host=host, port=port)
+    # Vérifier si les certificats SSL existent
+    if os.path.exists(ssl_keyfile) and os.path.exists(ssl_certfile):
+        print(f"🔒 Démarrage du serveur de test HTTPS sur {host}:{port}")
+        print(f"📚 Documentation disponible sur https://{host}:{port}/docs")
+        uvicorn.run(app, host=host, port=port, ssl_keyfile=ssl_keyfile, ssl_certfile=ssl_certfile)
+    else:
+        print(f"⚠️  Certificats SSL non trouvés, démarrage en HTTP sur {host}:{port}")
+        print(f"📚 Documentation disponible sur http://{host}:{port}/docs")
+        uvicorn.run(app, host=host, port=port)
 
 def main():
     parser = argparse.ArgumentParser(
