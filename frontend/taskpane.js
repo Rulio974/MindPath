@@ -6,7 +6,7 @@
 
     // Configuration par défaut
     let config = {
-        serverUrl: 'https://api.lesphinx.mindpath-dev.fr', // HTTPS pour Excel Online
+        serverUrl: '', // L'utilisateur configure son propre serveur
         apiToken: ''
     };
 

@@ -46,15 +46,15 @@ def run_api_mode(engines, top_k, year_weighted):
         version="3.0.0"
     )
 
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=[
-            "https://lesphinx.mindpath-dev.fr",
-            "http://lesphinx.mindpath-dev.fr",
-            "https://api.lesphinx.mindpath-dev.fr",
-            "http://api.lesphinx.mindpath-dev.fr",
-            "https://module.mindpath-dev.fr",
-            "http://module.mindpath-dev.fr",
+                                    app.add_middleware(
+                    CORSMiddleware,
+                    allow_origins=[
+                        "https://lesphinx.mindpath-dev.fr",
+                        "http://lesphinx.mindpath-dev.fr",
+                        "https://api.lesphinx.mindpath-dev.fr",
+                        "http://api.lesphinx.mindpath-dev.fr",
+                        "https://module.mindpath-dev.fr",
+                        "http://module.mindpath-dev.fr",
             "http://localhost:8000",
             "http://127.0.0.1:8000",
             "http://164.132.58.187",
